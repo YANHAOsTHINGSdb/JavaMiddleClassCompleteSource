@@ -40,8 +40,10 @@ public class 文件db {
 						if (StringUtils.isEmpty(str)) {
 							continue;
 						}
-						String skey = str.split(",")[0];
-						String svalue = str.split(",")[1];
+						String[] reslut = StringUtils.split(str, ",");
+						String skey = reslut[0];
+						String svalue = reslut[1];
+
 						map.put(skey, svalue);
 					}
 					System.out.println(map.toString());
