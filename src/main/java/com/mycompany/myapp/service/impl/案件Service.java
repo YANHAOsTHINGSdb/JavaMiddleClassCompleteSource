@@ -17,16 +17,16 @@ import org.apache.commons.lang.math.NumberUtils;
 import org.springframework.util.ObjectUtils;
 
 import com.mycompany.myapp.bean.案件Bean;
-import com.mycompany.myapp.bean.検索案件Bean;
+import com.mycompany.myapp.bean.案件検索Bean;
 import com.mycompany.myapp.service.文件db;
 
 public class 案件Service {
 
 	String[] fileName = { "名称", "場所", "時期", "人数", "概要" };
 
-	文件db file_db = new 文件db();
+	文件db file_db = new 文件db("案件");
 
-	public List<案件Bean> 検索案件_by検索Bean(検索案件Bean bean) {
+	public List<案件Bean> 検索案件_by検索Bean(案件検索Bean bean) {
 
 		file_db.情報読み込み(fileName);
 
@@ -149,7 +149,7 @@ public class 案件Service {
 	}
 
 	@SuppressWarnings({ "unchecked", "rawtypes" })
-	private Map<String,List<String>> get中間結果_by案件検索Bean(検索案件Bean bean) {
+	private Map<String,List<String>> get中間結果_by案件検索Bean(案件検索Bean bean) {
 
 		Map<String,List<String>> 中間結果list = new LinkedHashMap();
 		if (StringUtils.isNotEmpty(bean.getS_ID())) {
@@ -340,7 +340,7 @@ public class 案件Service {
 
 	public String 追加案件_by案件Bean(案件Bean bean) {
 
-		文件db file_db = new 文件db();
+		文件db file_db = new 文件db("案件");
 
 		// ①チェック入力
 		file_db.情報読み込み(fileName);
@@ -416,7 +416,7 @@ public class 案件Service {
 	public void 更新案件_by案件Bean(案件Bean bean) {
 		// 更新时
 		// 将最新信息追加到指定文件
-		文件db file_db = new 文件db();
+		文件db file_db = new 文件db("案件");
 		//String ID = bean.getOld_名称();
 		file_db.情報読み込み(fileName);
 		String ID = bean.getS_ID();

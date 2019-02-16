@@ -16,16 +16,16 @@ import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.math.NumberUtils;
 import org.springframework.util.ObjectUtils;
 
-import com.mycompany.myapp.bean.検索社員Bean;
 import com.mycompany.myapp.bean.社員Bean;
+import com.mycompany.myapp.bean.社員検索Bean;
 import com.mycompany.myapp.service.文件db;
 
 public class 社員Service {
 	String[] fileName = { "姓名", "入社年月日", "生年月日", "性別", "番号", "契約種類", "削除年月日", "電話番号" };
 
-	文件db file_db = new 文件db();
+	文件db file_db = new 文件db("社员");
 
-	public List<社員Bean> 検索社員_by検索Bean(検索社員Bean bean) {
+	public List<社員Bean> 検索社員_by検索Bean(社員検索Bean bean) {
 
 		file_db.情報読み込み(fileName);
 
@@ -156,7 +156,7 @@ public class 社員Service {
 	}
 
 	@SuppressWarnings({ "unchecked", "rawtypes" })
-	private Map<String,List<String>> get中間結果_by社員検索Bean(検索社員Bean bean) {
+	private Map<String,List<String>> get中間結果_by社員検索Bean(社員検索Bean bean) {
 
 		Map<String,List<String>> 中間結果list = new LinkedHashMap();
 		if (StringUtils.isNotEmpty(bean.getS_ID())) {
@@ -342,7 +342,7 @@ public class 社員Service {
 
 	public String 追加社員_by社員Bean(社員Bean bean) {
 
-		文件db file_db = new 文件db();
+		文件db file_db = new 文件db("社员");
 
 		// ①チェック入力
 		file_db.情報読み込み(fileName);
@@ -434,7 +434,7 @@ public class 社員Service {
 	public void 更新社員_by社員Bean(社員Bean bean) {
 		// 更新时
 		// 将最新信息追加到指定文件
-		文件db file_db = new 文件db();
+		文件db file_db = new 文件db("社员");
 		//String ID = bean.getOld_番号();
 		file_db.情報読み込み(fileName);
 		String ID = bean.getS_ID();

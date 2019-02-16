@@ -3,7 +3,7 @@ package com.mycompany.myapp.bean;
 import lombok.Data;
 
 @Data
-public class 検索契約Bean {
+public class 契約検索Bean {
 
 	/** 参考式样书的数据结构：
 	 *
@@ -33,5 +33,35 @@ public class 検索契約Bean {
 	 *      项目定义书的
 	 *      根据。
 	 */
-	String s_ID;
+	String 契约ID; //唯一标识，无法替代，只做存根
+
+	String 单价From;
+
+	String 单价To;
+
+	String 单价単位;
+
+	String 结算币种;
+
+	String 含交通费;
+
+	String 开始日期From;
+
+	String 开始日期To;
+
+	String 契约期From;
+
+	String 契约期To;
+
+	String 契约期単位;
+
+	String 契约实际终了日From;
+
+	String 契约实际终了日To;
+
+	String 契约种别;
+
+	String 甲方契约者ID;
+
+	String 乙方契约者ID;
 }

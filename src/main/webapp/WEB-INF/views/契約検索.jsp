@@ -25,12 +25,6 @@
  --%>
 	<script>
 		$(function() {
-			var $m = $('body');
-			var alpha = $m.data('モード');
-			if(alpha == '1'){
-				$("#search_btn").click();
-			}
-
 			$("#response").html("Response Values");
 			// Ajax通信テスト ボタンクリック
 			$("#ajax_btn").click(function() {
@@ -72,18 +66,25 @@
 				//alert("検索 by Yan");
 				//var url = $("url_post").val();
 				var JSONdata = {
-/* 					番号 : $("#番号").val(),
-					姓名 : $("#姓名").val(),
-					電話番号 : $("#電話番号").val(),
-					性別 : $("#性別").val(),
-					生年月日開始 : $("#生年月日開始").val(),
-					生年月日終了 : $("#生年月日終了").val(),
-					入社年月日開始 : $("#入社年月日開始").val(),
-					入社年月日終了 : $("#入社年月日終了").val(),
-					契約種類 : $("#契約種類").val() */
+					契约ID : $("#CD").val(),
+					单价From : $("#单价開始").val(),
+					单价To : $("#单价終了").val(),
+					单价単位 : $("#単位").val(),
+					结算币种 : $("#结算币种").val(),
+					含交通费 : $("#含交通费").val(),
+					开始日期From : $("#开始日期開始").val(),
+					开始日期To : $("#开始日期終了").val(),
+					契约期From : $("#契约期開始").val(),
+					契约期To : $("#契约期价終了").val(),
+					契约期単位 : $("#契约期単位").val(),
+					契约实际終了日From : $("#契约实际終了日From").val(),
+					契约实际終了日To : $("#契约实际終了日To").val(),
+					契约种别 : $("#契约种别").val(),
+					甲方契约者ID : $("#甲方").val(),
+					乙方契约者ID : $("#乙方").val()
 				};
 
-				//alert(JSON.stringify(JSONdata));
+				alert(JSON.stringify(JSONdata));
 
 				$.ajax({
 					type : 'POST',
@@ -112,35 +113,17 @@
 				height : "311px",
 				layout : "fitColumns",
 				placeholder : "No Data Set",
-				columns : [
-				{
-					title : "s_ID",
-					field : "s_ID",
-					sorter : "string",
-					sorter : "boolean",
-						cellClick : function(e, cell) {
-							oneRowClick(cell.getValue())
-						}
-					},
-				{
+				columns : [ {
 					title : "番号",
 					field : "番号",
 					sorter : "string",
 					sorter : "boolean",
 					cellClick : function(e, cell) {
-					    var row = cell.getRow();
-					    var data = row.getData();
-					    oneRowClick(data.s_ID);
+						oneRowClick(cell.getValue())
 					}
 				}, {
 					title : "姓名",
 					field : "姓名",
-					sorter : "string",
-					width : 200,
-					sorter : "boolean"
-				}, {
-					title : "電話番号",
-					field : "電話番号",
 					sorter : "string",
 					width : 200,
 					sorter : "boolean"
@@ -159,21 +142,18 @@
 					title : "生年月日",
 					field : "生年月日",
 					sorter : "date",
-					align : "left",
-						cellClick : function(e, cell) {
-						    var row = cell.getRow()
-						    var data = row.getData();
-							oneRowDeleteClick(data.s_ID);
-						}
+					align : "left"
 				}, {
 					title : "契約種類",
 					field : "契約種類",
 					sorter : "string",
 					align : "left",
+					sorter : "boolean"
+						,
 						cellClick : function(e, cell) {
 						    var row = cell.getRow()
 						    var data = row.getData();
-							oneRowDeleteClick(data.s_ID);
+							oneRowDeleteClick(data.番号);
 						}
 				}, ],
 				rowClick : function(e, row) {
@@ -183,12 +163,12 @@
 			});
 			$("#example-table").tabulator("setData", data);
 		}
-		function oneRowClick(selectedID) {
+		function oneRowClick(selected番号) {
 			/* 			alert(selected番号);
 			 alert("oneRowClick IS RUN HERE!!");
 			 */
 			var JSONdata = {
-					 s_ID : selectedID
+				番号 : selected番号
 			};
 
 			$.ajax({
@@ -198,28 +178,23 @@
 				contentType : "application/json",
 
 				data : JSON.stringify(JSONdata),
-
 				success : function(data) {
 					/* 					var obj = eval("("+data+")");
 					 if(obj.success==undefined){//查询成功，跳转到详情页面 */
 
-					if(data[0]){
-						$("#s_ID").val(data[0].s_ID);
-						$("#番号").val(data[0].番号);
-						$("#姓名").val(data[0].姓名);
-						$("#電話番号").val(data[0].電話番号);
-						$("#性別").val(data[0].性別);
-						$("#入社年月日").val(data[0].入社年月日);
-						$("#生年月日").val(data[0].生年月日);
-						$("#契約種類").val(data[0].契約種類);
-						//---------------------------------
-						$("#theForm").attr("action",
-								"http://localhost:8080/myapp/社員edit");
-						$("#theForm").submit();
-					}else{
-						alert("没有找到检索对象。");
-					}
+					$("#番号").val(data[0].番号);
+					$("#姓名").val(data[0].姓名);
+					$("#性別").val(data[0].性別);
+					$("#入社年月日").val(data[0].入社年月日);
+					$("#生年月日").val(data[0].生年月日);
+					$("#契約種類").val(data[0].契約種類);
+					$("#theForm").attr("action",
+							"http://localhost:8080/myapp/edit");
+					$("#theForm").submit();
 
+					/*                      }else if(!obj.success){//查询失败，弹出提示信息
+					 alert("検索失敗 by Yan");
+					 } */
 				},
 				error : function(e) {
 					alert("AJAXの編集処理はERRORがあり by Yan");
@@ -227,17 +202,17 @@
 			});
 		}
 
-		function oneRowDeleteClick(selectedID) {
+		function oneRowDeleteClick(selected番号) {
 
 			var JSONdata = {
-					s_ID : selectedID
+					番号 : selected番号
 			};
 
 			alert(JSON.stringify(JSONdata));
 
 			$.ajax({
 				type : 'POST',
-				url : "http://localhost:8080/JavaMiddleClassCompleteSource/契约delete",
+				url : "http://localhost:8080/myapp/delete",
 				dataType : "json", //dataType设置成 json，这个意思是说 ’服务器的数据返回的是json格式数据，需要帮我把数据转换成对象
 				contentType : "application/json",
 
@@ -245,7 +220,7 @@
 				success : function(data) {
 
 					$("#theForm").attr("action",
-							"http://localhost:8080/myapp/getTestData");
+							"http://localhost:8080/JavaMiddleClassCompleteSource/契约getTestDataa");
 					$("#theForm").submit();
 				},
 				error : function(e) {
@@ -262,75 +237,109 @@
 		}
 	</script>
 	<form name="theForm" id="theForm" method="get"
-		action="http://localhost:8080/JavaMiddleClassCompleteSource/契约add">
+		action="http://localhost:8080/myapp/add">
 		<h1>契约情报检索</h1>
-		<br>
+	<br>
+
 		<div>
-			<input id="s_ID" name="s_ID" type="text" Value="">(隐藏项目=s_ID，调试用)
+			<label>契约CD</label>
+			<input id="CD" name="CD" type="text" Value="" placeholder="例，XZ000001">
 		</div>
-		<br>
+	<br>
+
 		<div>
-			<label>番号</label> <input id="番号" name="番号" type="text" Value="">
-		</div>
-		<br>
-		<div>
-			<label>姓名</label> <input id="姓名" name="姓名" type="text" Value="">
-		</div>
-		<br>
-		<div>
-			<label>電話番号</label> <input id="電話番号" name="電話番号" type="text" Value="">
-		</div>
-		<br>
-		<div>
-			<label>性別</label> <select id="性別" name="性別" style="width: 60px">
-				<option value="" selected="selected"></option>
-				<option value="女">女</option>
-				<option value="男">男</option>
+			<label>单价</label>
+				<input id="单价開始" type="text" Value=""
+				placeholder="开始单价" type="text"> ～ <input id="单价終了"
+				type="text" Value="" placeholder="终了单价" type="text">
+
+				<select id="単位" name="単位" style="width: 60px">
+				<option value="円">円</option>
+				<option value="万円">万円</option>
 			</select>
 		</div>
-		<br>
+	<br>
+
 		<div>
-			<label>生年月日</label> <input id="生年月日開始" type="text" Value=""
-				placeholder="YYYY/MM/DD" type="text"> ～ <input id="生年月日終了"
+					<label>结算币种</label>
+					<select id="结算币种" name="结算币种" style="width: 60px">
+						<option value="日元">日元</option>
+						<option value="美元">美元</option>
+						<option value="人民币">人民币</option>
+					</select>
+		</div>
+	<br>
+
+		<div>
+			<label>含交通费</label> <select id="含交通费" name="含交通费" style="width: 60px">
+				<option value="" selected="selected"></option>
+				<option value="是">是</option>
+				<option value="否">否</option>
+			</select>
+		</div>
+	<br>
+
+		<div>
+			<label>开始日期</label> <input id="开始日期開始" type="text" Value=""
+				placeholder="YYYY/MM/DD" type="text"> ～ <input id="开始日期終了"
 				type="text" Value="" placeholder="YYYY/MM/DD" type="text">
 			<div id="caleandar"></div>
-			<input id="生年月日" name="生年月日" type="hidden" Value="">
 		</div>
-		<br>
+	<br>
+
 		<div>
-			<label>入社年月日</label> <input id="入社年月日開始" type="text" Value=""
-				placeholder="YYYY/MM/DD" type="text"> ～ <input id="入社年月日終了"
-				type="text" Value="" placeholder="YYYY/MM/DD" type="text"> <input
-				id="入社年月日" name="入社年月日" type="hidden" Value="">
+			<label>契约期</label> <input id="契约期開始" type="text" Value=""
+				placeholder="例，1月" type="text"> ～ <input id="契约期价終了"
+				type="text" Value="" placeholder="例，3年" type="text">
+			<label></label> <select id="契约期" name="契约期" style="width: 60px">
+				<option value="年">年</option>
+				<option value="月">月</option>
+				<option value="长期有效">长期有效</option>
+			</select>
+		</div>
+	<br>
+
+		<div>
+			<label>契约实际终了日</label>
+			<input id="契约实际開始" type="text" Value=""
+					placeholder="YYYY/MM/DD" type="text"> ～
+			<input id="契约实际終了"type="text" Value=""
+					placeholder="YYYY/MM/DD" type="text">
 		</div>
 
 		<br>
+
 		<div>
-			<label>契約種類</label> <select id="契約種類" name="契約種類"
+			<label>契约种别</label> <select id="契约种别" name="契约种别"
 				style="width: 150px">
-				<option value="" selected="selected"></option>
-				<option value="役員">役員</option>
-				<option value="正社員">正社員</option>
-				<option value="契約社員">契約社員</option>
-				<option value="その他(個人事業主)">その他(個人事業主)</option>
-
+				<option value="一般雇佣">一般雇佣</option>
+				<option value="一括">一括</option>
+				<option value="請負">請負</option>
+				<option value="其他">其他</option>
 			</select>
 		</div>
 		<br>
+
+		<div>
+
+			<label>甲方</label> <input id="甲方" name="甲方" type="text" Value=""
+			placeholder="例，宏扬株式会社" type="text" disabled>
+
+			<input type="button" id="search_btn1" Value="参照">
+		</div>
+		<br>
+
+		<div>
+
+			<label>乙方</label> <input id="乙方" name="乙方" type="text" Value=""
+			placeholder="例，颜老师" type="text" disabled>
+			<input type="button" id="search_btn2" Value="参照">
+		</div>
+		<br>
+
 		<div>
 			<input type="button" id="search_btn" Value="検索"> <input
 				type="submit" id="add_btn" Value="追加">
-		</div>
-		<br>
-		<div>
-			<table id="emlist" style="width: 70%">
-				<thead>
-					<tr>
-						<th>契约一覧</th>
-					</tr>
-				</thead>
-				<tbody></tbody>
-			</table>
 		</div>
 		<br>
 		<div>

@@ -15,13 +15,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.mycompany.myapp.bean.契約Bean;
-import com.mycompany.myapp.bean.検索契約Bean;
+import com.mycompany.myapp.bean.契約検索Bean;
 import com.mycompany.myapp.service.impl.契約Service;
 
 @Controller
 public class 契约Controller {
 
-	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
+	private static final Logger logger = LoggerFactory.getLogger(契约Controller.class);
 
 	/**
 	 * 输入一下网址，会到这里
@@ -32,8 +32,8 @@ public class 契约Controller {
 	 * @param model
 	 * @return
 	 */
-	@RequestMapping(value = "/契约", method = RequestMethod.GET)
-	public String 契约(Locale locale, Model model) {
+	@RequestMapping(value = "/契約", method = RequestMethod.GET)
+	public String 契約(Locale locale, Model model) {
 		logger.info("Welcome home! The client locale is {}.", locale);
 
 		Date date = new Date();
@@ -41,10 +41,10 @@ public class 契约Controller {
 
 		String formattedDate = dateFormat.format(date);
 
-		model.addAttribute("serverTime", formattedDate );
+		model.addAttribute("serverTime", formattedDate);
 		model.addAttribute("モード", "0");
 
-		return "契约検索";  // 注意SPRINGMVC会自动去找 契约検索.jsp 这个文件！！！ 2019-2-10
+		return "契約検索";  // 注意SPRINGMVC会自动去找 契约検索.jsp 这个文件！！！ 2019-2-10
 	}
 
 
@@ -58,7 +58,7 @@ public class 契约Controller {
 	 */
 	@RequestMapping(value = "契约getTestData", method = RequestMethod.POST)
 	@ResponseBody //将返回结果转成Json
-	public List<契約Bean> 契約getTestData(@RequestBody 検索契約Bean 検索bean) {//@RequestBody 将Json转成Java对象
+	public List<契約Bean> 契約getTestData(@RequestBody 契約検索Bean 検索bean) {//@RequestBody 将Json转成Java对象
 
 	    logger.info("call 契约getTestData");
 

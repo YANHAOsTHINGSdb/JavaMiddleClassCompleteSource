@@ -33,5 +33,17 @@ public class 契約Bean {
 	 *      项目定义书的
 	 *      根据。
 	 */
-	String 契约ID; //唯一标识，无法替代，只做存根
+	String 契约ID;
+	String 单价;
+	String 开始日期;
+	String 契约期;
+	String 契约期单位;
+	String 契约种别;
+	String 结算币种;
+	String 契约实际终了日;
+	String 契约CD;
+	String 含交通费;
+	String 备考说明;
+	String 甲方契约者ID;
+	String 乙方契约者ID;
 }

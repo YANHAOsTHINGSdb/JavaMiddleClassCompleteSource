@@ -3,7 +3,7 @@ package com.mycompany.myapp.bean;
 import lombok.Data;
 
 @Data
-public class 検索社員Bean {
+public class 社員検索Bean {
 	String s_ID;
 	String 番号; //ID，CD 都无法自动转，不知道为啥。错误信息=Jackson with JSON: Unrecognized field, not marked as ignorable
 	String 姓名;

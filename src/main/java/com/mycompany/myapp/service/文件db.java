@@ -20,14 +20,15 @@ import lombok.Data;
 @Data
 public class 文件db {
 
-	String sPath = "C:\\tmp\\";
-
+//	String sPath = "C:\\tmp\\";  // for windows
+	String sPath = "/Users/haoyan/Desktop/data/";  // for mac
+	String sSubFolder = null;
 	Map<String, Map> map_data = new HashMap();
 
 	public void 情報読み込み(String[] fileName) {
 
 		for (int i = 0; i < fileName.length; i++) {
-			String sf = sPath + fileName[i] + ".txt";
+			String sf = sPath + sSubFolder== null ? "":sSubFolder+"/" +fileName[i] + ".txt";
 			try {
 				File files = new File(sf);
 				Map map = new HashMap();
@@ -115,6 +116,11 @@ public class 文件db {
 			}
 		}
 		return null;
+	}
+
+
+	public 文件db(String aSub) {
+		sSubFolder = aSub;
 	}
 
 /*	public List<String> 取得全員番号ID(){

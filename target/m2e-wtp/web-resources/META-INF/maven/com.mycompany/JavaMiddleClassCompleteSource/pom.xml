@@ -3,8 +3,8 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.mycompany</groupId>
-	<artifactId>myapp</artifactId>
-	<name>SpringMVCproject</name>
+	<artifactId>JavaMiddleClassCompleteSource</artifactId>
+	<name>JavaMiddleClassCompleteSource</name>
 	<packaging>war</packaging>
 	<version>1.0.0-BUILD-SNAPSHOT</version>
 	<properties>

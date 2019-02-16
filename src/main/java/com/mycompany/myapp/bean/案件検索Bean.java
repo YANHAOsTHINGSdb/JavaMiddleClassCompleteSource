@@ -3,7 +3,7 @@ package com.mycompany.myapp.bean;
 import lombok.Data;
 
 @Data
-public class 検索案件Bean {
+public class 案件検索Bean {
 	String s_ID;
 	String 名称;
 	String 概要;
