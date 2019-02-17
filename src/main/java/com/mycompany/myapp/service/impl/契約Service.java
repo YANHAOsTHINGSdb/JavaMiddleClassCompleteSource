@@ -15,13 +15,15 @@ import org.springframework.util.ObjectUtils;
 import com.mycompany.myapp.bean.契約Bean;
 import com.mycompany.myapp.bean.契約検索Bean;
 import com.mycompany.myapp.service.文件db;
+import com.mycompany.myapp.service.親Service;
 
 /**
  * 完成后对【契约】信息的增删改查处理
  *
  * by 张大宝，张子怡，陈老师，朱老师，唐老师 2019-2-16
  */
-public class 契約Service {
+public class 契約Service extends 親Service{
+
 	/**
 	 * fileName完全参照式样书的数据结构中的项目
 	 */
@@ -56,6 +58,11 @@ public class 契約Service {
 		return 取得検索結果_by最終結果(最終結果IDList);
 	}
 
+	/**
+	 *
+	 * @param bean
+	 * @return
+	 */
 	private Map<String, List<String>> get中間結果_by検索契約Bean(契約検索Bean bean) {
 
 		Map<String, List<String>> 中間結果list = new LinkedHashMap();
@@ -140,10 +147,10 @@ public class 契約Service {
 
 	}
 
-	private List<String> get最終結果_by中間結果(Map<String, List<String>> 中間結果idList) {
-		// TODO 自動生成されたメソッド・スタブ
-		return null;
-	}
+//	private List<String> get最終結果_by中間結果(Map<String, List<String>> 中間結果idList) {
+//		// TODO 自動生成されたメソッド・スタブ
+//		return null;
+//	}
 
 	private List<契約Bean> 取得検索結果_by最終結果(List<String> 最終結果idList) {
 		// TODO 自動生成されたメソッド・スタブ
