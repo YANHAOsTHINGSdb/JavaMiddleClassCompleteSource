@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.mycompany.myapp.bean.契約Bean;
 import com.mycompany.myapp.bean.契約検索Bean;
@@ -66,5 +67,15 @@ public class 契约Controller {
 
 	    return 契約service.検索契約_by検索Bean(検索bean); // 这里可以采用先上车后买票的方法
 	                                                   // 先把bean定义完之后，再实装这里。
+	}
+
+	@RequestMapping(value = "add契約", method = RequestMethod.GET)
+	public ModelAndView add案件() {
+		logger.info("call add契約");
+
+		ModelAndView modelAndView1 = new ModelAndView("契約明細");
+		modelAndView1.getModel().put("titleName", "契約追加");
+
+		return modelAndView1;
 	}
 }

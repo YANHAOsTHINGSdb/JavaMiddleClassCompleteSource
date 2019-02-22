@@ -5,7 +5,7 @@
 
 <html>
 <head>
-<title>Home1案件検索</title>
+<title>案件検索</title>
 <link rel="stylesheet" href="css/tabulator.css">
 <link href="css/tabulator_midnight.min.css" rel="stylesheet">
 <script type="text/javascript" src="js/jquery-3.3.1.js"></script>
@@ -47,7 +47,7 @@
 
 				$.ajax({
 					type : "GET",
-					url : "http://localhost:8080/myapp/案件getTestData",
+					url : "http://localhost:8080/JavaMiddleClassCompleteSource/案件getTestData",
 					dataType : "json", //dataType设置成 json，这个意思是说 ’服务器的数据返回的是json格式数据，需要帮我把数据转换成对象
 					data : JSON.stringify(JSONdata),
 					scriptCharset : 'utf-8',
@@ -83,7 +83,7 @@
 
 				$.ajax({
 					type : 'POST',
-					url : "http://localhost:8080/myapp/案件getTestData",
+					url : "http://localhost:8080/JavaMiddleClassCompleteSource/案件getTestData",
 					dataType : "json", //dataType设置成 json，这个意思是说 ’服务器的数据返回的是json格式数据，需要帮我把数据转换成对象
 					contentType : "application/json",
 
@@ -168,7 +168,7 @@
 
 			$.ajax({
 				type : 'POST',
-				url : "http://localhost:8080/myapp/案件getTestData",
+				url : "http://localhost:8080/JavaMiddleClassCompleteSource/案件getTestData",
 				dataType : "json", //dataType设置成 json，这个意思是说 ’服务器的数据返回的是json格式数据，需要帮我把数据转换成对象
 				contentType : "application/json",
 
@@ -187,7 +187,7 @@
 
 						//---------------------------------
 						$("#theForm").attr("action",
-								"http://localhost:8080/myapp/案件edit");
+								"http://localhost:8080/JavaMiddleClassCompleteSource/案件edit");
 						$("#theForm").submit();
 						//---------------------------------
 					}else{
@@ -211,7 +211,7 @@
 
 			$.ajax({
 				type : 'POST',
-				url : "http://localhost:8080/myapp/delete",
+				url : "http://localhost:8080/JavaMiddleClassCompleteSource/案件delete",
 				dataType : "json", //dataType设置成 json，这个意思是说 ’服务器的数据返回的是json格式数据，需要帮我把数据转换成对象
 				contentType : "application/json",
 
@@ -219,7 +219,7 @@
 				success : function(data) {
 
 					$("#theForm").attr("action",
-							"http://localhost:8080/myapp/案件getTestData");
+							"http://localhost:8080/JavaMiddleClassCompleteSource/案件getTestData");
 					$("#theForm").submit();
 				},
 				error : function(e) {
@@ -235,7 +235,7 @@
 			alert("errorThrown:" + errorThrown);
 		}
 	</script>
-	<form name="theForm" id="theForm" method="get" action="http://localhost:8080/myapp/add案件">
+	<form name="theForm" id="theForm" method="get" action="http://localhost:8080/JavaMiddleClassCompleteSource/add案件">
 		<h1>案件情報</h1>
 		<br>
 		<div>

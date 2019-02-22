@@ -6,7 +6,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-<title>Home</title>
+<title>社員明細</title>
 <script type="text/javascript" src="js/jquery-3.3.1.js"></script>
 <script type="text/javascript" src="js/jquery.json.js"></script>
 
@@ -19,17 +19,17 @@
 	<script>
 	$(function() {
 		$("#back_btn").click(function() {
-		    $("#fbean").attr("action","http://localhost:8080/myapp/back");
+		    $("#fbean").attr("action","http://localhost:8080/JavaMiddleClassCompleteSource/社員back");
 		    $("#fbean").submit();
 		});
 
 		$("#save_btn").click(function() {
 			if("${モード}" == "編集"){
-			    $("#fbean").attr("action","http://localhost:8080/myapp/社員update");
+			    $("#fbean").attr("action","http://localhost:8080/JavaMiddleClassCompleteSource/社員update");
 			    $("#fbean").submit();
 
 			}else{
-			    $("#fbean").attr("action","http://localhost:8080/myapp/社員save");
+			    $("#fbean").attr("action","http://localhost:8080/JavaMiddleClassCompleteSource/社員save");
 			    $("#fbean").submit();
 			}
 		});

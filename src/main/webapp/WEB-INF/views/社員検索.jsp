@@ -5,7 +5,7 @@
 
 <html>
 <head>
-<title>Home</title>
+<title>社員検索</title>
 <link rel="stylesheet" href="css/tabulator.css">
 <link href="css/tabulator_midnight.min.css" rel="stylesheet">
 <script type="text/javascript" src="js/jquery-3.3.1.js"></script>
@@ -49,7 +49,7 @@
 
 				$.ajax({
 					type : "GET",
-					url : "http://localhost:8080/myapp/getTestData",
+					url : "http://localhost:8080/JavaMiddleClassCompleteSource/getTestData",
 					dataType : "json", //dataType设置成 json，这个意思是说 ’服务器的数据返回的是json格式数据，需要帮我把数据转换成对象
 					data : JSON.stringify(JSONdata),
 					scriptCharset : 'utf-8',
@@ -87,7 +87,7 @@
 
 				$.ajax({
 					type : 'POST',
-					url : "http://localhost:8080/myapp/getTestData",
+					url : "http://localhost:8080/JavaMiddleClassCompleteSource/getTestData",
 					dataType : "json", //dataType设置成 json，这个意思是说 ’服务器的数据返回的是json格式数据，需要帮我把数据转换成对象
 					contentType : "application/json",
 
@@ -193,7 +193,7 @@
 
 			$.ajax({
 				type : 'POST',
-				url : "http://localhost:8080/myapp/getTestData",
+				url : "http://localhost:8080/JavaMiddleClassCompleteSource/getTestData",
 				dataType : "json", //dataType设置成 json，这个意思是说 ’服务器的数据返回的是json格式数据，需要帮我把数据转换成对象
 				contentType : "application/json",
 
@@ -214,7 +214,7 @@
 						$("#契約種類").val(data[0].契約種類);
 						//---------------------------------
 						$("#theForm").attr("action",
-								"http://localhost:8080/myapp/社員edit");
+								"http://localhost:8080/JavaMiddleClassCompleteSource/社員edit");
 						$("#theForm").submit();
 					}else{
 						alert("没有找到检索对象。");
@@ -237,7 +237,7 @@
 
 			$.ajax({
 				type : 'POST',
-				url : "http://localhost:8080/myapp/社員delete",
+				url : "http://localhost:8080/JavaMiddleClassCompleteSource/社員delete",
 				dataType : "json", //dataType设置成 json，这个意思是说 ’服务器的数据返回的是json格式数据，需要帮我把数据转换成对象
 				contentType : "application/json",
 
@@ -245,7 +245,7 @@
 				success : function(data) {
 
 					$("#theForm").attr("action",
-							"http://localhost:8080/myapp/getTestData");
+							"http://localhost:8080/JavaMiddleClassCompleteSource/getTestData");
 					$("#theForm").submit();
 				},
 				error : function(e) {
@@ -262,7 +262,7 @@
 		}
 	</script>
 	<form name="theForm" id="theForm" method="get"
-		action="http://localhost:8080/myapp/社員add">
+		action="http://localhost:8080/JavaMiddleClassCompleteSource/社員add">
 		<h1>人物設定</h1>
 		<br>
 		<div>

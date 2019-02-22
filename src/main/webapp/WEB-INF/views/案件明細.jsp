@@ -6,7 +6,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-<title>Home1案件追加</title>
+<title>案件明細</title>
 <script type="text/javascript" src="js/jquery-3.3.1.js"></script>
 <script type="text/javascript" src="js/jquery.json.js"></script>
 
@@ -19,17 +19,17 @@
 	<script>
 	$(function() {
 		$("#back_btn").click(function() {
-		    $("#fbean").attr("action","http://localhost:8080/myapp/back案件検索");
+		    $("#fbean").attr("action","http://localhost:8080/JavaMiddleClassCompleteSource/back案件検索");
 		    $("#fbean").submit();
 		});
 
 		$("#save_btn").click(function() {
 			if("${モード}" == "編集"){
-			    $("#fbean").attr("action","http://localhost:8080/myapp/案件update");
+			    $("#fbean").attr("action","http://localhost:8080/JavaMiddleClassCompleteSource/案件update");
 			    $("#fbean").submit();
 
 			}else{
-			    $("#fbean").attr("action","http://localhost:8080/myapp/案件save");
+			    $("#fbean").attr("action","http://localhost:8080/JavaMiddleClassCompleteSource/案件save");
 			    $("#fbean").submit();
 			}
 		});

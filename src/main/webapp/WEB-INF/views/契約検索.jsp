@@ -5,7 +5,7 @@
 
 <html>
 <head>
-<title>Home</title>
+<title>契約検索</title>
 <link rel="stylesheet" href="css/tabulator.css">
 <link href="css/tabulator_midnight.min.css" rel="stylesheet">
 <script type="text/javascript" src="js/jquery-3.3.1.js"></script>
@@ -189,7 +189,7 @@
 					$("#生年月日").val(data[0].生年月日);
 					$("#契約種類").val(data[0].契約種類);
 					$("#theForm").attr("action",
-							"http://localhost:8080/myapp/edit");
+							"http://localhost:8080/JavaMiddleClassCompleteSource/edit");
 					$("#theForm").submit();
 
 					/*                      }else if(!obj.success){//查询失败，弹出提示信息
@@ -212,7 +212,7 @@
 
 			$.ajax({
 				type : 'POST',
-				url : "http://localhost:8080/myapp/delete",
+				url : "http://localhost:8080/JavaMiddleClassCompleteSource/delete",
 				dataType : "json", //dataType设置成 json，这个意思是说 ’服务器的数据返回的是json格式数据，需要帮我把数据转换成对象
 				contentType : "application/json",
 
@@ -232,12 +232,12 @@
 		// Ajax通信失敗時処理
 		function error(XMLHttpRequest, textStatus, errorThrown) {
 			alert("error:" + XMLHttpRequest);
-			alert("status:" + textStatus);
+				alert("status:" + textStatus);
 			alert("errorThrown:" + errorThrown);
 		}
 	</script>
 	<form name="theForm" id="theForm" method="get"
-		action="http://localhost:8080/myapp/add">
+		action="http://localhost:8080/JavaMiddleClassCompleteSource/add契約">
 		<h1>契约情报检索</h1>
 	<br>
 
