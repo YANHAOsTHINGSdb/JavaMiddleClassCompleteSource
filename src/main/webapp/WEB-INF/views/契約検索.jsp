@@ -69,17 +69,17 @@
 					契约ID : $("#CD").val(),
 					单价From : $("#单价開始").val(),
 					单价To : $("#单价終了").val(),
-					单价単位 : $("#単位").val(),
-					结算币种 : $("#结算币种").val(),
-					含交通费 : $("#含交通费").val(),
+			//		单价単位 : $("#単位").val(),
+			//		结算币种 : $("#结算币种").val(),
+			//		含交通费 : $("#含交通费").val(),
 					开始日期From : $("#开始日期開始").val(),
 					开始日期To : $("#开始日期終了").val(),
 					契约期From : $("#契约期開始").val(),
 					契约期To : $("#契约期价終了").val(),
-					契约期単位 : $("#契约期単位").val(),
+			//		契约期単位 : $("#契约期単位").val(),
 					契约实际終了日From : $("#契约实际終了日From").val(),
 					契约实际終了日To : $("#契约实际終了日To").val(),
-					契约种别 : $("#契约种别").val(),
+			//		契约种别 : $("#契约种别").val(),
 					甲方契约者ID : $("#甲方").val(),
 					乙方契约者ID : $("#乙方").val()
 				};
@@ -114,38 +114,59 @@
 				layout : "fitColumns",
 				placeholder : "No Data Set",
 				columns : [ {
-					title : "番号",
-					field : "番号",
+					title : "契约CD",
+					field : "契约CD",
 					sorter : "string",
 					sorter : "boolean",
 					cellClick : function(e, cell) {
 						oneRowClick(cell.getValue())
 					}
 				}, {
-					title : "姓名",
-					field : "姓名",
+					title : "单价",
+					field : "单价",
 					sorter : "string",
-					width : 200,
+					//width : 200,
 					sorter : "boolean"
 				}, {
-					title : "性別",
-					field : "性別",
-					sorter : "string",
-					width : 100,
+					title : "开始日期",
+					field : "开始日期",
+					sorter : "date",
+					//width : 100,
 					sorter : "boolean"
 				}, {
-					title : "入社年月日",
-					field : "入社年月日",
+					title : "契约期",
+					field : "契约期",
 					sorter : "date",
 					sorter : "boolean"
 				}, {
-					title : "生年月日",
-					field : "生年月日",
-					sorter : "date",
+					title : "契约种别",
+					field : "契约种别",
+					sorter : "string",
 					align : "left"
-				}, {
-					title : "契約種類",
-					field : "契約種類",
+				},{
+					title : "结算币种",
+					field : "结算币种",
+					sorter : "string",
+					align : "left"
+				},{
+					title : "契约实际终了日",
+					field : "契约实际终了日",
+					sorter : "string",
+					align : "left"
+				},{
+					title : "含交通费",
+					field : "含交通费",
+					sorter : "string",
+					align : "left"
+				},{
+					title : "备考说明",
+					field : "备考说明",
+					sorter : "string",
+					align : "left"
+				},
+				{
+					title : "结算币种",
+					field : "结算币种",
 					sorter : "string",
 					align : "left",
 					sorter : "boolean"

@@ -1,5 +1,6 @@
 package com.mycompany.myapp.service.impl;
 
+import java.io.IOException;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -20,7 +21,7 @@ import com.mycompany.myapp.service.親Service;
 /**
  * 完成后对【契约】信息的增删改查处理
  *
- * by 张大宝，张子怡，陈老师，朱老师，唐老师 2019-2-16
+ * by 张大宝，陈老师，朱老师，唐老师 2019-2-16
  */
 public class 契約Service extends 親Service{
 
@@ -120,7 +121,6 @@ public class 契約Service extends 親Service{
 		if (StringUtils.isNotEmpty(bean.get契约实际终了日To())) {
 			中間結果list.put("契约实际终了日", getIDList_by小Map名andValue("契约实际终了日", bean.get契约实际终了日To(), "<="));
 		}
-
 		//		String 契约种别;
 		if (StringUtils.isNotEmpty(bean.get契约种别())) {
 			中間結果list.put("契约种别", getIDList_by小Map名andValue("契约种别", bean.get契约种别(), "=="));
@@ -153,8 +153,81 @@ public class 契約Service extends 親Service{
 //	}
 
 	private List<契約Bean> 取得検索結果_by最終結果(List<String> 最終結果idList) {
-		// TODO 自動生成されたメソッド・スタブ
-		return new ArrayList<契約Bean>();
+
+		List<契約Bean> 契約BeanList = new ArrayList();
+
+		for (String 契約id : 最終結果idList) {
+
+			契約BeanList.add(取得契约情報_by契约id(契約id));
+		}
+
+		return 契約BeanList;
+	}
+
+	private 契約Bean 取得契约情報_by契约id(String 契約id) {
+		Map<String, Map> 大Map = file_db.getMap_data();
+
+		契約Bean 契約bean = new 契約Bean();
+
+		契約bean.set契约ID(契約id);
+
+		for (Map.Entry<String, Map> entry : 大Map.entrySet()) {
+
+			if (entry == null) {
+
+				continue;
+
+			}
+
+			Map<String, String> 小Map;
+
+			String 小Map名 = entry.getKey();
+
+			switch (小Map名) {
+
+			case "单价":
+				小Map = entry.getValue();
+				契約bean.set单价(小Map.get(契約id));
+				break;
+			case "开始日期":
+				小Map = entry.getValue();
+				契約bean.set开始日期(小Map.get(契約id));
+				break;
+			case "契约期":
+				小Map = entry.getValue();
+				契約bean.set契约期(小Map.get(契約id));
+				break;
+			case "契约期单位":
+				小Map = entry.getValue();
+				契約bean.set契约期单位(小Map.get(契約id));
+				break;
+			case "结算币种":
+				小Map = entry.getValue();
+				契約bean.set结算币种(小Map.get(契約id));
+				break;
+			case "契约实际终了日":
+				小Map = entry.getValue();
+				契約bean.set契约实际终了日(小Map.get(契約id));
+				break;
+			case "契约CD":
+				小Map = entry.getValue();
+				契約bean.set契约CD(小Map.get(契約id));
+				break;
+			case "含交通费":
+				小Map = entry.getValue();
+				契約bean.set含交通费(小Map.get(契約id));
+				break;
+			case "备考说明":
+				小Map = entry.getValue();
+				契約bean.set备考说明(小Map.get(契約id));
+				break;
+			case "契约种别":
+				小Map = entry.getValue();
+				契約bean.set契约种别(小Map.get(契約id));
+				break;
+			}
+		}
+		return 契約bean;
 	}
 
 	private List<String> getIDList_by小Map名andValue(String 小Map名, String value, String s計算方法) {
@@ -291,5 +364,129 @@ public class 契約Service extends 親Service{
 		}
 
 		return result.isEmpty() ? false : true;
+	}
+
+	public String 追加契約_by契約Bean(契約Bean bean) {
+
+		文件db file_db = new 文件db("契約");
+
+		// ①チェック入力
+		file_db.情報読み込み(fileName);
+
+		// ②追加処理
+		追加契約_byFile_db_契約Bean(file_db, bean);
+
+		return "";
+	}
+
+	private void 追加契約_byFile_db_契約Bean(文件db file_db2, 契約Bean bean) {
+
+		String path;
+		String ID = null;
+		try {
+			// ①採番
+			ID = file_db.採番(file_db.getSPath() + "契约" + "/" + "契约ID" + ".txt") + 1 + "";
+
+		} catch (IOException e) {
+
+			e.printStackTrace();
+		}
+
+		for (String s文件名 : fileName) {
+
+			path = file_db.getSPath() + "契约" + "/" + s文件名 + ".txt";
+
+			switch (s文件名) {
+
+			case "契约ID":
+
+				if (!StringUtils.isEmpty(ID)) {
+					file_db.文件書込(path, ID + "," + ID);
+				}
+				break;
+
+			case "单价":
+
+				if (!StringUtils.isEmpty(bean.get单价())) {
+					file_db.文件書込(path, ID + "," + bean.get单价());
+				}
+				break;
+
+			case "开始日期":
+
+				if (!StringUtils.isEmpty(bean.get开始日期())) {
+					file_db.文件書込(path, ID + "," + bean.get开始日期());
+				}
+				break;
+
+			case "契约期":
+
+				if (!StringUtils.isEmpty(bean.get契约期())) {
+					file_db.文件書込(path, ID + "," + bean.get契约期());
+				}
+				break;
+
+			case "契约期单位":
+
+				if (!StringUtils.isEmpty(bean.get契约期单位())) {
+					file_db.文件書込(path, ID + "," + bean.get契约期单位());
+				}
+				break;
+
+			case "契约种别":
+
+				if (!StringUtils.isEmpty(bean.get契约种别())) {
+					file_db.文件書込(path, ID + "," + bean.get契约种别());
+				}
+				break;
+
+			case "结算币种":
+
+				if (!StringUtils.isEmpty(bean.get结算币种())) {
+					file_db.文件書込(path, ID + "," + bean.get结算币种());
+				}
+				break;
+
+			case "契约实际终了日":
+
+				if (!StringUtils.isEmpty(bean.get契约实际终了日())) {
+					file_db.文件書込(path, ID + "," + bean.get契约实际终了日());
+				}
+				break;
+
+			case "契约CD":
+
+				if (!StringUtils.isEmpty(bean.get契约CD())) {
+					file_db.文件書込(path, ID + "," + bean.get契约CD());
+				}
+				break;
+
+			case "含交通费":
+
+				if (!StringUtils.isEmpty(bean.get含交通费())) {
+					file_db.文件書込(path, ID + "," + bean.get含交通费());
+				}
+				break;
+			case "备考说明":
+
+				if (!StringUtils.isEmpty(bean.get备考说明())) {
+					file_db.文件書込(path, ID + "," + bean.get备考说明());
+				}
+				break;
+			case "甲方契约者ID":
+
+				if (!StringUtils.isEmpty(bean.get甲方契约者ID())) {
+					file_db.文件書込(path, ID + "," + bean.get甲方契约者ID());
+				}
+				break;
+			case "乙方契约者ID":
+
+				if (!StringUtils.isEmpty(bean.get乙方契约者ID())) {
+					file_db.文件書込(path, ID + "," + bean.get乙方契约者ID());
+				}
+				break;
+			}
+
+		}
 	}
 }

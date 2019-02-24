@@ -5,10 +5,12 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
+import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -70,12 +72,41 @@ public class 契约Controller {
 	}
 
 	@RequestMapping(value = "add契約", method = RequestMethod.GET)
-	public ModelAndView add案件() {
+	public ModelAndView add契約() {
 		logger.info("call add契約");
 
 		ModelAndView modelAndView1 = new ModelAndView("契約明細");
 		modelAndView1.getModel().put("titleName", "契約追加");
 
 		return modelAndView1;
+	}
+
+
+	@RequestMapping(value = "契約save", method = RequestMethod.POST)
+	public String 契約save(@ModelAttribute("fbean") 契約Bean bean, Model model) {
+
+		契約Service 契約service = new 契約Service();
+
+		String sMsg = 契約service.追加契約_by契約Bean(bean);
+		if (StringUtils.isEmpty(sMsg)) {
+			return "契約検索";
+
+		} else {
+			model.addAttribute("titleName", "契約追加");
+			model.addAttribute("契约ID", bean.get契约ID());
+			model.addAttribute("单价", bean.get单价());
+			model.addAttribute("开始日期", bean.get开始日期());
+			model.addAttribute("契约期", bean.get契约期());
+			model.addAttribute("契约期单位", bean.get契约期单位());
+			model.addAttribute("契约种别", bean.get契约种别());
+			model.addAttribute("结算币种", bean.get结算币种());
+			model.addAttribute("契约实际终了日", bean.get契约实际终了日());
+			model.addAttribute("契约CD", bean.get契约CD());
+			model.addAttribute("含交通费", bean.get含交通费());
+			model.addAttribute("备考说明", bean.get备考说明());
+			model.addAttribute("甲方契约者ID", bean.get甲方契约者ID());
+			model.addAttribute("乙方契约者ID", bean.get乙方契约者ID());
+			return "契約明細";
+		}
 	}
 }

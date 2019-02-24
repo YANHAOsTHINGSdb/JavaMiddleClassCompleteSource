@@ -28,7 +28,8 @@ public class 文件db {
 	public void 情報読み込み(String[] fileName) {
 
 		for (int i = 0; i < fileName.length; i++) {
-			String sf = sPath + sSubFolder== null ? "":sSubFolder+"/" +fileName[i] + ".txt";
+			String sf = sSubFolder== null ? fileName[i] + ".txt" : sSubFolder + "/" +fileName[i] + ".txt";
+			sf =  sPath + sf;
 			try {
 				File files = new File(sf);
 				Map map = new HashMap();

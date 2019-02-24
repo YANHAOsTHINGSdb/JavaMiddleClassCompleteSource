@@ -36,16 +36,14 @@
 
 	});
 
-
-
 	</script>
 
 	<form id ="fbean" name="fbean" method="post">
 
 	<h1>${titleName}</h1>
-
+<!--
 	<input type="text" value="${s_ID}" name="s_ID"/>(隐藏项目=s_ID，调试用)
-
+-->
 	<div>
 		<label>名称</label>
 		<input type="text" value="${名称}" name="名称"/>
