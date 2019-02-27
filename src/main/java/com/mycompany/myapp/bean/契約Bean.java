@@ -35,6 +35,7 @@ public class 契約Bean {
 	 */
 	String 契约ID;
 	String 单价;
+	String 单价単位;
 	String 开始日期;
 	String 契约期;
 	String 契约期单位;

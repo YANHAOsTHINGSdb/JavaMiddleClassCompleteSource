@@ -43,9 +43,9 @@
 	<form id ="fbean" name="fbean" method="post">
 
 	<h1>${titleName}</h1>
-<!--
-	<input type="text" value="${契約_ID}" name="契約_ID"/>(隐藏项目=契約_ID，调试用)
--->
+
+	<input type="hidden" value="${契約ID}" name="契約ID"/><!--(隐藏项目=契約_ID，调试用) -->
+
 	<div>
 		<label>契约CD</label>
 		<input type="text" value="${契约CD}" name="契约CD"/>
@@ -57,12 +57,12 @@
 		<label>单价</label>
 		<input type="text" value="${单价}" name="单价"/>
 		<input type="hidden" value="${单价}" name="old_单价" />
-		<select id="単位" name="単位" style="width: 60px">
-			<option value="" ${単位 == '' ? 'selected' : ''}></option>
-			<option value="円" ${単位 == '円' ? 'selected' : ''}>円</option>
-			<option value="万円" ${単位 == '万円' ? 'selected' : ''}>万円</option>
+		<select id="单价単位" name="单价単位" style="width: 60px">
+			<option value="" ${单价単位 == '' ? 'selected' : ''}></option>
+			<option value="円" ${单价単位 == '円' ? 'selected' : ''}>円</option>
+			<option value="万円" ${单价単位 == '万円' ? 'selected' : ''}>万円</option>
 		</select>
-		<input type="hidden" value="${単位}" name="old_単位" />
+		<input type="hidden" value="${单价単位}" name="old_単位单价" />
 	</div>
 	<br>
 	<div>
@@ -88,13 +88,15 @@
 	<br>
 	<div>
 			<label>契约期</label>
-			<label></label> <select id="契约期" name="契约期" style="width: 60px">
-			<option value="" ${契约期 == '' ? 'selected' : ''}></option>
-			<option value="年" ${契约期 == '年' ? 'selected' : ''}>年</option>
-			<option value="月" ${契约期 == '月' ? 'selected' : ''}>月</option>
-			<option value="长期有效" ${契约期 == '长期有效' ? 'selected' : ''}>长期有效</option>
-			</select>
+			<input type="text" value="${契约期}" name="契约期"/>
 			<input type="hidden" value="${契约期}" name="old_契约期" />
+			<select id="契约期单位" name="契约期单位" style="width: 60px">
+			<option value="" ${契约期单位 == '' ? 'selected' : ''}></option>
+			<option value="年" ${契约期单位 == '年' ? 'selected' : ''}>年</option>
+			<option value="月" ${契约期单位 == '月' ? 'selected' : ''}>月</option>
+			<option value="长期有效" ${契约期单位 == '长期有效' ? 'selected' : ''}>长期有效</option>
+			</select>
+			<input type="hidden" value="${契约期单位}" name="old_契约期单位" />
 	</div>
 	<br>
 	<div>
@@ -124,7 +126,6 @@
 		<br>
 
 		<div>
-
 			<label>乙方</label> <input id="乙方" name="乙方" type="text" Value=""
 			placeholder="例，颜老师" type="text" disabled>
 			<input type="button" id="search_btn2" Value="参照">

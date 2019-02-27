@@ -43,7 +43,7 @@
 
 				$.ajax({
 					type : "GET",
-					url : "http://localhost:8080/JavaMiddleClassCompleteSource/契约getTestData",
+					url : "http://localhost:8080/JavaMiddleClassCompleteSource/契約getTestData",
 					dataType : "json", //dataType设置成 json，这个意思是说 ’服务器的数据返回的是json格式数据，需要帮我把数据转换成对象
 					data : JSON.stringify(JSONdata),
 					scriptCharset : 'utf-8',
@@ -88,7 +88,7 @@
 
 				$.ajax({
 					type : 'POST',
-					url : "http://localhost:8080/JavaMiddleClassCompleteSource/契约getTestData",
+					url : "http://localhost:8080/JavaMiddleClassCompleteSource/契約getTestData",
 					dataType : "json", //dataType设置成 json，这个意思是说 ’服务器的数据返回的是json格式数据，需要帮我把数据转换成对象
 					contentType : "application/json",
 
@@ -113,13 +113,26 @@
 				height : "311px",
 				layout : "fitColumns",
 				placeholder : "No Data Set",
-				columns : [ {
+				columns :
+				[ {
+					title : "契约ID",
+					field : "契约ID",
+					sorter : "string",
+					sorter : "boolean",
+					cellClick : function(e, cell) {
+					    var row = cell.getRow();
+					    var data = row.getData();
+						oneRowClick(data.契约ID)
+					}
+				},{
 					title : "契约CD",
 					field : "契约CD",
 					sorter : "string",
 					sorter : "boolean",
 					cellClick : function(e, cell) {
-						oneRowClick(cell.getValue())
+					    var row = cell.getRow();
+					    var data = row.getData();
+						oneRowClick(data.契约ID)
 					}
 				}, {
 					title : "单价",
@@ -163,20 +176,13 @@
 					field : "备考说明",
 					sorter : "string",
 					align : "left"
-				},
-				{
-					title : "结算币种",
-					field : "结算币种",
-					sorter : "string",
-					align : "left",
-					sorter : "boolean"
 						,
 						cellClick : function(e, cell) {
 						    var row = cell.getRow()
 						    var data = row.getData();
-							oneRowDeleteClick(data.番号);
+							oneRowDeleteClick(data.契约ID);
 						}
-				}, ],
+				} ],
 				rowClick : function(e, row) {
 					/* alert("Row " + row.getIndex() + " Clicked!!!!"); */
 
@@ -189,12 +195,12 @@
 			 alert("oneRowClick IS RUN HERE!!");
 			 */
 			var JSONdata = {
-				番号 : selected番号
+				契约ID : selected番号
 			};
 
 			$.ajax({
 				type : 'POST',
-				url : "http://localhost:8080/JavaMiddleClassCompleteSource/契约getTestData",
+				url : "http://localhost:8080/JavaMiddleClassCompleteSource/契約getTestData",
 				dataType : "json", //dataType设置成 json，这个意思是说 ’服务器的数据返回的是json格式数据，需要帮我把数据转换成对象
 				contentType : "application/json",
 
@@ -202,20 +208,25 @@
 				success : function(data) {
 					/* 					var obj = eval("("+data+")");
 					 if(obj.success==undefined){//查询成功，跳转到详情页面 */
-
-					$("#番号").val(data[0].番号);
-					$("#姓名").val(data[0].姓名);
-					$("#性別").val(data[0].性別);
-					$("#入社年月日").val(data[0].入社年月日);
-					$("#生年月日").val(data[0].生年月日);
-					$("#契約種類").val(data[0].契約種類);
-					$("#theForm").attr("action",
-							"http://localhost:8080/JavaMiddleClassCompleteSource/edit");
+				if(data[0]){
+					$("#契约ID").val(data[0].契约ID);
+					$("#契约CD").val(data[0].契约CD);
+					$("#单价").val(data[0].单价);
+					$("#单价単位").val(data[0].单价単位);
+					$("#结算币种").val(data[0].结算币种);
+					$("#契约实际终了日").val(data[0].契约实际终了日);
+					$("#含交通费").val(data[0].含交通费);
+					$("#契约种别").val(data[0].契约种别);
+					$("#契约期").val(data[0].契约期);
+					$("#契约期单位").val(data[0].契约期单位);
+					$("#开始日期").val(data[0].开始日期);
+					$("#备考说明").val(data[0].备考说明);//备考说明
+					$("#theForm").attr("action","http://localhost:8080/JavaMiddleClassCompleteSource/契約edit");
 					$("#theForm").submit();
 
-					/*                      }else if(!obj.success){//查询失败，弹出提示信息
+				}else if(!obj.success){//查询失败，弹出提示信息
 					 alert("検索失敗 by Yan");
-					 } */
+				}
 				},
 				error : function(e) {
 					alert("AJAXの編集処理はERRORがあり by Yan");
@@ -241,7 +252,7 @@
 				success : function(data) {
 
 					$("#theForm").attr("action",
-							"http://localhost:8080/JavaMiddleClassCompleteSource/契约getTestDataa");
+							"http://localhost:8080/JavaMiddleClassCompleteSource/契約getTestDataa");
 					$("#theForm").submit();
 				},
 				error : function(e) {
@@ -264,7 +275,7 @@
 
 		<div>
 			<label>契约CD</label>
-			<input id="CD" name="CD" type="text" Value="" placeholder="例，XZ000001">
+			<input id="契约CD" name="契约CD" type="text" Value="" placeholder="例，XZ000001">
 		</div>
 	<br>
 
@@ -274,7 +285,7 @@
 				placeholder="开始单价" type="text"> ～ <input id="单价終了"
 				type="text" Value="" placeholder="终了单价" type="text">
 
-				<select id="単位" name="単位" style="width: 60px">
+				<select id="单价単位" name="单价単位" style="width: 60px">
 				<option value="円">円</option>
 				<option value="万円">万円</option>
 			</select>
@@ -312,7 +323,7 @@
 			<label>契约期</label> <input id="契约期開始" type="text" Value=""
 				placeholder="例，1月" type="text"> ～ <input id="契约期价終了"
 				type="text" Value="" placeholder="例，3年" type="text">
-			<label></label> <select id="契约期" name="契约期" style="width: 60px">
+			<label></label> <select id="契约期单位" name="契约期单位" style="width: 60px">
 				<option value="年">年</option>
 				<option value="月">月</option>
 				<option value="长期有效">长期有效</option>

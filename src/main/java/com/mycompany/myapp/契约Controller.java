@@ -59,7 +59,7 @@ public class 契约Controller {
 	 *                    因为每个契约Bean就是一条记录
 	 *                    会有多条结果，就会是List。
 	 */
-	@RequestMapping(value = "契约getTestData", method = RequestMethod.POST)
+	@RequestMapping(value = "契約getTestData", method = RequestMethod.POST)
 	@ResponseBody //将返回结果转成Json
 	public List<契約Bean> 契約getTestData(@RequestBody 契約検索Bean 検索bean) {//@RequestBody 将Json转成Java对象
 
@@ -108,5 +108,30 @@ public class 契约Controller {
 			model.addAttribute("乙方契约者ID", bean.get乙方契约者ID());
 			return "契約明細";
 		}
+	}
+
+	@RequestMapping(value = "/契約edit", method = RequestMethod.GET)
+	public String 契約edit(契約Bean bean, Model model) {
+		logger.info("call 契約edit");
+
+		model.addAttribute("titleName", "契約編集");
+		model.addAttribute("モード", "編集");
+		model.addAttribute("契约ID", bean.get契约ID());
+		model.addAttribute("契约CD", bean.get契约CD());
+		model.addAttribute("单价", bean.get单价());
+		model.addAttribute("单价単位", bean.get单价単位());
+		model.addAttribute("结算币种", bean.get结算币种());
+		model.addAttribute("契约实际终了日", bean.get契约实际终了日());
+		model.addAttribute("含交通费", bean.get含交通费());
+
+		model.addAttribute("契约种别", bean.get契约种别());
+		model.addAttribute("契约期", bean.get契约期());
+		model.addAttribute("契约期单位", bean.get契约期单位());
+		model.addAttribute("契约期单位", bean.get契约期单位());
+		model.addAttribute("开始日期", bean.get开始日期());
+		model.addAttribute("备考说明", bean.get备考说明());
+
+		return "契約明細";
+
 	}
 }
