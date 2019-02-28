@@ -62,7 +62,7 @@
 			<option value="円" ${单价単位 == '円' ? 'selected' : ''}>円</option>
 			<option value="万円" ${单价単位 == '万円' ? 'selected' : ''}>万円</option>
 		</select>
-		<input type="hidden" value="${单价単位}" name="old_単位单价" />
+		<input type="hidden" value="${单价単位}" name="old_单价単位" />
 	</div>
 	<br>
 	<div>
@@ -101,7 +101,7 @@
 	<br>
 	<div>
 			<label>契约实际终了日</label>
-			<input id="契约实际终了日" type="text" Value=""
+			<input id="契约实际终了日" type="text" value="${契约实际终了日}"
 					placeholder="YYYY/MM/DD" type="text">
 			<input type="hidden" value="${契约实际终了日}" name="old_契约实际终了日" />
 	</div>
@@ -119,15 +119,15 @@
 		</div>
 	<br>
 		<div>
-			<label>甲方</label> <input id="甲方" name="甲方" type="text" Value=""
-			placeholder="例，宏扬株式会社" type="text" disabled>
+			<label>甲方</label>
+			<input id="甲方" name="甲方" type="text" Value="" placeholder="例，宏扬株式会社" type="text" disabled>
 			<input type="button" id="search_btn1" Value="参照">
 		</div>
 		<br>
 
 		<div>
-			<label>乙方</label> <input id="乙方" name="乙方" type="text" Value=""
-			placeholder="例，颜老师" type="text" disabled>
+			<label>乙方</label>
+			<input id="乙方" name="乙方" type="text" Value="" placeholder="例，颜老师" type="text" disabled>
 			<input type="button" id="search_btn2" Value="参照">
 		</div>
 	<div>

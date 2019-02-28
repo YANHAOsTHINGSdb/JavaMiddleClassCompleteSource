@@ -47,4 +47,19 @@ public class 契約Bean {
 	String 备考说明;
 	String 甲方契约者ID;
 	String 乙方契约者ID;
+
+	String old_单价;
+	String old_单价単位;
+	String old_开始日期;
+	String old_契约期;
+	String old_契约期单位;
+	String old_契约种别;
+	String old_结算币种;
+	String old_契约实际终了日;
+	String old_契约CD;
+	String old_含交通费;
+	String old_备考说明;
+	String old_甲方契约者ID;
+	String old_乙方契约者ID;
+
 }
