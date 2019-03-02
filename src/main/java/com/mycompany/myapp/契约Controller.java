@@ -129,7 +129,6 @@ public class 契约Controller {
 		model.addAttribute("契约种别", bean.get契约种别());
 		model.addAttribute("契约期", bean.get契约期());
 		model.addAttribute("契约期单位", bean.get契约期单位());
-		model.addAttribute("契约期单位", bean.get契约期单位());
 		model.addAttribute("开始日期", bean.get开始日期());
 		model.addAttribute("备考说明", bean.get备考说明());
 

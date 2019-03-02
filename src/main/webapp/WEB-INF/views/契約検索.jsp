@@ -274,23 +274,22 @@
 
 		<div>
 			<label>契约CD</label>
-			<input id="契约CD" name="契约CD" type="text" Value="" placeholder="例，XZ000001">
-			<input id="契约ID" name="契约ID" type="hidden" Value="" >
+			<input id="契约CD" name="契约CD" type="text" Value="" placeholder="例，XZ000001"/>
+			<input id="契约ID" name="契约ID" type="hidden" Value="" />
 		</div>
 	<br>
 
 		<div>
 			<label>单价</label>
 				<input id="单价開始" type="text" Value=""
-				placeholder="开始单价" type="text"> ～ <input id="单价終了"
-				type="text" Value="" placeholder="终了单价" type="text">
+				placeholder="开始单价" type="text"/> ～ <input id="单价終了"
+				type="text" Value="" placeholder="终了单价" type="text"/>
 
 				<select id="单价単位" name="单价単位" style="width: 60px">
 				<option value="円">円</option>
 				<option value="万円">万円</option>
-			</select>
-			<input id="单价" name="单价" type="hidden" Value="" >
-			<input id="单价単位" name="单价単位" type="hidden" Value="" >
+				</select>
+			<input id="单价" name="单价" type="hidden" Value="" />
 		</div>
 	<br>
 
@@ -301,7 +300,7 @@
 					<option value="美元">美元</option>
 					<option value="人民币">人民币</option>
 				</select>
-				<input id="结算币种" name="结算币种" type="hidden" Value="" >
+
 		</div>
 	<br>
 
@@ -311,63 +310,66 @@
 				<option value="是">是</option>
 				<option value="否">否</option>
 			</select>
-			<input id="含交通费" name="含交通费" type="hidden" Value="" >
+
 		</div>
 	<br>
 
 		<div>
 			<label>开始日期</label> <input id="开始日期開始" type="text" Value=""
-				placeholder="YYYY/MM/DD" type="text"> ～ <input id="开始日期終了"
-				type="text" Value="" placeholder="YYYY/MM/DD" type="text">
+				placeholder="YYYY/MM/DD" type="text"/> ～ <input id="开始日期終了"
+				type="text" Value="" placeholder="YYYY/MM/DD" type="text"/>
 			<div id="caleandar"></div>
-			<input id="开始日期" name="开始日期" type="hidden" Value="" >
+			<input id="开始日期" name="开始日期" type="hidden" Value="" />
 		</div>
 	<br>
 
 		<div>
 			<label>契约期</label> <input id="契约期開始" type="text" Value=""
-				placeholder="例，1月" type="text"> ～ <input id="契约期价終了"
-				type="text" Value="" placeholder="例，3年" type="text">
-			<label></label> <select id="契约期单位" name="契约期单位" style="width: 60px">
+				placeholder="例，1月" type="text"/> ～ <input id="契约期价終了"
+				type="text" Value="" placeholder="例，3年" type="text"/>
+				<label></label>
+				<select id="契约期单位" name="契约期单位" style="width: 60px">
 				<option value="年">年</option>
 				<option value="月">月</option>
 				<option value="长期有效">长期有效</option>
 			</select>
-			<input id="契约期" name="契约期" type="hidden" Value="" >
-			<input id="契约期单位" name="契约期单位" type="hidden" Value="" >
+			<input id="契约期" name="契约期" type="hidden" Value="" />
 		</div>
 	<br>
 
 		<div>
 			<label>契约实际终了日</label>
 			<input id="契约实际開始" type="text" Value=""
-					placeholder="YYYY/MM/DD" type="text"> ～
+					placeholder="YYYY/MM/DD" type="text"/> ～
 			<input id="契约实际終了"type="text" Value=""
-					placeholder="YYYY/MM/DD" type="text">
-			<input id="契约实际终了日" name="契约实际终了日" type="hidden" Value="" >
+					placeholder="YYYY/MM/DD" type="text"/>
+			<input id="契约实际终了日" name="契约实际终了日" type="hidden" Value="" />
 		</div>
 
 		<br>
 
 		<div>
-			<label>契约种别</label> <select id="契约种别" name="契约种别"
+			<label>契约种别</label>
+			<select id="契约种别" name="契约种别"
 				style="width: 150px">
 				<option value="一般雇佣">一般雇佣</option>
 				<option value="一括">一括</option>
 				<option value="請負">請負</option>
+				<option value="正社员">正社员</option>
+				<option value="契约社员">契约社员</option>
+				<option value="派遣社员">派遣社员</option>
 				<option value="其他">其他</option>
 			</select>
-			<input id="契约种别" name="契约种别" type="hidden" Value="" >
 		</div>
 		<br>
 
 		<div>
 
 			<label>甲方</label> <input id="甲方" name="甲方" type="text" Value=""
-			placeholder="例，宏扬株式会社" type="text" disabled>
+			placeholder="例，宏扬株式会社" type="text" disabled/>
 
-			<input type="button" id="search_btn1" Value="参照">
-			<input id="甲方契约者ID" name="甲方ID" type="hidden" Value="" >
+			<input type="button" id="search_btn1" Value="参照"/>
+		<!-- 	<input id="甲方契约者ID" name="甲方契约者ID" type="hidden" Value="" /> -->
 		</div>
 		<br>
 
@@ -376,7 +378,7 @@
 			<label>乙方</label> <input id="乙方" name="乙方" type="text" Value=""
 			placeholder="例，颜老师" type="text" disabled>
 			<input type="button" id="search_btn2" Value="参照">
-			<input id="乙方契约者ID" name="乙方ID" type="hidden" Value="" >
+		<!-- 	<input id="乙方契约者ID" name="乙方契约者ID" type="hidden" Value="" > -->
 		</div>
 		<br>
 

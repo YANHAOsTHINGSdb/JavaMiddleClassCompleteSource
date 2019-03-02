@@ -77,13 +77,13 @@
 	</div>
 	<br>
 	<div>
-			<label>含交通费</label>
-			<select id="含交通费" name="含交通费" style="width: 60px">
+		<label>含交通费</label>
+		<select id="含交通费" name="含交通费" style="width: 60px">
 			<option value="" ${含交通费 == '' ? 'selected' : ''}></option>
 			<option value="是" ${含交通费 == '是' ? 'selected' : ''}>是</option>
 			<option value="否" ${含交通费 == '否' ? 'selected' : ''}>否</option>
-			</select>
-			<input type="hidden" value="${含交通费}" name="old_含交通费" />
+		</select>
+		<input type="hidden" value="${含交通费}" name="old_含交通费" />
 	</div>
 	<br>
 	<div>
@@ -101,44 +101,44 @@
 	<br>
 	<div>
 			<label>契约实际终了日</label>
-			<input id="契约实际终了日" type="text" value="${契约实际终了日}"
-					placeholder="YYYY/MM/DD" type="text">
+			<input id="契约实际终了日" type="text" value="${契约实际终了日}" name="契约实际终了日"
+					placeholder="YYYY/MM/DD" />
 			<input type="hidden" value="${契约实际终了日}" name="old_契约实际终了日" />
 	</div>
 	<br>
 		<div>
-			<label>契约种别</label> <select id="契约种别" name="契约种别"
-				style="width: 150px">
+			<label>契约种别</label>
+			<select id="契约种别" name="契约种别" style="width: 150px">
 			<option value="" ${契约种别 == '' ? 'selected' : ''}></option>
 			<option value="一般雇佣" ${契约种别 == '一般雇佣' ? 'selected' : ''}>一般雇佣</option>
 			<option value="一括" ${契约种别 == '一括' ? 'selected' : ''}>一括</option>
 			<option value="請負" ${契约种别 == '請負' ? 'selected' : ''}>請負</option>
 			<option value="其他" ${契约种别 == '其他' ? 'selected' : ''}>其他</option>
 			</select>
-			<input type="hidden" value="${契约种别}" name="old_契约种别" />
+			<input type="hidden" value="${契约种别}" name="old_契约种别" id="old_契约种别"/>
 		</div>
 	<br>
 		<div>
 			<label>甲方</label>
-			<input id="甲方" name="甲方" type="text" Value="" placeholder="例，宏扬株式会社" type="text" disabled>
-			<input type="button" id="search_btn1" Value="参照">
-			<input id="甲方契约者ID" name="甲方ID" type="hidden" Value="" >
+			<input id="甲方契约者名" name="甲方契约者名" type="text" Value="" placeholder="例，宏扬株式会社" type="text" disabled/>
+			<input type="button" id="search_btn1" Value="参照"/>
+		<!--	<input id="甲方契约者ID" name="甲方契约者ID" type="hidden" Value="" /> -->
 		</div>
 		<br>
 
 		<div>
 			<label>乙方</label>
-			<input id="乙方" name="乙方" type="text" Value="" placeholder="例，颜老师" type="text" disabled>
-			<input type="button" id="search_btn2" Value="参照">
-			<input id="乙方契约者ID" name="乙方ID" type="hidden" Value="" >
+			<input id="乙方契约者名" name="乙方契约者名" type="text" Value="" placeholder="例，颜老师" type="text" disabled/>
+			<input type="button" id="search_btn2" Value="参照"/>
+		<!-- <input id="乙方契约者ID" name="乙方契约者ID" type="hidden" Value="" />  -->
 		</div>
 	<div>
-		<input type="button" id="back_btn" Value="戻る">
+		<input type="button" id="back_btn" Value="戻る"/>
 	</div>
 	<br>
 
 	<div>
-		<input type="button" id="save_btn" Value="登録">
+		<input type="button" id="save_btn" Value="登録"/>
 	</div>
 
 	<h1>${errorMsg}</h1>

@@ -31,7 +31,7 @@ public class 契約Service extends 親Service{
 	String[] fileName = {
 			"契约ID", "单价", "开始日期", "契约期", "契约期单位",
 			"契约种别", "结算币种", "契约实际终了日",
-			"契约CD", "含交通费", "备考说明",
+			"契约CD", "含交通费", "备考说明", "单价単位",
 			"甲方契约者ID", "乙方契约者ID" };
 
 	/**
@@ -397,7 +397,7 @@ public class 契約Service extends 親Service{
 		String ID = null;
 		try {
 			// ①採番
-			ID = file_db.採番(file_db.getSPath() + "契约" + "/" + "契约ID" + ".txt") + 1 + "";
+			ID = file_db.採番(file_db.getSPath() + "契约ID" + ".txt") + 1 + "";
 
 		} catch (IOException e) {
 
@@ -406,7 +406,7 @@ public class 契約Service extends 親Service{
 
 		for (String s文件名 : fileName) {
 
-			path = file_db.getSPath() + "契约" + "/" + s文件名 + ".txt";
+			path = file_db.getSPath() + s文件名 + ".txt";
 
 			switch (s文件名) {
 
@@ -504,7 +504,7 @@ public class 契約Service extends 親Service{
 
 	public void 更新契約_by契約Bean(契約Bean bean) {
 		文件db file_db = new 文件db("契约");
-		//String ID = bean.getOld_名称();
+
 		file_db.情報読み込み(fileName);
 		String ID = bean.get契约ID();
 
