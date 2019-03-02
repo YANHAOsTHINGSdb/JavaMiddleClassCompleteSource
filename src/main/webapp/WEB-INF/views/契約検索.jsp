@@ -206,23 +206,22 @@
 
 				data : JSON.stringify(JSONdata),
 				success : function(data) {
-					/* 					var obj = eval("("+data+")");
-					 if(obj.success==undefined){//查询成功，跳转到详情页面 */
-				if(data[0]){
-					$("#契约ID").val(data[0].契约ID);
-					$("#契约CD").val(data[0].契约CD);
-					$("#单价").val(data[0].单价);
-					$("#单价単位").val(data[0].单价単位);
-					$("#结算币种").val(data[0].结算币种);
-					$("#契约实际终了日").val(data[0].契约实际终了日);
-					$("#含交通费").val(data[0].含交通费);
-					$("#契约种别").val(data[0].契约种别);
-					$("#契约期").val(data[0].契约期);
-					$("#契约期单位").val(data[0].契约期单位);
-					$("#开始日期").val(data[0].开始日期);
-					$("#备考说明").val(data[0].备考说明);//备考说明
-					$("#theForm").attr("action","http://localhost:8080/JavaMiddleClassCompleteSource/契約edit");
-					$("#theForm").submit();
+
+					if(data[0]){
+						$("#契约ID").val(data[0].契约ID);
+						$("#契约CD").val(data[0].契约CD);
+						$("#单价").val(data[0].单价);
+						$("#单价単位").val(data[0].单价単位);
+						$("#结算币种").val(data[0].结算币种);
+						$("#契约实际终了日").val(data[0].契约实际终了日);
+						$("#含交通费").val(data[0].含交通费);
+						$("#契约种别").val(data[0].契约种别);
+						$("#契约期").val(data[0].契约期);
+						$("#契约期单位").val(data[0].契约期单位);
+						$("#开始日期").val(data[0].开始日期);
+						$("#备考说明").val(data[0].备考说明);//备考说明
+						$("#theForm").attr("action","http://localhost:8080/JavaMiddleClassCompleteSource/契約edit");
+						$("#theForm").submit();
 
 				}else if(!obj.success){//查询失败，弹出提示信息
 					 alert("検索失敗 by Yan");
@@ -276,6 +275,7 @@
 		<div>
 			<label>契约CD</label>
 			<input id="契约CD" name="契约CD" type="text" Value="" placeholder="例，XZ000001">
+			<input id="契约ID" name="契约ID" type="hidden" Value="" >
 		</div>
 	<br>
 
@@ -289,16 +289,19 @@
 				<option value="円">円</option>
 				<option value="万円">万円</option>
 			</select>
+			<input id="单价" name="单价" type="hidden" Value="" >
+			<input id="单价単位" name="单价単位" type="hidden" Value="" >
 		</div>
 	<br>
 
 		<div>
-					<label>结算币种</label>
-					<select id="结算币种" name="结算币种" style="width: 60px">
-						<option value="日元">日元</option>
-						<option value="美元">美元</option>
-						<option value="人民币">人民币</option>
-					</select>
+				<label>结算币种</label>
+				<select id="结算币种" name="结算币种" style="width: 60px">
+					<option value="日元">日元</option>
+					<option value="美元">美元</option>
+					<option value="人民币">人民币</option>
+				</select>
+				<input id="结算币种" name="结算币种" type="hidden" Value="" >
 		</div>
 	<br>
 
@@ -308,6 +311,7 @@
 				<option value="是">是</option>
 				<option value="否">否</option>
 			</select>
+			<input id="含交通费" name="含交通费" type="hidden" Value="" >
 		</div>
 	<br>
 
@@ -316,6 +320,7 @@
 				placeholder="YYYY/MM/DD" type="text"> ～ <input id="开始日期終了"
 				type="text" Value="" placeholder="YYYY/MM/DD" type="text">
 			<div id="caleandar"></div>
+			<input id="开始日期" name="开始日期" type="hidden" Value="" >
 		</div>
 	<br>
 
@@ -328,6 +333,8 @@
 				<option value="月">月</option>
 				<option value="长期有效">长期有效</option>
 			</select>
+			<input id="契约期" name="契约期" type="hidden" Value="" >
+			<input id="契约期单位" name="契约期单位" type="hidden" Value="" >
 		</div>
 	<br>
 
@@ -337,6 +344,7 @@
 					placeholder="YYYY/MM/DD" type="text"> ～
 			<input id="契约实际終了"type="text" Value=""
 					placeholder="YYYY/MM/DD" type="text">
+			<input id="契约实际终了日" name="契约实际终了日" type="hidden" Value="" >
 		</div>
 
 		<br>
@@ -349,6 +357,7 @@
 				<option value="請負">請負</option>
 				<option value="其他">其他</option>
 			</select>
+			<input id="契约种别" name="契约种别" type="hidden" Value="" >
 		</div>
 		<br>
 
@@ -358,6 +367,7 @@
 			placeholder="例，宏扬株式会社" type="text" disabled>
 
 			<input type="button" id="search_btn1" Value="参照">
+			<input id="甲方契约者ID" name="甲方ID" type="hidden" Value="" >
 		</div>
 		<br>
 
@@ -366,6 +376,7 @@
 			<label>乙方</label> <input id="乙方" name="乙方" type="text" Value=""
 			placeholder="例，颜老师" type="text" disabled>
 			<input type="button" id="search_btn2" Value="参照">
+			<input id="乙方契约者ID" name="乙方ID" type="hidden" Value="" >
 		</div>
 		<br>
 

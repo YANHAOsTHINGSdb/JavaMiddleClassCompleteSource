@@ -5,6 +5,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
+import javax.servlet.http.HttpSession;
+
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -132,6 +134,17 @@ public class 契约Controller {
 		model.addAttribute("备考说明", bean.get备考说明());
 
 		return "契約明細";
-
 	}
+
+	@RequestMapping(value = "契約update", method = RequestMethod.POST)
+	public String 契約update(@ModelAttribute("fbean") 契約Bean bean, HttpSession session, Model model) {
+
+		契約Service 契約service = new 契約Service();
+
+		契約service.更新契約_by契約Bean(bean);
+		model.addAttribute("モード", "1");
+
+		return "契約検索";
+	}
+
 }

@@ -44,7 +44,7 @@
 
 	<h1>${titleName}</h1>
 
-	<input type="hidden" value="${契約ID}" name="契約ID"/><!--(隐藏项目=契約_ID，调试用) -->
+	<input type="hidden" value="${契约ID}" name="契约ID"/><!--(隐藏项目=契約_ID，调试用) -->
 
 	<div>
 		<label>契约CD</label>
@@ -122,6 +122,7 @@
 			<label>甲方</label>
 			<input id="甲方" name="甲方" type="text" Value="" placeholder="例，宏扬株式会社" type="text" disabled>
 			<input type="button" id="search_btn1" Value="参照">
+			<input id="甲方契约者ID" name="甲方ID" type="hidden" Value="" >
 		</div>
 		<br>
 
@@ -129,6 +130,7 @@
 			<label>乙方</label>
 			<input id="乙方" name="乙方" type="text" Value="" placeholder="例，颜老师" type="text" disabled>
 			<input type="button" id="search_btn2" Value="参照">
+			<input id="乙方契约者ID" name="乙方ID" type="hidden" Value="" >
 		</div>
 	<div>
 		<input type="button" id="back_btn" Value="戻る">

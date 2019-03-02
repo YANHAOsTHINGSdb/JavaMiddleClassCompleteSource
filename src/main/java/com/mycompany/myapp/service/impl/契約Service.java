@@ -189,6 +189,10 @@ public class 契約Service extends 親Service{
 				小Map = entry.getValue();
 				契約bean.set单价(小Map.get(契約id));
 				break;
+			case "单价単位":
+				小Map = entry.getValue();
+				契約bean.set单价単位(小Map.get(契約id));
+				break;
 			case "开始日期":
 				小Map = entry.getValue();
 				契約bean.set开始日期(小Map.get(契約id));
@@ -224,6 +228,14 @@ public class 契約Service extends 親Service{
 			case "契约种别":
 				小Map = entry.getValue();
 				契約bean.set契约种别(小Map.get(契約id));
+				break;
+			case "甲方契约者ID":
+				小Map = entry.getValue();
+				契約bean.set甲方契约者ID(小Map.get(契約id));
+				break;
+			case "乙方契约者ID":
+				小Map = entry.getValue();
+				契約bean.set乙方契约者ID(小Map.get(契約id));
 				break;
 			}
 		}
@@ -487,6 +499,70 @@ public class 契約Service extends 親Service{
 				break;
 			}
 
+		}
+	}
+
+	public void 更新契約_by契約Bean(契約Bean bean) {
+		文件db file_db = new 文件db("契约");
+		//String ID = bean.getOld_名称();
+		file_db.情報読み込み(fileName);
+		String ID = bean.get契约ID();
+
+		if(StringUtils.isEmpty(ID)){
+			System.out.printf("更新契約_by契約Bean 时 ID为空。");
+			return;
+		}
+		if (! StringUtils.equals(bean.getOld_单价(), bean.get单价())) {
+			String path = file_db.getSPath() + "单价.txt";
+			file_db.文件書込(path, ID + "," + bean.get单价());
+		}
+		if (! StringUtils.equals(bean.getOld_单价単位(), bean.get单价単位())) {
+			String path = file_db.getSPath() + "单价単位.txt";
+			file_db.文件書込(path, ID + "," + bean.get单价単位());
+		}
+		if (! StringUtils.equals(bean.getOld_开始日期(), bean.get开始日期())) {
+			String path = file_db.getSPath() + "开始日期.txt";
+			file_db.文件書込(path, ID + "," + bean.get开始日期());
+		}
+		if (! StringUtils.equals(bean.getOld_契约期(), bean.get契约期())) {
+			String path = file_db.getSPath() + "契约期.txt";
+			file_db.文件書込(path, ID + "," + bean.get契约期());
+		}
+		if (! StringUtils.equals(bean.getOld_契约期单位(), bean.get契约期单位())) {
+			String path = file_db.getSPath() + "契约期单位.txt";
+			file_db.文件書込(path, ID + "," + bean.get契约期单位());
+		}
+		if (! StringUtils.equals(bean.getOld_契约种别(), bean.get契约种别())) {
+			String path = file_db.getSPath() + "契约种别.txt";
+			file_db.文件書込(path, ID + "," + bean.get契约种别());
+		}
+		if (! StringUtils.equals(bean.getOld_结算币种(), bean.get结算币种())) {
+			String path = file_db.getSPath() + "结算币种.txt";
+			file_db.文件書込(path, ID + "," + bean.get结算币种());
+		}
+		if (! StringUtils.equals(bean.getOld_契约实际终了日(), bean.get契约实际终了日())) {
+			String path = file_db.getSPath() + "契约实际终了日.txt";
+			file_db.文件書込(path, ID + "," + bean.get契约实际终了日());
+		}
+		if (! StringUtils.equals(bean.getOld_契约CD(), bean.get契约CD())) {
+			String path = file_db.getSPath() + "契约CD.txt";
+			file_db.文件書込(path, ID + "," + bean.get契约CD());
+		}
+		if (! StringUtils.equals(bean.getOld_含交通费(), bean.get含交通费())) {
+			String path = file_db.getSPath() + "含交通费.txt";
+			file_db.文件書込(path, ID + "," + bean.get含交通费());
+		}
+		if (! StringUtils.equals(bean.getOld_备考说明(), bean.get备考说明())) {
+			String path = file_db.getSPath() + "备考说明.txt";
+			file_db.文件書込(path, ID + "," + bean.get备考说明());
+		}
+		if (! StringUtils.equals(bean.getOld_甲方契约者ID(), bean.get甲方契约者ID())) {
+			String path = file_db.getSPath() + "甲方契约者ID.txt";
+			file_db.文件書込(path, ID + "," + bean.get甲方契约者ID());
+		}
+		if (! StringUtils.equals(bean.getOld_乙方契约者ID(), bean.get乙方契约者ID())) {
+			String path = file_db.getSPath() + "乙方契约者ID.txt";
+			file_db.文件書込(path, ID + "," + bean.get乙方契约者ID());
 		}
 	}
 }
