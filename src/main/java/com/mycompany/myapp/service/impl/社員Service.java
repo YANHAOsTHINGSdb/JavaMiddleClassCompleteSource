@@ -21,7 +21,9 @@ import com.mycompany.myapp.service.文件db;
 import com.mycompany.myapp.service.親Service;
 
 public class 社員Service extends 親Service{
-	String[] fileName = { "姓名", "入社年月日", "生年月日", "性別", "番号", "契約種類", "削除年月日", "電話番号" };
+
+	// "番号" 必须放在0号位，否则全件检索时会出问题
+	String[] fileName = { "番号", "姓名", "入社年月日", "生年月日", "性別", "契約種類", "削除年月日", "電話番号" };
 
 	文件db file_db = new 文件db("社员");
 
@@ -313,7 +315,7 @@ public class 社員Service extends 親Service{
 		String ID = null;
 		try {
 			// ①採番
-			ID = file_db.採番(file_db.getSPath() + "\\" + "番号" + ".txt")+1 +"";
+			ID = file_db.採番(file_db.getSPath() +  "番号" + ".txt") + 1 +"";
 
 		} catch (IOException e) {
 

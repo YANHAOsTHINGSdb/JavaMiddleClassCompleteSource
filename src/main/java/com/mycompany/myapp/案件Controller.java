@@ -1,7 +1,6 @@
 package com.mycompany.myapp;
 
 import java.text.DateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
@@ -53,8 +52,6 @@ public class 案件Controller {
 
 		logger.info("call 案件getTestData");
 
-		List<案件Bean> result = new ArrayList<案件Bean>();
-
 		案件Service 案件service = new 案件Service();
 
 		return 案件service.検索案件_by検索Bean(検索bean);
@@ -81,7 +78,7 @@ public class 案件Controller {
 	public ModelAndView add案件() {
 		logger.info("call add案件");
 
-		ModelAndView modelAndView1 = new ModelAndView("add1案件追加");
+		ModelAndView modelAndView1 = new ModelAndView("案件明細");
 		modelAndView1.getModel().put("titleName", "案件追加");
 
 		return modelAndView1;

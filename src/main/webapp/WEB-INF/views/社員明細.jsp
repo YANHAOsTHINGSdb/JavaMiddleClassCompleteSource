@@ -45,7 +45,7 @@
 	<h1>${titleName}</h1>
 
 
-	<input type="text" value="${s_ID}" name="s_ID"/>
+	<input type="hidden" value="${s_ID}" name="s_ID"/>
 
 	<div>
 		<label>番号</label>

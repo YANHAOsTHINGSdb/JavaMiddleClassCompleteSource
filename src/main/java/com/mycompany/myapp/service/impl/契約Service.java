@@ -28,6 +28,7 @@ public class 契約Service extends 親Service{
 	/**
 	 * fileName完全参照式样书的数据结构中的项目
 	 */
+	// "契约ID" 必须放在0号位，否则全件检索时会出问题
 	String[] fileName = {
 			"契约ID", "单价", "开始日期", "契约期", "契约期单位",
 			"契约种别", "结算币种", "契约实际终了日",

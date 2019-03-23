@@ -41,9 +41,9 @@
 	<form id ="fbean" name="fbean" method="post">
 
 	<h1>${titleName}</h1>
-<!--
-	<input type="text" value="${s_ID}" name="s_ID"/>(隐藏项目=s_ID，调试用)
--->
+
+	<input type="hidden" value="${s_ID}" name="s_ID"/>(隐藏项目=s_ID，调试用)
+
 	<div>
 		<label>名称</label>
 		<input type="text" value="${名称}" name="名称"/>
@@ -73,7 +73,7 @@
 	<div>
 		<label>人数</label>
 		<input type="text" Value="${人数}" name="人数"
-			placeholder="YYYY/MM/DD"
+			placeholder="例。2"
 			type="text"/>
 		<input type="hidden" value="${人数}" name="old_人数" />
 	</div>
