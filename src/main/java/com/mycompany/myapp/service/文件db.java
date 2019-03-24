@@ -20,7 +20,7 @@ import lombok.Data;
 @Data
 public class 文件db {
 
-	String sPath = "C:\\tmp\\";  // for windows
+	String sPath = "C:\\tmp";  // for windows
 	// String sPath = "/Users/haoyan/Desktop/data";  // for mac
 	// String sPath = "";
 	String sSubFolder = null;
