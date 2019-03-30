@@ -42,32 +42,60 @@
 
 	<h1>${titleName}</h1>
 
-	<input type="hidden" value="${s_ID}" name="s_ID"/>(隐藏项目=s_ID，调试用)
+	<input type="hidden" value="${s_ID}" name="s_ID"/>
 
 	<div>
-		<label>名称</label>
-		<input type="text" value="${名称}" name="名称"/>
-		<input type="hidden" value="${名称}" name="old_名称" />
+		<label>案件名称</label>
+		<input type="text" value="${案件名称}" name="案件名称"/>
+		<input type="hidden" value="${案件名称}" name="old_案件名称" />
 	</div>
 	<br>
 	<div>
-		<label>概要</label>
-		<input type="text" value="${概要}" name="概要" />
-		<input type="hidden" value="${概要}" name="old_概要" />
+		<label>案件概要</label>
+		<input type="text" value="${案件概要}" name="案件概要" />
+		<input type="hidden" value="${案件概要}" name="old_案件概要" />
 	</div>
 	<br>
 	<div>
-		<label>場所</label>
-		<input type="text" value="${場所}" name="場所" />
-		<input type="hidden" value="${場所}" name="old_場所" />
+		<label>案件場所</label>
+		<input type="text" value="${案件場所}" name="案件場所" />
+		<input type="hidden" value="${案件場所}" name="old_案件場所" />
 	</div>
 	<br>
 	<div>
-		<label>時期</label>
-		<input type="text" value="${時期}"
+		<label>職種</label>
+		<input type="text" value="${職種}" name="職種" />
+		<input type="hidden" value="${職種}" name="old_職種" />
+	</div>
+	<br>
+	<div>
+		<label>工程</label>
+		<input type="text" value="${工程}" name="工程" />
+		<input type="hidden" value="${工程}" name="old_工程" />
+	</div>
+	<br>
+	<div>
+		<label>案件開始日</label>
+		<input type="text" value="${案件開始日}"
 			placeholder="YYYY/MM/DD"
-			type="text" name="時期"/>
-		<input type="hidden" value="${時期}" name="old_時期" />
+			type="text" name="案件開始日"/>
+		<input type="hidden" value="${案件開始日}" name="old_案件開始日" />
+	</div>
+	<br>
+	<div>
+		<label>予定終了日</label>
+		<input type="text" value="${予定終了日}"
+			placeholder="YYYY/MM/DD"
+			type="text" name="予定終了日"/>
+		<input type="hidden" value="${予定終了日}" name="old_予定終了日" />
+	</div>
+	<br>
+	<div>
+		<label>実際終了日</label>
+		<input type="text" value="${実際終了日}"
+			placeholder="YYYY/MM/DD"
+			type="text" name="実際終了日"/>
+		<input type="hidden" value="${実際終了日}" name="old_実際終了日" />
 	</div>
 	<br>
 	<div>

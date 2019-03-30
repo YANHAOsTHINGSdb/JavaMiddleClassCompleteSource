@@ -70,13 +70,19 @@
 				//alert("検索 by Yan");
 				//var url = $("url_post").val();
 				var JSONdata = {
-					名称 : $("#名称").val(),
-					概要 : $("#概要").val(),
-					場所 : $("#場所").val(),
-					時期開始 : $("#時期開始").val(),
-					時期終了 : $("#時期終了").val(),
-					最少人数 : $("#最少人数").val(),
-					最大人数 : $("#最大人数").val(),
+					案件名称 : $("#案件名称").val(),
+					案件概要 : $("#案件概要").val(),
+					案件場所 : $("#案件場所").val(),
+					職種 : $("#職種").val(),
+					工程 : $("#工程").val(),
+					案件開始日_開始 : $("#案件開始日_開始").val(),
+					案件開始日_終了 : $("#案件開始日_終了").val(),
+					予定終了日_開始 : $("#予定終了日_開始").val(),
+					予定終了日_終了 : $("#予定終了日_終了").val(),
+					予定終了日_開始 : $("#実際終了日_開始").val(),
+					予定終了日_終了 : $("#実際終了日_終了").val(),
+					予定終了日_開始 : $("#人数_開始").val(),
+					予定終了日_終了 : $("#人数_終了").val(),
 				};
 
 				//alert(JSON.stringify(JSONdata));
@@ -118,8 +124,8 @@
 						oneRowClick(cell.getValue())
 					}
 				},{
-					title : "名称",
-					field : "名称",
+					title : "案件名称",
+					field : "案件名称",
 					sorter : "string",
 					sorter : "boolean",
 					cellClick : function(e, cell) {
@@ -128,27 +134,51 @@
 					    oneRowClick(data.s_ID);
 					}
 				}, {
-					title : "概要",
-					field : "概要",
+					title : "案件概要",
+					field : "案件概要",
 					sorter : "string",
 					width : 200,
 					sorter : "boolean"
 				}, {
-					title : "場所",
-					field : "場所",
+					title : "案件場所",
+					field : "案件場所",
 					sorter : "string",
 					width : 200,
 					sorter : "boolean"
 				}, {
-					title : "時期",
-					field : "時期",
-					sorter : "date",
+					title : "職種",
+					field : "職種",
+					sorter : "string",
 					sorter : "boolean"
 				}, {
-					title : "人数",
-					field : "人数",
+					title : "工程",
+					field : "工程",
+					sorter : "string",
+					align : "left"
+					}
+				, {
+					title : "案件開始日",
+					field : "案件開始日",
 					sorter : "date",
 					align : "left"
+					}
+				, {
+					title : "予定終了日",
+					field : "予定終了日",
+					sorter : "date",
+					align : "left"
+					}
+				, {
+					title : "実際終了日",
+					field : "実際終了日",
+					sorter : "date",
+					align : "left"
+					}
+				, {
+					title : "人数",
+					field : "人数",
+					sorter : "string",
+					align : "right"
 					}
 				],
 				rowClick : function(e, row) {
@@ -179,10 +209,14 @@
 					 if(obj.success==undefined){//查询成功，跳转到详情页面 */
 					if(data[0]){
 						$("#s_ID").val(data[0].s_ID);
-						$("#名称").val(data[0].名称);
-						$("#概要").val(data[0].概要);
-						$("#場所").val(data[0].場所);
-						$("#時期").val(data[0].時期);
+						$("#案件名称").val(data[0].案件名称);
+						$("#案件概要").val(data[0].案件概要);
+						$("#案件場所").val(data[0].案件場所);
+						$("#職種").val(data[0].職種);
+						$("#工程").val(data[0].工程);
+						$("#案件開始日").val(data[0].案件開始日);
+						$("#予定終了日").val(data[0].予定終了日);
+						$("#実際終了日").val(data[0].実際終了日);
 						$("#人数").val(data[0].人数);
 
 						//---------------------------------
@@ -239,32 +273,47 @@
 		<h1>案件情報</h1>
 		<br>
 		<div>
-			<input id="s_ID" name="s_ID" type="text" Value="">(隐藏项目=s_ID，调试用)
+			<input id="s_ID" name="s_ID" type="hidden" Value="">
+		</div>
+		<div>
+			<label>案件名称</label> <input id="案件名称" name="案件名称" type="text" value="">
 		</div>
 		<br>
 		<div>
-			<label>名称</label> <input id="名称" name="名称" type="text" value="">
+			<label>案件概要</label> <input id="案件概要" name="案件	概要" type="text" value="">
 		</div>
 		<br>
 		<div>
-			<label>概要</label> <input id="概要" name="概要" type="text" value="">
+			<label>案件場所</label> <input id="案件場所" name="案件場所" type="text" value="">
 		</div>
 		<br>
 		<div>
-			<label>場所</label> <input id="場所" name="場所" type="text" value="">
+			<label>職種</label> <input id="職種" name="職種" type="text" value="">
 		</div>
 		<br>
 		<div>
-			<label>時期</label> <input id="時期" type="text" value="" placeholder="YYYY/MM/DD"> ～ <input id="時期" type="text" value="" placeholder="YYYY/MM/DD">
+			<label>工程</label> <input id="工程" name="工程" type="text" value="">
+		</div>
+		<br>
+		<div>
+			<label>案件開始日</label> <input id="案件開始日_開始" type="text" value="" placeholder="YYYY/MM/DD"> ～ <input id="案件開始日_終了" type="text" value="" placeholder="YYYY/MM/DD">
 			<div id="caleandar"></div>
-			<input id="時期" name="時期" type="hidden" value="">
+			<input id="案件開始日" name="案件開始日" type="hidden" value="">
 		</div>
 		<br>
 		<div>
-			<label>人数</label> <input id="人数" type="text" value="" placeholder="YYYY/MM/DD"> ～ <input id="人数" type="text" value="" placeholder="YYYY/MM/DD"> <input id="人数" name="人数" type="hidden" value="">
+			<label>予定終了日</label> <input id="予定終了日_開始" type="text" value="" placeholder="YYYY/MM/DD"> ～ <input id="予定終了日_終了" type="text" value="" placeholder="YYYY/MM/DD">
+			<input id="予定終了日" name="予定終了日" type="hidden" value="">
 		</div>
-
-			</select>
+		<br>
+		<div>
+			<label>実際終了日</label> <input id="実際終了日_開始" type="text" value="" placeholder="YYYY/MM/DD"> ～ <input id="実際終了日_終了" type="text" value="" placeholder="YYYY/MM/DD">
+			<input id="実際終了日" name="実際終了日" type="hidden" value="">
+		</div>
+		<br>
+		<div>
+			<label>人数</label> <input id="人数_開始" type="text" value="" placeholder="YYYY/MM/DD"> ～ <input id="人数_終了" type="text" value="" placeholder="YYYY/MM/DD">
+			<input id="人数" name="人数" type="hidden" value="">
 		</div>
 		<br>
 		<div>

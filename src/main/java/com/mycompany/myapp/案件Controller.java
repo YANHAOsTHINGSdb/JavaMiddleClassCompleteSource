@@ -64,10 +64,14 @@ public class 案件Controller {
 		model.addAttribute("titleName", "案件編集");
 		model.addAttribute("モード", "編集");
 		model.addAttribute("s_ID", bean.getS_ID());
-		model.addAttribute("名称", bean.get名称());
-		model.addAttribute("概要", bean.get概要());
-		model.addAttribute("場所", bean.get場所());
-		model.addAttribute("時期", bean.get時期());
+		model.addAttribute("案件名称", bean.get案件名称());
+		model.addAttribute("案件概要", bean.get案件概要());
+		model.addAttribute("案件場所", bean.get案件場所());
+		model.addAttribute("職種", bean.get職種());
+		model.addAttribute("工程", bean.get工程());
+		model.addAttribute("案件開始日", bean.get案件開始日());
+		model.addAttribute("予定終了日", bean.get予定終了日());
+		model.addAttribute("実際終了日", bean.get実際終了日());
 		model.addAttribute("人数", bean.get人数());
 
 		return "案件明細";
@@ -96,11 +100,16 @@ public class 案件Controller {
 		} else {
 			model.addAttribute("titleName", "案件追加");
 			model.addAttribute("s_ID", bean.getS_ID());
-			model.addAttribute("名称", bean.get名称());
-			model.addAttribute("概要", bean.get概要());
-			model.addAttribute("時期", bean.get時期());
-			model.addAttribute("場所", bean.get場所());
+			model.addAttribute("案件名称", bean.get案件名称());
+			model.addAttribute("案件概要", bean.get案件概要());
+			model.addAttribute("案件場所", bean.get案件場所());
+			model.addAttribute("職種", bean.get職種());
+			model.addAttribute("工程", bean.get工程());
+			model.addAttribute("案件開始日", bean.get案件開始日());
+			model.addAttribute("予定終了日", bean.get予定終了日());
+			model.addAttribute("実際終了日", bean.get実際終了日());
 			model.addAttribute("人数", bean.get人数());
+
 			return "案件明細";
 		}
 	}

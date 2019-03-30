@@ -22,7 +22,7 @@ import com.mycompany.myapp.service.親Service;
 
 public class 案件Service extends 親Service{
 	// "名称" 必须放在0号位，否则全件检索时会出问题
-	String[] fileName = { "名称", "場所", "時期", "人数", "概要" };
+	String[] fileName = { "案件名称", "案件概要", "案件場所", "職種", "工程", "案件開始日", "予定終了日", "実際終了日", "人数" };
 
 	文件db file_db = new 文件db("案件");
 
@@ -73,21 +73,21 @@ public class 案件Service extends 親Service{
 
 			switch (小Map名) {
 
-			case "名称":
+			case "案件名称":
 				小Map = entry.getValue();
-				案件bean.set名称(小Map.get(案件id));
+				案件bean.set案件名称(小Map.get(案件id));
 				break;
-			case "概要":
+			case "案件概要":
 				小Map = entry.getValue();
-				案件bean.set概要(小Map.get(案件id));
+				案件bean.set案件概要(小Map.get(案件id));
 				break;
 			case "時期":
 				小Map = entry.getValue();
-				案件bean.set時期(小Map.get(案件id));
+				案件bean.set案件開始日(小Map.get(案件id));
 				break;
 			case "場所":
 				小Map = entry.getValue();
-				案件bean.set場所(小Map.get(案件id));
+				案件bean.set案件場所(小Map.get(案件id));
 				break;
 			case "人数":
 				小Map = entry.getValue();
@@ -110,46 +110,84 @@ public class 案件Service extends 親Service{
 			中間結果list.put("ID",Arrays.asList(bean.getS_ID()));
 		}
 
-		if (StringUtils.isNotEmpty(bean.get名称())) {
+		if (StringUtils.isNotEmpty(bean.get案件名称())) {
 
-			//IDList_name = getIDList_byNameandValue("概要", "Aさん");
-			中間結果list.put("名称",getIDList_by小Map名andValue("名称", bean.get名称(), "=="));
+			//IDList_name = getIDList_byNameandValue("案件名称", "Aさん");
+			中間結果list.put("案件名称",getIDList_by小Map名andValue("案件名称", bean.get案件名称(), "=="));
 
 		}
 		Object getIDList_byNameandValue;
-		if (StringUtils.isNotEmpty(bean.get概要())) {
+		if (StringUtils.isNotEmpty(bean.get案件概要())) {
 
-			//IDList_name = getIDList_byNameandValue("概要", "Aさん");
-			中間結果list.put("概要",getIDList_by小Map名andValue("概要", bean.get概要(), "like"));
+			//IDList_name = getIDList_byNameandValue("案件概要", "Aさん");
+			中間結果list.put("案件概要",getIDList_by小Map名andValue("案件概要", bean.get案件概要(), "like"));
+
+		}
+		if (StringUtils.isNotEmpty(bean.get案件概要())) {
+
+			//IDList_name = getIDList_byNameandValue("案件場所", "Aさん");
+			中間結果list.put("案件場所",getIDList_by小Map名andValue("案件場所", bean.get案件場所(), "like"));
+
+		}
+		if (StringUtils.isNotEmpty(bean.get職種())) {
+
+			//IDList_name = getIDList_byNameandValue("職種", "Aさん");
+			中間結果list.put("職種",getIDList_by小Map名andValue("職種", bean.get職種(), "like"));
+
+		}
+		if (StringUtils.isNotEmpty(bean.get工程())) {
+
+			//IDList_name = getIDList_byNameandValue("職種", "Aさん");
+			中間結果list.put("工程",getIDList_by小Map名andValue("工程", bean.get工程(), "like"));
 
 		}
 
-		if (StringUtils.isNotEmpty(bean.get時期終了())) {
+		if (StringUtils.isNotEmpty(bean.get案件開始日_開始())) {
 
-			中間結果list.put("時期",getIDList_by小Map名andValue("時期", bean.get時期開始(), ">="));
-
-		}
-
-		if (StringUtils.isNotEmpty(bean.get時期終了())) {
-
-			中間結果list.put("時期",getIDList_by小Map名andValue("時期", bean.get時期終了(), "<="));
+			中間結果list.put("案件開始日",getIDList_by小Map名andValue("案件開始日", bean.get案件開始日_開始(), ">="));
 
 		}
 
-		if (StringUtils.isNotEmpty(bean.get場所())) {
+		if (StringUtils.isNotEmpty(bean.get案件開始日_終了())) {
 
-			中間結果list.put("場所",getIDList_by小Map名andValue("場所", bean.get場所(), ""));
+			中間結果list.put("案件開始日",getIDList_by小Map名andValue("案件開始日", bean.get案件開始日_終了(), "<="));
+
+		}
+
+		if (StringUtils.isNotEmpty(bean.get案件場所())) {
+
+			中間結果list.put("場所",getIDList_by小Map名andValue("場所", bean.get案件場所(), ""));
 		}
 
 
-		if (StringUtils.isNotEmpty(bean.get最少人数())) {
+		if (StringUtils.isNotEmpty(bean.get人数_開始())) {
 
-			中間結果list.put("開始入社月日",getIDList_by小Map名andValue("人数", bean.get最少人数(), ">="));
+			中間結果list.put("人数",getIDList_by小Map名andValue("人数", bean.get人数_開始(), ">="));
 		}
 
-		if (StringUtils.isNotEmpty(bean.get最大人数())) {
+		if (StringUtils.isNotEmpty(bean.get人数_終了())) {
 
-			中間結果list.put("終了入社月日",getIDList_by小Map名andValue("人数", bean.get最大人数(), "<="));
+			中間結果list.put("人数",getIDList_by小Map名andValue("人数", bean.get人数_終了(), "<="));
+		}
+
+		if (StringUtils.isNotEmpty(bean.get予定終了日_開始())) {
+
+			中間結果list.put("予定終了日",getIDList_by小Map名andValue("予定終了日", bean.get予定終了日_開始(), ">="));
+		}
+
+		if (StringUtils.isNotEmpty(bean.get予定終了日_終了())) {
+
+			中間結果list.put("予定終了日",getIDList_by小Map名andValue("予定終了日", bean.get予定終了日_終了(), "<="));
+		}
+
+		if (StringUtils.isNotEmpty(bean.get実際終了日_開始())) {
+
+			中間結果list.put("実際終了日",getIDList_by小Map名andValue("実際終了日", bean.get実際終了日_開始(), ">="));
+		}
+
+		if (StringUtils.isNotEmpty(bean.get予定終了日_終了())) {
+
+			中間結果list.put("実際終了日",getIDList_by小Map名andValue("実際終了日", bean.get実際終了日_終了(), "<="));
 		}
 		/*
 		if (StringUtils.isNotEmpty(bean.get契約種類())) {
@@ -310,7 +348,7 @@ public class 案件Service extends 親Service{
 		String ID = null;
 		try {
 			// ①採番
-			ID = file_db.採番(file_db.getSPath() + "名称" + ".txt")+1 +"";
+			ID = file_db.採番(file_db.getSPath() + "案件名称" + ".txt")+1 +"";
 
 		} catch (IOException e) {
 
@@ -323,17 +361,17 @@ public class 案件Service extends 親Service{
 
 			switch(s文件名) {
 
-			case "名称":
+			case "案件名称":
 
-				if(!StringUtils.isEmpty(bean.get名称())) {
-					file_db.文件書込(path, ID + "," + bean.get名称());
+				if(!StringUtils.isEmpty(bean.get案件名称())) {
+					file_db.文件書込(path, ID + "," + bean.get案件名称());
 				}
 				break;
 
-			case "概要":
+			case "案件概要":
 
-				if(!StringUtils.isEmpty(bean.get概要())) {
-					file_db.文件書込(path, ID + "," + bean.get概要());
+				if(!StringUtils.isEmpty(bean.get案件概要())) {
+					file_db.文件書込(path, ID + "," + bean.get案件概要());
 				}
 				break;
 
@@ -344,24 +382,52 @@ public class 案件Service extends 親Service{
 				}
 				break;
 
-			case "時期":
+			case "案件開始日":
 
-				if(!StringUtils.isEmpty(bean.get時期())) {
-					file_db.文件書込(path, ID + "," + bean.get時期());
+				if(!StringUtils.isEmpty(bean.get案件開始日())) {
+					file_db.文件書込(path, ID + "," + bean.get案件開始日());
 				}
 				break;
 
-			case "場所":
+			case "職種":
 
-				if(!StringUtils.isEmpty(bean.get場所())) {
-					file_db.文件書込(path, ID + "," + bean.get場所());
+				if(!StringUtils.isEmpty(bean.get職種())) {
+					file_db.文件書込(path, ID + "," + bean.get職種());
 				}
 				break;
 
 
+
+		case "工程":
+
+			if(!StringUtils.isEmpty(bean.get工程())) {
+				file_db.文件書込(path, ID + "," + bean.get工程());
 			}
+			break;
 
 
+
+		case "案件場所":
+
+			if(!StringUtils.isEmpty(bean.get案件場所())) {
+				file_db.文件書込(path, ID + "," + bean.get案件場所());
+			}
+			break;
+
+		case "予定終了日":
+
+			if(!StringUtils.isEmpty(bean.get予定終了日())) {
+				file_db.文件書込(path, ID + "," + bean.get案件概要());
+			}
+			break;
+
+		case "実際終了日":
+
+			if(!StringUtils.isEmpty(bean.get実際終了日())) {
+				file_db.文件書込(path, ID + "," + bean.get実際終了日());
+			}
+			break;
+		}
 		}
 	}
 
@@ -378,27 +444,47 @@ public class 案件Service extends 親Service{
 			file_db.文件書込(path, ID + "," + bean.get人数());
 		}
 
-		if(!StringUtils.equals(bean.getOld_名称(), bean.get名称())) {
-			String path = file_db.getSPath() +  "契約種類.txt";
-			file_db.文件書込(path, ID + "," + bean.get名称());
+		if(!StringUtils.equals(bean.getOld_案件名称(), bean.get案件名称())) {
+			String path = file_db.getSPath() +  "案件名称.txt";
+			file_db.文件書込(path, ID + "," + bean.get案件名称());
 
 		}
-		if(!StringUtils.equals(bean.getOld_概要(), bean.get概要())) {
-			String path = file_db.getSPath() +  "概要.txt";
-			file_db.文件書込(path, ID + "," + bean.get概要());
+		if(!StringUtils.equals(bean.getOld_案件概要(), bean.get案件概要())) {
+			String path = file_db.getSPath() +  "案件概要.txt";
+			file_db.文件書込(path, ID + "," + bean.get案件概要());
 
 		}
 
-		if(!StringUtils.equals(bean.getOld_時期(), bean.get時期())) {
-			String path = file_db.getSPath() +  "時期.txt";
-			file_db.文件書込(path, ID + "," + bean.get時期());
+		if(!StringUtils.equals(bean.getOld_案件開始日(), bean.get案件開始日())) {
+			String path = file_db.getSPath() +  "案件開始日.txt";
+			file_db.文件書込(path, ID + "," + bean.get案件開始日());
 
 		}
-		if(!StringUtils.equals(bean.getOld_場所(), bean.get場所())) {
-			String path = file_db.getSPath() +  "場所.txt";
-			file_db.文件書込(path, ID + "," + bean.get場所());
+		if(!StringUtils.equals(bean.getOld_案件場所(), bean.get案件場所())) {
+			String path = file_db.getSPath() +  "案件場所.txt";
+			file_db.文件書込(path, ID + "," + bean.get案件場所());
 		}
 
+
+		if(!StringUtils.equals(bean.getOld_職種(), bean.get職種())) {
+			String path = file_db.getSPath() +  "職種.txt";
+			file_db.文件書込(path, ID + "," + bean.get職種());
+
+		}
+
+		if(!StringUtils.equals(bean.getOld_工程(), bean.get工程())) {
+			String path = file_db.getSPath() +  "工程.txt";
+			file_db.文件書込(path, ID + "," + bean.get工程());
+
+		}
+		if(!StringUtils.equals(bean.getOld_予定終了日(), bean.get予定終了日())) {
+			String path = file_db.getSPath() +  "予定終了日.txt";
+			file_db.文件書込(path, ID + "," + bean.get予定終了日());
+		}
+		if(!StringUtils.equals(bean.getOld_実際終了日(), bean.get実際終了日())) {
+			String path = file_db.getSPath() +  "実際終了日.txt";
+			file_db.文件書込(path, ID + "," + bean.get実際終了日());
+		}
 	}
 
 	public void 削除案件_by案件Bean(案件Bean bean) {
