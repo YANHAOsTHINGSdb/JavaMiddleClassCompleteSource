@@ -23,6 +23,11 @@
 		    $("#fbean").submit();
 		});
 
+		$("#report_btn").click(function() {
+		    $("#fbean").attr("action","http://localhost:8080/JavaMiddleClassCompleteSource/社員report");
+		    $("#fbean").submit();
+		});
+
 		$("#save_btn").click(function() {
 			if("${モード}" == "編集"){
 			    $("#fbean").attr("action","http://localhost:8080/JavaMiddleClassCompleteSource/社員update");
@@ -106,7 +111,10 @@
 		<input type="button" id="back_btn" Value="戻る">
 	</div>
 	<br>
-
+	<div>
+		<input type="button" id="report_btn" Value="帐票出力">
+	</div>
+	<br>
 	<div>
 		<input type="button" id="save_btn" Value="登録">
 	</div>

@@ -1,3 +1,5 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ page session="false" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -21,7 +23,7 @@
 			<label>资格-等级</label> <input id="资格-等级" name="资格-等级" type="text" value="">
 		</div>
 		<div>
-			<label>年数-开始年月</label> <input id="年数-开始年月" name="年数-开始年月" type="text" value="">
+			<label>年数-开始年月</label> <input id="年数-开始年月開始" name="年数-开始年月開始" placeholder="YYYY/MM" type="text" value="">〜 <input id="年数-开始年月終了" name="年数-开始年月終了" placeholder="YYYY/MM" type="text" value="">
 		</div>
 		<div>
 			<label>技术备考说明</label> <input id="技术备考说明" name="技术备考说明" type="text" value="">
@@ -43,10 +45,10 @@
 			<label>所在工程</label> <input id="所在工程" name="所在工程" type="text" value="">
 		</div>
 		<div>
-			<label>开始时间</label> <input id="开始时间" name="开始时间" type="text" value="">
+			<label>开始时间</label> <input id="开始时间開始" name="开始时间開始" placeholder="YYYY/MM" type="text" value="">〜 <input id="开始时间終了" placeholder="YYYY/MM" name="开始时间終了" type="text" value="">
 		</div>
 		<div>
-			<label>经验月数</label> <input id="经验月数" name="经验月数" type="text" value="">
+			<label>经验月数</label> <input id="经验月数開始" name="经验月数開始" type="text" value="">〜 <input id="经验月数終了" name="经验月数終了" type="text" value="">
 		</div>
 		<br>
 		<div>
