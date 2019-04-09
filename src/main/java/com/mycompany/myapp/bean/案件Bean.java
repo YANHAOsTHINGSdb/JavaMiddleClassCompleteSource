@@ -27,22 +27,28 @@ public class 案件Bean {
 	String 案件名称;
 	String 案件概要;
 	String 案件場所;
-	String 職種;
-	String 工程;
-	String 案件開始日;
-	String 予定終了日;
-	String 実際終了日;
-	String 人数;
+	String 担当職種;
+	String 所在工程;
+	String 作業開始年月日;
+	String 作業预计终了年月; //主要应对提前退场、或者案件延期的情况
+	String 作業实际终了年月;
+	String 募集人数;
+	String チーム人数;
+	String 開発言語;
+	String FrameWork;
+	String ツール;
+	String OS;
+	String DB;
 
 	String old_案件名称;
 	String old_案件概要;
 	String old_案件場所;
-	String old_職種;
-	String old_工程;
-	String old_案件開始日;
-	String old_予定終了日;
-	String old_実際終了日;
-	String old_人数;
+	String old_担当職種;
+	String old_所在工程;
+	String old_作業開始年月日;
+	String old_作業预计终了年月;
+	String old_作業实际终了年月;
+	String old_募集人数;
 
 
 

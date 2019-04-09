@@ -22,7 +22,7 @@ import com.mycompany.myapp.service.親Service;
 
 public class 案件Service extends 親Service{
 	// "名称" 必须放在0号位，否则全件检索时会出问题
-	String[] fileName = { "案件名称", "案件概要", "案件場所", "職種", "工程", "案件開始日", "予定終了日", "実際終了日", "人数" };
+	String[] fileName = { "案件名称", "案件概要", "案件場所", "担当職種", "所在工程", "作業開始年月", "作業预计终了年月", "作業实际终了年月", "募集人数", "チーム人数", "開発言語" , "FrameWork", "ツール", "OS", "DB"};
 
 	文件db file_db = new 文件db("案件");
 
@@ -81,17 +81,17 @@ public class 案件Service extends 親Service{
 				小Map = entry.getValue();
 				案件bean.set案件概要(小Map.get(案件id));
 				break;
-			case "時期":
+			case "作業開始年月日":
 				小Map = entry.getValue();
-				案件bean.set案件開始日(小Map.get(案件id));
+				案件bean.set作業開始年月日(小Map.get(案件id));
 				break;
-			case "場所":
+			case "案件場所":
 				小Map = entry.getValue();
 				案件bean.set案件場所(小Map.get(案件id));
 				break;
-			case "人数":
+			case "募集人数":
 				小Map = entry.getValue();
-				案件bean.set人数(小Map.get(案件id));
+				案件bean.set募集人数(小Map.get(案件id));
 				break;
 			}
 		}
@@ -375,33 +375,33 @@ public class 案件Service extends 親Service{
 				}
 				break;
 
-			case "人数":
+			case "募集人数":
 
-				if(!StringUtils.isEmpty(bean.get人数())) {
-					file_db.文件書込(path, ID + "," + bean.get人数());
+				if(!StringUtils.isEmpty(bean.get募集人数())) {
+					file_db.文件書込(path, ID + "," + bean.get募集人数());
 				}
 				break;
 
-			case "案件開始日":
+			case "作業開始年月日":
 
-				if(!StringUtils.isEmpty(bean.get案件開始日())) {
-					file_db.文件書込(path, ID + "," + bean.get案件開始日());
+				if(!StringUtils.isEmpty(bean.get作業開始年月日())) {
+					file_db.文件書込(path, ID + "," + bean.get作業開始年月日());
 				}
 				break;
 
-			case "職種":
+			case "担当職種":
 
-				if(!StringUtils.isEmpty(bean.get職種())) {
-					file_db.文件書込(path, ID + "," + bean.get職種());
+				if(!StringUtils.isEmpty(bean.get担当職種())) {
+					file_db.文件書込(path, ID + "," + bean.get担当職種());
 				}
 				break;
 
 
 
-		case "工程":
+		case "所在工程":
 
-			if(!StringUtils.isEmpty(bean.get工程())) {
-				file_db.文件書込(path, ID + "," + bean.get工程());
+			if(!StringUtils.isEmpty(bean.get所在工程())) {
+				file_db.文件書込(path, ID + "," + bean.get所在工程());
 			}
 			break;
 
@@ -414,17 +414,17 @@ public class 案件Service extends 親Service{
 			}
 			break;
 
-		case "予定終了日":
+		case "作業预计终了年月":
 
-			if(!StringUtils.isEmpty(bean.get予定終了日())) {
-				file_db.文件書込(path, ID + "," + bean.get案件概要());
+			if(!StringUtils.isEmpty(bean.get作業预计终了年月())) {
+				file_db.文件書込(path, ID + "," + bean.get作業预计终了年月());
 			}
 			break;
 
 		case "実際終了日":
 
-			if(!StringUtils.isEmpty(bean.get実際終了日())) {
-				file_db.文件書込(path, ID + "," + bean.get実際終了日());
+			if(!StringUtils.isEmpty(bean.get作業实际终了年月())) {
+				file_db.文件書込(path, ID + "," + bean.get作業实际终了年月());
 			}
 			break;
 		}
@@ -439,9 +439,9 @@ public class 案件Service extends 親Service{
 		file_db.情報読み込み(fileName);
 		String ID = bean.getS_ID();
 
-		if(!StringUtils.equals(bean.getOld_人数(), bean.get人数())) {
-			String path = file_db.getSPath() +  "人数.txt";
-			file_db.文件書込(path, ID + "," + bean.get人数());
+		if(!StringUtils.equals(bean.getOld_募集人数(), bean.get募集人数())) {
+			String path = file_db.getSPath() +  "募集人数.txt";
+			file_db.文件書込(path, ID + "," + bean.get募集人数());
 		}
 
 		if(!StringUtils.equals(bean.getOld_案件名称(), bean.get案件名称())) {
@@ -455,9 +455,9 @@ public class 案件Service extends 親Service{
 
 		}
 
-		if(!StringUtils.equals(bean.getOld_案件開始日(), bean.get案件開始日())) {
-			String path = file_db.getSPath() +  "案件開始日.txt";
-			file_db.文件書込(path, ID + "," + bean.get案件開始日());
+		if(!StringUtils.equals(bean.getOld_作業開始年月日(), bean.get作業開始年月日())) {
+			String path = file_db.getSPath() +  "作業開始年月日.txt";
+			file_db.文件書込(path, ID + "," + bean.get作業開始年月日());
 
 		}
 		if(!StringUtils.equals(bean.getOld_案件場所(), bean.get案件場所())) {
@@ -466,24 +466,24 @@ public class 案件Service extends 親Service{
 		}
 
 
-		if(!StringUtils.equals(bean.getOld_職種(), bean.get職種())) {
-			String path = file_db.getSPath() +  "職種.txt";
-			file_db.文件書込(path, ID + "," + bean.get職種());
+		if(!StringUtils.equals(bean.getOld_担当職種(), bean.get担当職種())) {
+			String path = file_db.getSPath() +  "担当職種.txt";
+			file_db.文件書込(path, ID + "," + bean.get担当職種());
 
 		}
 
-		if(!StringUtils.equals(bean.getOld_工程(), bean.get工程())) {
+		if(!StringUtils.equals(bean.getOld_所在工程(), bean.get所在工程())) {
 			String path = file_db.getSPath() +  "工程.txt";
-			file_db.文件書込(path, ID + "," + bean.get工程());
+			file_db.文件書込(path, ID + "," + bean.get所在工程());
 
 		}
-		if(!StringUtils.equals(bean.getOld_予定終了日(), bean.get予定終了日())) {
-			String path = file_db.getSPath() +  "予定終了日.txt";
-			file_db.文件書込(path, ID + "," + bean.get予定終了日());
+		if(!StringUtils.equals(bean.getOld_作業開始年月日(), bean.get作業開始年月日())) {
+			String path = file_db.getSPath() +  "作業開始年月日.txt";
+			file_db.文件書込(path, ID + "," + bean.get作業開始年月日());
 		}
-		if(!StringUtils.equals(bean.getOld_実際終了日(), bean.get実際終了日())) {
-			String path = file_db.getSPath() +  "実際終了日.txt";
-			file_db.文件書込(path, ID + "," + bean.get実際終了日());
+		if(!StringUtils.equals(bean.getOld_作業实际终了年月(), bean.get作業实际终了年月())) {
+			String path = file_db.getSPath() +  "作業实际终了年月.txt";
+			file_db.文件書込(path, ID + "," + bean.get作業实际终了年月());
 		}
 	}
 
