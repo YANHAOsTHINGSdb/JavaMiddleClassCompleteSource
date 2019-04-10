@@ -1,10 +1,12 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
-	<script type="text/javascript">
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<!-- 	<script type="text/javascript">
     //取得指定id的对象
     function getObj(id){
         return document.getElementById(id);
@@ -36,19 +38,95 @@
         var tab=row.parentNode;
         tab.deleteRow(row.rowIndex);
     }
+</script> -->
+<script>
+	$(function() {
+		$("#back_btn").click(function() {
+		    $("#fbean").attr("action","http://localhost:8080/JavaMiddleClassCompleteSource/技術者back");
+		    $("#fbean").submit();
+		});
+
+		$("#report_btn").click(function() {
+		    $("#fbean").attr("action","http://localhost:8080/JavaMiddleClassCompleteSource/技術者report");
+		    $("#fbean").submit();
+		});
+
+		$("#save_btn").click(function() {
+			if("${モード}" == "編集"){
+			    $("#fbean").attr("action","http://localhost:8080/JavaMiddleClassCompleteSource/技術者update");
+			    $("#fbean").submit();
+
+			}else{
+			    $("#fbean").attr("action","http://localhost:8080/JavaMiddleClassCompleteSource/技術者save");
+			    $("#fbean").submit();
+			}
+		});
+	});
+	</script>
+	<script>
+	// Jquery动态给表格添加、删除行
+	// https://blog.csdn.net/u011955534/article/details/16809023
+	$(document).ready(function(){
+		$("#btn_ADD技術情報").click(function(){
+			var tr = "<tr class='CaseRow'>";
+			tr += "<td><input type='text' id='技术方向'></input></td>";
+			tr += "<td><input type='text' id='技术项目'></input></td>";
+			tr += "<td><input type='text' id='资格_等级'></input></td>";
+			tr += "<td><input type='text' id='年数'></input></td>";
+			tr += "<td><input type='text' id='开始年月'></input></td>";
+			tr += "<td><input type='text' id='技术备考说明'/></td>";
+			tr += "<td><input type='checkbox' /></td></tr>";
+
+			//$("table").append(tr);//向table中追加tr
+			$("#table_技術情報").append(tr);//向table中追加tr
+		});
+		$("#btn_DEL技術情報").click(function(){
+			var num=$("#t1 tr").filter(".CaseRow").size();//获得表格行数
+			// alert(num);
+			if(num==1){
+				// alert("留一行，好不好");
+				return;
+			}
+			var t=$("input:checked").parent().parent("tr").remove();//移除选中的行
+		});
+
+		$("#btn_ADD経験案件情報").click(function(){
+			var tr = "<tr class='CaseRow'>";
+			tr += "<td><input type='text' id='经验案件名'></input></td>";
+			tr += "<td><input type='text' id='经验案件概要'></input></td>";
+			tr += "<td><input type='text' id='经验案件地点'></input></td>";
+			tr += "<td><input type='text' id='担当职种'></input></td>";
+			tr += "<td><input type='text' id='所在工程'></input></td>";
+			tr += "<td><input type='text' id='作業開始年月日'></input></td>";
+			tr += "<td><input type='text' id='作業实际终了年月'></input></td>";
+			tr += "<td><input type='checkbox' /></td></tr>";
+
+			//$("table").append(tr);//向table中追加tr
+			$("#table_経験案件情報").append(tr);//向table中追加tr
+		});
+		$("#btn_DEL経験案件情報").click(function(){
+			var num=$("#t1 tr").filter(".CaseRow").size();//获得表格行数
+			// alert(num);
+			if(num==1){
+				// alert("留一行，好不好");
+				return;
+			}
+			var t=$("input:checked").parent().parent("tr").remove();//移除选中的行
+		});
+	});
+
 </script>
 
+<form id ="fbean" name="fbean" method="post">
 <body>
 		<h1>技術者追加編集照会</h1>
 		<br>
 		<div>
 			<input id="s_ID" name="s_ID" type="hidden" Value="">
 		</div>
-		<br>
 		<div>
-			<label>社員CD</label> <input id="社員CD" name="社員CD" type="text" value=""><input type="button" id="search_btn" value="検索">
+			<label>社員CD</label> <label id="社員CD" name="社員CD" type="text" value=""/><input type="button" id="search_btn" value="検索">
 		</div>
-		<br>
 		<div>
 			<label>姓名</label> <input id="姓名" name="姓名" type="text" value="">
 		</div>
@@ -111,25 +189,51 @@
 		<div>
 			<label>仕事(留学)経験開始年月</label> <input id="仕事_留学_経験開始年月" name="仕事_留学_経験開始年月" type="text" value="">
 		</div>
+		<br>
 
-<input type="button" value="添加技术情報"  onclick="add技术情報Row('tab')"/><!-- 注意这里是用id唯一识别 -->
-<table width="350" height="36" border="1" id="tab">
-	<tr>
-		<th width="64" height="30" scope="col">技术方向</th>
-		<th width="64" scope="col">技术项目</th>
-		<th width="60" scope="col">资格-等级</th>
-		<th width="60" scope="col">年数</th><!-- 年数与开始年月、任填其一即可，但不允许有矛盾的存在 -->
-		<th width="60" scope="col">开始年月</th><!-- 年数与开始年月、任填其一即可，但不允许有矛盾的存在 -->
-		<th width="120" scope="col">技术备考说明</th>
-	</tr>
-</table>
-		<div>
-			<input type="submit" id="add_btn" value="追加"> <input type="button" id="delete_btn" value="削除">
-		</div>
+	<label>技術情報</label>
+	<table width="1050" height="36" border="1" id="table_技術情報">
+		<tr>
+			<th width="120" height="30" scope="col">技术方向</th>
+			<th width="120" scope="col">技术项目</th>
+			<th width="120" scope="col">资格-等级</th>
+			<th width="60" scope="col">年数</th><!-- 年数与开始年月、任填其一即可，但不允许有矛盾的存在 -->
+			<th width="120" scope="col">开始年月</th><!-- 年数与开始年月、任填其一即可，但不允许有矛盾的存在 -->
+			<th width="220" scope="col">技术备考说明</th>
+			<th width="30" scope="col">削除</th>
+		</tr>
+	</table>
+	<input type="button" value="ADD技術情報" id="btn_ADD技術情報"/>
+	<input type="button" value="DEL技術情報" id="btn_DEL技術情報"/>
+
 		<br>
 		<br>
+
+	<label>経験案件情報</label>
+	<table width="1050" height="36" border="1" id="table_経験案件情報">
+		<tr>
+			<th width="120" height="30" scope="col">经验案件名</th>
+			<th width="120" scope="col">经验案件概要</th>
+			<th width="120" scope="col">经验案件地点</th>
+			<th width="60" scope="col">担当职种</th><!-- 年数与开始年月、任填其一即可，但不允许有矛盾的存在 -->
+			<th width="120" scope="col">所在工程</th><!-- 年数与开始年月、任填其一即可，但不允许有矛盾的存在 -->
+			<th width="220" scope="col">作業開始年月日</th>
+			<th width="220" scope="col">作業实际终了年月</th>
+			<th width="30" scope="col">削除</th>
+		</tr>
+	</table>
+	<input type="button" value="ADD経験案件情報" id="btn_ADD経験案件情報"/>
+	<input type="button" value="DEL経験案件情報" id="btn_DEL経験案件情報"/>
+
+		<br>
+		<br>
+		<br>
+
+	<div>
+		<input type="button" id="report_btn" Value="技術者履歴書出力">
+	</div>
 		<div>
-			<input type="button" id="login_btn" value="登録">
+			<input type="button" id="add_btn" value="登録">
 		</div>
 		<div>
 			<input type="button" id="back_btn" value="戻る">
@@ -150,4 +254,5 @@
 		    <div id="example-table"></div>
 		</div>
 </body>
+</form>
 </html>
