@@ -330,19 +330,19 @@ public class 案件Service extends 親Service{
 
 	public String 追加案件_by案件Bean(案件Bean bean) {
 
-		文件db file_db = new 文件db("案件");
-
-		// ①チェック入力
-		file_db.情報読み込み(fileName);
+//		文件db file_db = new 文件db("案件");
+//
+//		// ①チェック入力
+//		file_db.情報読み込み(fileName);
 
 		// ②追加処理
-		追加案件_byFile_db_案件Bean(file_db, bean);
+		追加案件_byFile_db_案件Bean(bean);
 
 
 		return "";
 	}
 
-	private void 追加案件_byFile_db_案件Bean(文件db file_db2, 案件Bean bean) {
+	private void 追加案件_byFile_db_案件Bean(案件Bean bean) {
 
 		String path;
 		String ID = null;
