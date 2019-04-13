@@ -40,9 +40,6 @@
 		});
 
 	});
-
-
-
 	</script>
 
 	<form id ="fbean" name="fbean" method="post">

@@ -47,7 +47,7 @@
 
 				$.ajax({
 					type : "GET",
-					url : "http://localhost:8080/JavaMiddleClassCompleteSource/案件getTestData",
+					url : "http://localhost:8080/JavaMiddleClassCompleteSource/案件search",
 					dataType : "json", //dataType设置成 json，这个意思是说 ’服务器的数据返回的是json格式数据，需要帮我把数据转换成对象
 					data : JSON.stringify(JSONdata),
 					scriptCharset : 'utf-8',
@@ -89,7 +89,7 @@
 
 				$.ajax({
 					type : 'POST',
-					url : "http://localhost:8080/JavaMiddleClassCompleteSource/案件getTestData",
+					url : "http://localhost:8080/JavaMiddleClassCompleteSource/案件search",
 					dataType : "json", //dataType设置成 json，这个意思是说 ’服务器的数据返回的是json格式数据，需要帮我把数据转换成对象
 					contentType : "application/json",
 
@@ -198,7 +198,7 @@
 
 			$.ajax({
 				type : 'POST',
-				url : "http://localhost:8080/JavaMiddleClassCompleteSource/案件getTestData",
+				url : "http://localhost:8080/JavaMiddleClassCompleteSource/案件search",
 				dataType : "json", //dataType设置成 json，这个意思是说 ’服务器的数据返回的是json格式数据，需要帮我把数据转换成对象
 				contentType : "application/json",
 
@@ -253,7 +253,7 @@
 				success : function(data) {
 
 					$("#theForm").attr("action",
-							"http://localhost:8080/JavaMiddleClassCompleteSource/案件getTestData");
+							"http://localhost:8080/JavaMiddleClassCompleteSource/案件search");
 					$("#theForm").submit();
 				},
 				error : function(e) {

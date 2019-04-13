@@ -46,11 +46,11 @@ public class 案件Controller {
 		return "案件検索";
 	}
 
-	@RequestMapping(value = "案件getTestData", method = RequestMethod.POST)
+	@RequestMapping(value = "案件search", method = RequestMethod.POST)
 	@ResponseBody //将返回结果转成Json
-	public List<案件Bean> 案件getTestData(@RequestBody 案件検索Bean 検索bean) {//@RequestBody 将Json转成Java对象
+	public List<案件Bean> 案件search(@RequestBody 案件検索Bean 検索bean) {//@RequestBody 将Json转成Java对象
 
-		logger.info("call 案件getTestData");
+		logger.info("call 案件search");
 
 		案件Service 案件service = new 案件Service();
 
@@ -67,12 +67,12 @@ public class 案件Controller {
 		model.addAttribute("案件名称", bean.get案件名称());
 		model.addAttribute("案件概要", bean.get案件概要());
 		model.addAttribute("案件場所", bean.get案件場所());
-		model.addAttribute("職種", bean.get職種());
-		model.addAttribute("工程", bean.get工程());
-		model.addAttribute("案件開始日", bean.get案件開始日());
-		model.addAttribute("予定終了日", bean.get予定終了日());
-		model.addAttribute("実際終了日", bean.get実際終了日());
-		model.addAttribute("人数", bean.get人数());
+		model.addAttribute("担当職種", bean.get担当職種());
+		model.addAttribute("所在工程", bean.get所在工程());
+		model.addAttribute("作業開始年月日", bean.get作業開始年月日());
+		model.addAttribute("作業预计终了年月", bean.get作業预计终了年月());
+		model.addAttribute("作業实际终了年月", bean.get作業实际终了年月());
+		model.addAttribute("募集人数", bean.get募集人数());
 
 		return "案件明細";
 
@@ -103,12 +103,12 @@ public class 案件Controller {
 			model.addAttribute("案件名称", bean.get案件名称());
 			model.addAttribute("案件概要", bean.get案件概要());
 			model.addAttribute("案件場所", bean.get案件場所());
-			model.addAttribute("職種", bean.get職種());
-			model.addAttribute("工程", bean.get工程());
-			model.addAttribute("案件開始日", bean.get案件開始日());
-			model.addAttribute("予定終了日", bean.get予定終了日());
-			model.addAttribute("実際終了日", bean.get実際終了日());
-			model.addAttribute("人数", bean.get人数());
+			model.addAttribute("担当職種", bean.get担当職種());
+			model.addAttribute("所在工程", bean.get所在工程());
+			model.addAttribute("作業開始年月日", bean.get作業開始年月日());
+			model.addAttribute("作業预计终了年月", bean.get作業预计终了年月());
+			model.addAttribute("作業实际终了年月", bean.get作業实际终了年月());
+			model.addAttribute("募集人数", bean.get募集人数());
 
 			return "案件明細";
 		}
