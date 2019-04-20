@@ -10,6 +10,7 @@ import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.math.NumberUtils;
@@ -342,7 +343,7 @@ public class 案件Service extends 親Service{
 		return "";
 	}
 
-	private void 追加案件_byFile_db_案件Bean(案件Bean bean) {
+	private String 追加案件_byFile_db_案件Bean(案件Bean bean) {
 
 		String path;
 		String ID = null;
@@ -398,37 +399,38 @@ public class 案件Service extends 親Service{
 
 
 
-		case "所在工程":
+			case "所在工程":
 
-			if(!StringUtils.isEmpty(bean.get所在工程())) {
-				file_db.文件書込(path, ID + "," + bean.get所在工程());
+				if(!StringUtils.isEmpty(bean.get所在工程())) {
+					file_db.文件書込(path, ID + "," + bean.get所在工程());
+				}
+				break;
+
+
+
+			case "案件場所":
+
+				if(!StringUtils.isEmpty(bean.get案件場所())) {
+					file_db.文件書込(path, ID + "," + bean.get案件場所());
+				}
+				break;
+
+			case "作業预计终了年月":
+
+				if(!StringUtils.isEmpty(bean.get作業预计终了年月())) {
+					file_db.文件書込(path, ID + "," + bean.get作業预计终了年月());
+				}
+				break;
+
+			case "実際終了日":
+
+				if(!StringUtils.isEmpty(bean.get作業实际终了年月())) {
+					file_db.文件書込(path, ID + "," + bean.get作業实际终了年月());
+				}
+				break;
 			}
-			break;
-
-
-
-		case "案件場所":
-
-			if(!StringUtils.isEmpty(bean.get案件場所())) {
-				file_db.文件書込(path, ID + "," + bean.get案件場所());
-			}
-			break;
-
-		case "作業预计终了年月":
-
-			if(!StringUtils.isEmpty(bean.get作業预计终了年月())) {
-				file_db.文件書込(path, ID + "," + bean.get作業预计终了年月());
-			}
-			break;
-
-		case "実際終了日":
-
-			if(!StringUtils.isEmpty(bean.get作業实际终了年月())) {
-				file_db.文件書込(path, ID + "," + bean.get作業实际终了年月());
-			}
-			break;
 		}
-		}
+		return ID;
 	}
 
 	public void 更新案件_by案件Bean(案件Bean bean) {
@@ -533,6 +535,40 @@ public class 案件Service extends 親Service{
 	        e.printStackTrace();
 	    }
 	    return true;
+	}
+
+	public List 登陆案件情報List(List<Map<String, String>> 経験_案件情報ListMap) {
+		List 案件情報IDList = new ArrayList();
+		for(Map<String, String> 案件情报Map : 経験_案件情報ListMap) {
+			案件Bean 案件bean = get案件BeanFrom案件情报Map(案件情报Map);
+			案件情報IDList.add(追加案件_byFile_db_案件Bean(案件bean));
+		}
+		return 案件情報IDList;
+	}
+
+	private 案件Bean get案件BeanFrom案件情报Map(Map<String, String> 案件情报map) {
+		案件Bean 案件bean = new 案件Bean();
+		for(Entry<String, String> entry : 案件情报map.entrySet()) {
+			switch(entry.getKey()) {
+			case "案件ID":案件bean.set案件ID(entry.getValue());break;
+			case "案件名称":案件bean.set案件名称(entry.getValue());break;
+			case "案件概要":案件bean.set案件名称(entry.getValue());break;
+			case "案件場所":案件bean.set案件場所(entry.getValue());break;
+			case "担当職種":案件bean.set担当職種(entry.getValue());break;
+			case "所在工程":案件bean.set所在工程(entry.getValue());break;
+			case "作業開始年月日":案件bean.set作業開始年月日(entry.getValue());break;
+			case "作業预计终了年月":案件bean.set作業预计终了年月(entry.getValue());break;
+			case "作業实际终了年月":案件bean.set作業实际终了年月(entry.getValue());break;
+			case "募集人数":案件bean.set募集人数(entry.getValue());break;
+			case "チーム人数":案件bean.setチーム人数(entry.getValue());break;
+			case "開発言語":案件bean.set開発言語(entry.getValue());break;
+			case "FrameWork":案件bean.setFrameWork(entry.getValue());break;
+			case "ツール":案件bean.setツール(entry.getValue());break;
+			case "OS":案件bean.setOS(entry.getValue());break;
+			case "DB":案件bean.setDB(entry.getValue());break;
+			}
+		}
+		return 案件bean;
 	}
 }
 

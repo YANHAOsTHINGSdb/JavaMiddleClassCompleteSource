@@ -1,5 +1,6 @@
 package com.mycompany.myapp.service;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -62,5 +63,22 @@ public class 親Service {
 
 		return 最終結果list;
 	}
+/**
+ *
+ * @param s業務名 例　"案件名称"
+ * @return
+ */
+	protected String ID採番(文件db file_db, String s項目名) {
 
+		try {
+			// ①採番
+			return file_db.採番(file_db.getSPath() + s項目名 + ".txt")+1 +"";
+
+		} catch (IOException e) {
+
+			e.printStackTrace();
+		}
+		return null;
+
+	}
 }

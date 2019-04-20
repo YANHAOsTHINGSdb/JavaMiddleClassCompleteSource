@@ -5,13 +5,16 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.lang.StringUtils;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -24,6 +27,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.mycompany.myapp.bean.技術者Bean;
 import com.mycompany.myapp.bean.案件Bean;
+import com.mycompany.myapp.service.impl.技術者Service;
 
 import cn.afterturn.easypoi.excel.ExcelExportUtil;
 import cn.afterturn.easypoi.excel.entity.TemplateExportParams;
@@ -34,7 +38,7 @@ public class 技術者Controller {
 	private static final Logger logger = LoggerFactory.getLogger(技術者Controller.class);
 
 	@RequestMapping(value = "/技術者", method = RequestMethod.GET)
-	public String 案件(Locale locale, Model model) {
+	public String 技術者(Locale locale, Model model) {
 		logger.info("call 技術者");
 
 		Date date = new Date();
@@ -49,7 +53,7 @@ public class 技術者Controller {
 	}
 
 	@RequestMapping(value = "技術者edit", method = RequestMethod.GET)
-	public String 案件edit(案件Bean bean, Model model) {
+	public String 技術者edit(案件Bean bean, Model model) {
 		logger.info("call 案件edit");
 
 //		model.addAttribute("titleName", "技術者編集");
@@ -66,7 +70,33 @@ public class 技術者Controller {
 //		model.addAttribute("募集人数", bean.get募集人数());
 
 		return "技術者明細";
+	}
 
+
+	@RequestMapping(value = "技術者save", method = RequestMethod.POST)
+	public String 技術者save(@ModelAttribute("fbean") 技術者Bean bean, Model model) {
+
+		技術者Service 技術者service = new 技術者Service();
+
+		String sMsg = 技術者service.追加技術者_by技術者Bean(bean);
+		if (StringUtils.isEmpty(sMsg)) {
+			return "技術者検索";
+
+		} else {
+//			model.addAttribute("titleName", "案件追加");
+//			model.addAttribute("s_ID", bean.getS_ID());
+//			model.addAttribute("案件名称", bean.get案件名称());
+//			model.addAttribute("案件概要", bean.get案件概要());
+//			model.addAttribute("案件場所", bean.get案件場所());
+//			model.addAttribute("担当職種", bean.get担当職種());
+//			model.addAttribute("所在工程", bean.get所在工程());
+//			model.addAttribute("作業開始年月日", bean.get作業開始年月日());
+//			model.addAttribute("作業预计终了年月", bean.get作業预计终了年月());
+//			model.addAttribute("作業实际终了年月", bean.get作業实际终了年月());
+//			model.addAttribute("募集人数", bean.get募集人数());
+
+			return "案件明細";
+		}
 	}
 
     @RequestMapping(value="技術者report")
@@ -125,6 +155,7 @@ public class 技術者Controller {
         // 设置sheetName，若不设置该参数，则使用得原本得sheet名称
         // params.setSheetName("社員信息");
         params.setSheetName("sheet1");
+        params.setColForEach(true);
         Map<String,Object> map = new HashMap<String,Object>() ;
 
         /**
@@ -157,6 +188,133 @@ public class 技術者Controller {
         map.put("仕事_留学_経験有無", 技術者bean.get仕事_留学_経験有無()==null?"":技術者bean.get仕事_留学_経験有無());
         map.put("仕事_留学_経験開始年月", 技術者bean.get仕事_留学_経験開始年月()==null?"":技術者bean.get仕事_留学_経験開始年月());
 
+        map.put("OS技術項目1","Unix");
+        map.put("OS年数1","5");
+        map.put("OS技術項目2","Linux");
+        map.put("OS年数2","5");
+        map.put("OS技術項目3","Windows");
+        map.put("OS年数3","5");
+        map.put("OS技術項目4","Win2000/XP");
+        map.put("OS年数4","5");
+        map.put("OS技術項目5","");
+        map.put("OS年数5","");
+        map.put("OS技術項目6","");
+        map.put("OS年数6","");
+        map.put("OS技術項目7","");
+        map.put("OS年数7","");
+        map.put("OS技術項目8","");
+        map.put("OS年数8","");
+
+        map.put("DB技術項目1","SYBASE");
+        map.put("DB年数1","5");
+        map.put("DB技術項目2","Oracle");
+        map.put("DB年数2","5");
+        map.put("DB技術項目3","SQL Server");
+        map.put("DB年数3","5");
+        map.put("DB技術項目4","Access");
+        map.put("DB年数4","5");
+        map.put("DB技術項目5","MongoDB");
+        map.put("DB年数5","5");
+        map.put("DB技術項目6","PostgreSQL");
+        map.put("DB年数6","5");
+        map.put("DB技術項目7","MｙSQL");
+        map.put("DB年数7","5");
+        map.put("DB技術項目8","");
+        map.put("DB年数8","");
+
+        map.put("tool技術項目1","C");
+        map.put("tool年数1","5");
+        map.put("tool技術項目2","C++");
+        map.put("tool年数2","5");
+        map.put("tool技術項目3","C＃");
+        map.put("tool年数3","5");
+        map.put("tool技術項目4","ABAP");
+        map.put("tool年数4","5");
+        map.put("tool技術項目5","SQL");
+        map.put("tool年数5","5");
+        map.put("tool技術項目6","Excel");
+        map.put("tool年数6","5");
+        map.put("tool技術項目7","PL /SQL");
+        map.put("tool年数7","5");
+        map.put("tool技術項目8","PHP");
+        map.put("tool年数8","5");
+        map.put("tool技術項目9","JSP");
+        map.put("tool年数9","5");
+        map.put("tool技術項目10","JavaScript");
+        map.put("tool年数10","5");
+        map.put("tool技術項目11","HTML");
+        map.put("tool年数11","5");
+        map.put("tool技術項目12","VB.net");
+        map.put("tool年数12","5");
+        map.put("tool技術項目13","Java");
+        map.put("tool年数13","5");
+        map.put("tool技術項目14","SALESFORCE");
+        map.put("tool年数14","5");
+        map.put("tool技術項目15","VBScript");
+        map.put("tool年数15","5");
+        map.put("tool技術項目16","");
+        map.put("tool年数16","");
+
+        map.put("業種技術項目1","建設業");
+        map.put("業種年数1","");
+        map.put("業種技術項目2","官公庁・自治体");
+        map.put("業種年数2","");
+        map.put("業種技術項目3","製造業");
+        map.put("業種年数3","5");
+        map.put("業種技術項目4","流通業");
+        map.put("業種年数4","5");
+        map.put("業種技術項目5","ゲーム");
+        map.put("業種年数5","");
+        map.put("業種技術項目6","小売業");
+        map.put("業種年数6","");
+        map.put("業種技術項目7","金融・保険");
+        map.put("業種年数7","5");
+        map.put("業種技術項目8","");
+        map.put("業種年数8","");
+
+        map.put("業務技術項目1","財務会計");
+        map.put("業務年数1","5");
+        map.put("業務技術項目2","生産管理");
+        map.put("業務年数2","5");
+        map.put("業務技術項目3","人事・給与");
+        map.put("業務年数3","5");
+        map.put("業務技術項目4","販売・物流");
+        map.put("業務年数4","5");
+        map.put("業務技術項目5","組込みソフト");
+        map.put("業務年数5","5");
+        map.put("業務技術項目6","イメージ・画像処理");
+        map.put("業務年数6","5");
+        map.put("業務技術項目7","POSシステム");
+        map.put("業務年数7","5");
+        map.put("業務技術項目8","セキュリティ");
+        map.put("業務年数8","5");
+        map.put("業務技術項目9","認証");
+        map.put("業務年数9","5");
+        map.put("業務技術項目10","品質管理");
+        map.put("業務年数10","5");
+        map.put("業務技術項目11","環境管理");
+        map.put("業務年数11","5");
+        map.put("業務技術項目12","制御処理");
+        map.put("業務年数12","5");
+        map.put("業務技術項目13","性能評価");
+        map.put("業務年数13","5");
+        map.put("業務技術項目14","DB構築");
+        map.put("業務年数14","5");
+        map.put("業務技術項目15","LAN/NW構築");
+        map.put("業務年数15","5");
+        map.put("業務技術項目16","");
+        map.put("業務年数16","");
+
+        List<案件Bean> 案件list = new ArrayList<案件Bean>();
+        案件Bean 案件bean = new 案件Bean();
+        案件bean.set案件名称("1");
+        案件bean.set案件概要("DB");
+        案件bean.set案件場所("PostgreSQL");
+        案件bean.set担当職種("1级");
+        案件bean.set所在工程("201801");
+        案件bean.set作業開始年月日("1");
+        案件bean.set作業開始年月日("1");
+        案件list.add(案件bean);
         // 导出excel
         return ExcelExportUtil.exportExcel(params, map);
     }

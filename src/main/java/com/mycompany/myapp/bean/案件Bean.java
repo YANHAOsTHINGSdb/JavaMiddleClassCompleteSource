@@ -6,7 +6,7 @@ import lombok.Data;
 
 public class 案件Bean {
 	String s_ID;
-
+	String 案件ID;
 //	String 名称;  // 案件名称　例。XXX银行案件
 //	String 概要;  // 案件概要　例，新商品追加に従っう画面追加対応
 //	String 場所;  // 案件場所　例，茅場町
