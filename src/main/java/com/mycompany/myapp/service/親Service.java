@@ -2,6 +2,7 @@ package com.mycompany.myapp.service;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -80,5 +81,32 @@ public class 親Service {
 		}
 		return null;
 
+	}
+
+	/**
+	 * 将str转成List
+	 * 背景：因为我们要对应一对多的情况，就是一个ID要对应其他项目的多个ID的情况，所以会有内容为ID群的情况
+	 * @param strs
+	 * @return
+	 */
+	protected List<String> stringToList(String strs){
+		String str[] = strs.split("\\t");
+		return Arrays.asList(str);
+	}
+
+	/**
+	 * 将List转成str
+	 * 背景：因为我们要对应一对多的情况，就是一个ID要对应其他项目的多个ID的情况，所以会有内容为ID群的情况
+	 * @param list
+	 * @return
+	 */
+	protected String listToStr(List<String> list) {
+
+		String listString = "";
+		for (String s : list)
+		{
+		    listString += s + "\t";
+		}
+		return listString;
 	}
 }
