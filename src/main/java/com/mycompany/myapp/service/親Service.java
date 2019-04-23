@@ -73,7 +73,7 @@ public class 親Service {
 
 		try {
 			// ①採番
-			return file_db.採番(file_db.getSPath() + s項目名 + ".txt")+1 +"";
+			return file_db.取得对象文件的记录数(file_db.getSPath() + s項目名 + ".txt")+1 +"";
 
 		} catch (IOException e) {
 

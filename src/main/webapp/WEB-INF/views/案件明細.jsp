@@ -42,7 +42,7 @@
 
 	<h1>${titleName}</h1>
 
-	<input type="hidden" value="${s_ID}" name="s_ID"/>
+	<input type="hidden" value="${案件ID}" name="案件ID"/>
 
 	<div>
 		<label>案件名称</label>
@@ -63,49 +63,100 @@
 	</div>
 	<br>
 	<div>
-		<label>職種</label>
-		<input type="text" value="${職種}" name="職種" />
-		<input type="hidden" value="${職種}" name="old_職種" />
+		<label>担当職種</label>
+		<input type="text" value="${担当職種}" name="担当職種" />
+		<input type="hidden" value="${担当職種}" name="old_担当職種" />
 	</div>
 	<br>
 	<div>
-		<label>工程</label>
-		<input type="text" value="${工程}" name="工程" />
-		<input type="hidden" value="${工程}" name="old_工程" />
+		<label>所在工程</label>
+		<input type="text" value="${所在工程}" name="所在工程" />
+		<input type="hidden" value="${所在工程}" name="old_所在工程" />
 	</div>
 	<br>
 	<div>
-		<label>案件開始日</label>
-		<input type="text" value="${案件開始日}"
+		<label>作業開始年月日</label>
+		<input type="text" value="${作業開始年月日}"
 			placeholder="YYYY/MM/DD"
-			type="text" name="案件開始日"/>
-		<input type="hidden" value="${案件開始日}" name="old_案件開始日" />
+			type="text" name="作業開始年月日"/>
+		<input type="hidden" value="${作業開始年月日}" name="old_作業開始年月日" />
 	</div>
 	<br>
 	<div>
-		<label>予定終了日</label>
-		<input type="text" value="${予定終了日}"
+		<label>作業预计终了年月</label>
+		<input type="text" value="${作業预计终了年月}"
 			placeholder="YYYY/MM/DD"
-			type="text" name="予定終了日"/>
-		<input type="hidden" value="${予定終了日}" name="old_予定終了日" />
+			type="text" name="作業预计终了年月"/>
+		<input type="hidden" value="${作業预计终了年月}" name="old_作業预计终了年月" />
 	</div>
 	<br>
 	<div>
-		<label>実際終了日</label>
-		<input type="text" value="${実際終了日}"
+		<label>作業实际终了年月</label>
+		<input type="text" value="${作業实际终了年月}"
 			placeholder="YYYY/MM/DD"
-			type="text" name="実際終了日"/>
-		<input type="hidden" value="${実際終了日}" name="old_実際終了日" />
+			type="text" name="作業实际终了年月"/>
+		<input type="hidden" value="${作業实际终了年月}" name="old_作業实际终了年月" />
 	</div>
 	<br>
 	<div>
-		<label>人数</label>
-		<input type="text" Value="${人数}" name="人数"
-			placeholder="例。2"
+		<label>募集人数</label>
+		<input type="text" Value="${募集人数}" name="募集人数"
+			placeholder="例。5"
 			type="text"/>
-		<input type="hidden" value="${人数}" name="old_人数" />
+		<input type="hidden" value="${募集人数}" name="old_募集人数" />
 	</div>
 	<br>
+	<div>
+		<label>チーム人数</label>
+		<input type="text" Value="${チーム人数}" name="チーム人数"
+			placeholder="例。20"
+			type="text"/>
+		<input type="hidden" value="${チーム人数}" name="old_チーム人数" />
+	</div>
+	<br>
+	<div>
+		<label>開発言語</label>
+		<input type="text" Value="${開発言語}" name="開発言語"
+			placeholder="例。Java"
+			type="text"/>
+		<input type="hidden" value="${開発言語}" name="old_開発言語" />
+	</div>
+	<br>
+	<div>
+		<label>FrameWork</label>
+		<input type="text" Value="${FrameWork}" name="FrameWork"
+			placeholder="例。SpringMVC"
+			type="text"/>
+		<input type="hidden" value="${FrameWork}" name="old_FrameWork" />
+	</div>
+	<br>
+	<div>
+		<label>ツール</label>
+		<input type="text" Value="${ツール}" name="ツール"
+			placeholder="例。Git"
+			type="text"/>
+		<input type="hidden" value="${ツール}" name="old_ツール" />
+	</div>
+	<br>
+
+	<div>
+		<label>OS</label>
+		<input type="text" Value="${OS}" name="OS"
+			placeholder="例。Windows"
+			type="text"/>
+		<input type="hidden" value="${OS}" name="old_OS" />
+	</div>
+	<br>
+
+	<div>
+		<label>DB</label>
+		<input type="text" Value="${DB}" name="DB"
+			placeholder="例。Postgre"
+			type="text"/>
+		<input type="hidden" value="${DB}" name="old_DB" />
+	</div>
+	<br>
+
 	<div>
 		<input type="button" id="back_btn" Value="戻る">
 	</div>

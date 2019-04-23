@@ -31,6 +31,31 @@ public class 案件Controller {
 
 	private static final Logger logger = LoggerFactory.getLogger(案件Controller.class);
 
+	/**
+	 * 这个函数可以让你绕开画面，直接执行你的contrller程序。
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO 自動生成されたメソッド・スタブ
+		案件Bean bean = new 案件Bean();
+		bean.set案件名称("自动车保险");
+		bean.set案件概要("案件概要");
+		bean.set案件場所("場所");
+		bean.set担当職種("職種");
+		bean.set所在工程("所在工程");
+		bean.set作業開始年月日("作業開始年月日");
+		bean.set作業预计终了年月("作業预计终了年");
+		bean.set作業实际终了年月("作業实际终了年月");
+		bean.set募集人数("募集人数");
+		bean.setチーム人数("チーム人数");
+		bean.set開発言語("開発言語");
+		bean.setFrameWork("FrameWork");
+		bean.setツール("ツール");
+		bean.setOS("setOS");
+		bean.setDB("setDB");
+		new 案件Controller().案件save(bean, null);
+	}
+
 	@RequestMapping(value = "/案件", method = RequestMethod.GET)
 	public String 案件(Locale locale, Model model) {
 		logger.info("call 案件");
@@ -63,7 +88,7 @@ public class 案件Controller {
 
 		model.addAttribute("titleName", "案件編集");
 		model.addAttribute("モード", "編集");
-		model.addAttribute("s_ID", bean.getS_ID());
+		model.addAttribute("案件ID", bean.get案件ID());
 		model.addAttribute("案件名称", bean.get案件名称());
 		model.addAttribute("案件概要", bean.get案件概要());
 		model.addAttribute("案件場所", bean.get案件場所());
@@ -99,7 +124,7 @@ public class 案件Controller {
 
 		} else {
 			model.addAttribute("titleName", "案件追加");
-			model.addAttribute("s_ID", bean.getS_ID());
+			model.addAttribute("案件ID", bean.get案件ID());
 			model.addAttribute("案件名称", bean.get案件名称());
 			model.addAttribute("案件概要", bean.get案件概要());
 			model.addAttribute("案件場所", bean.get案件場所());

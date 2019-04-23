@@ -1,6 +1,5 @@
 package com.mycompany.myapp.service.impl;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -10,6 +9,7 @@ import org.apache.commons.lang.StringUtils;
 
 import com.mycompany.myapp.bean.技術情報Bean;
 import com.mycompany.myapp.service.文件db;
+import com.mycompany.myapp.service.親Service;
 
 /**
  *
@@ -19,7 +19,7 @@ import com.mycompany.myapp.service.文件db;
  * @author haoyan
  *
  */
-public class 技術情報Service {
+public class 技術情報Service extends 親Service{
 	// "名称" 必须放在0号位，否则全件检索时会出问题
 	String[] fileName = { "技術ID", "技術方向", "技術項目", "资格_等级", "年数_开始年月", "備考説明"};
 
@@ -49,14 +49,10 @@ public class 技術情報Service {
 	private String 追加技術情報_byFile_db_技術情報bean(技術情報Bean bean) {
 		String path;
 		String ID = null;
-		try {
-			// ①採番
-			ID = file_db.採番(file_db.getSPath() + "技術ID" + ".txt")+1 +"";
 
-		} catch (IOException e) {
-
-			e.printStackTrace();
-		}
+		// ①採番
+		//ID = file_db.取得对象文件的记录数(file_db.getSPath() + "技術ID" + ".txt")+1 +"";
+		ID = ID採番(file_db, "技術ID");
 
 		for(String s文件名 : fileName) {
 

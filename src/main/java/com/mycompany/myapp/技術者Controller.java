@@ -8,6 +8,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
@@ -37,6 +38,76 @@ public class 技術者Controller {
 
 	private static final Logger logger = LoggerFactory.getLogger(技術者Controller.class);
 
+	/**
+	 * 这个函数可以让你绕开画面，直接执行你的contrller程序。
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		技術者Bean 技術者bean = new 技術者Bean();
+
+		Map<String,String> 案件情報map = new LinkedHashMap<String,String>();
+		案件情報map.put("案件名称", "自动车保险");
+		案件情報map.put("案件概要", "案件概要");
+		案件情報map.put("案件場所", "場所");
+		案件情報map.put("担当職種", "職種");
+		案件情報map.put("所在工程", "所在工程");
+		案件情報map.put("作業開始年月日", "作業開始年月日");
+		案件情報map.put("作業预计终了年月", "業预计终了年月");
+		案件情報map.put("作業实际终了年月", "作業实际终了年月");
+		案件情報map.put("募集人数", "募集人数");
+		案件情報map.put("チーム人数", "チーム人数");
+		案件情報map.put("開発言語", "開発言語");
+		案件情報map.put("FrameWork", "FrameWork");
+		案件情報map.put("OS", "OS");
+		案件情報map.put("DB", "DB");
+
+		List 案件情報maplist = new ArrayList();
+		案件情報maplist.add(案件情報map);
+		技術者bean.set経験_案件情報(案件情報maplist);
+
+		Map<String,String> 技術項目map = new LinkedHashMap<String,String>();
+		技術項目map.put("技術方向", "技術方向");
+		技術項目map.put("技術項目", "技術項目");
+		技術項目map.put("资格_等级", "资格_等级");
+		技術項目map.put("年数_开始年月", "年数_开始年月");
+		技術項目map.put("備考説明", "備考説明");
+
+		List 技術項目maplist = new ArrayList();
+		技術項目maplist.add(技術項目map);
+		技術者bean.set技術項目_情報(技術項目maplist);
+
+		技術者bean.set技術者_社員CD("技術者_社員CD");
+		技術者bean.set姓名("姓名");
+		技術者bean.set性别("性别");
+		技術者bean.set生年月日("生年月日");
+		技術者bean.set最終卒業学校名("最終卒業学校名");
+		技術者bean.set最終学位("最終学位");
+		技術者bean.set卒業技能("卒業技能");
+		技術者bean.set会社名("会社名");
+		技術者bean.setTEL("TEL");
+		技術者bean.setFAX("FAX");
+		技術者bean.set最寄駅("最寄駅");
+		技術者bean.set就職開始年月("就職開始年月");
+		技術者bean.set日本語読み能力("日本語読み能力");
+		技術者bean.set日本語書き能力("日本語書き能力");
+		技術者bean.set日本語会話能力("日本語会話能力");
+		技術者bean.set日本語レベル("日本語レベル");
+		技術者bean.set英語読み能力("英語読み能力");
+
+		技術者bean.set英語書き能力("英語書き能力");
+		技術者bean.set英語会話能力("英語会話能力");
+		技術者bean.set英検点数("英検点数");
+		技術者bean.set仕事_留学_経験有無("仕事_留学_経験有無");
+		技術者bean.set仕事_留学_経験開始年月("仕事_留学_経験開始年月");
+
+		new 技術者Controller().技術者save(技術者bean, null);
+	}
+	/**
+	 *
+	 * @param locale
+	 * @param model
+	 * @return
+	 */
 	@RequestMapping(value = "/技術者", method = RequestMethod.GET)
 	public String 技術者(Locale locale, Model model) {
 		logger.info("call 技術者");
@@ -95,7 +166,7 @@ public class 技術者Controller {
 //			model.addAttribute("作業实际终了年月", bean.get作業实际终了年月());
 //			model.addAttribute("募集人数", bean.get募集人数());
 
-			return "案件明細";
+			return "技術者明細";
 		}
 	}
 

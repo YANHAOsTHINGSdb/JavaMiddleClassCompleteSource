@@ -5,8 +5,8 @@ import lombok.Data;
 @Data
 
 public class 案件Bean {
-	String s_ID;
-	String 案件ID;
+
+
 //	String 名称;  // 案件名称　例。XXX银行案件
 //	String 概要;  // 案件概要　例，新商品追加に従っう画面追加対応
 //	String 場所;  // 案件場所　例，茅場町
@@ -23,7 +23,7 @@ public class 案件Bean {
 //	String old_职种;
 //	String old_工程;
 //	String old_开始时间;
-
+	String 案件ID;
 	String 案件名称;
 	String 案件概要;
 	String 案件場所;
@@ -49,7 +49,12 @@ public class 案件Bean {
 	String old_作業预计终了年月;
 	String old_作業实际终了年月;
 	String old_募集人数;
-
+	String old_チーム人数;
+	String old_開発言語;
+	String old_FrameWork;
+	String old_ツール;
+	String old_OS;
+	String old_DB;
 
 
 

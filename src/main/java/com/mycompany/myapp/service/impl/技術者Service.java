@@ -9,7 +9,7 @@ import com.mycompany.myapp.bean.技術者Bean;
 import com.mycompany.myapp.service.文件db;
 import com.mycompany.myapp.service.親Service;
 
-public class 技術者Service  extends 親Service{
+public class 技術者Service extends 親Service{
 
 	String[] fileName = {
 			"技術者ID",
@@ -59,14 +59,24 @@ public class 技術者Service  extends 親Service{
 		// 1、对技术者采番
 		String 技术者ID = ID採番(file_db, "技术者ID");
 
+		if(StringUtils.isEmpty(技术者ID)) {
+			System.out.println("技术者ID:採番失敗！（参照：技術者Service.追加技術者_byFile_db_技術者Bean() line:52）");
+			try {
+				throw new Exception();
+			} catch (Exception e) {
+				// TODO 自動生成された catch ブロック
+				e.printStackTrace();
+				return;
+			}
+		}
 		// 2、登陆该技术者所有经验案件，取得经验案件ID
 		案件Service 案件service = new 案件Service();
-		List 经验案件IDlist = 案件service.登陆案件情報List(bean.get経験_案件情報());
-		bean.set技術項目_ID(经验案件IDlist);
+		List<String> 经验案件IDlist = 案件service.登陆案件情報List(bean.get経験_案件情報());
+		bean.set経験_案件ID(经验案件IDlist);
 
 		// 3、登陆技术者所有技术情报，取得技术情报ID
 		技術情報Service 技術情報service = new 技術情報Service();
-		List 技术情报IDlist = 技術情報service.登陆技術情报List(bean.get技術項目_情報());
+		List<String> 技术情报IDlist = 技術情報service.登陆技術情报List(bean.get技術項目_情報());
 		bean.set技術項目_ID(技术情报IDlist);
 
 		// 详细信息登陆
@@ -76,8 +86,8 @@ public class 技術者Service  extends 親Service{
 
 			switch(s文件名) {
 			case "技術者ID":
-				if(!StringUtils.isEmpty(bean.get技術者ID())) {
-					file_db.文件書込(path, 技术者ID + "," + bean.get技術者ID());
+				if(!StringUtils.isEmpty(技术者ID)) {
+					file_db.文件書込(path, 技术者ID + "," + 技术者ID);
 				}
 				break;
 			case "技術項目_ID":

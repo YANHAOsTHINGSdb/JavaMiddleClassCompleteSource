@@ -398,8 +398,7 @@ public class 契約Service extends 親Service{
 		String ID = null;
 		try {
 			// ①採番
-			ID = file_db.採番(file_db.getSPath() + "契约ID" + ".txt") + 1 + "";
-
+			ID = file_db.取得对象文件的记录数(file_db.getSPath() + "契约ID" + ".txt") + 1 + "";
 		} catch (IOException e) {
 
 			e.printStackTrace();

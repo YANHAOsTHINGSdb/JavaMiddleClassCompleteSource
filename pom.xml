@@ -192,6 +192,13 @@
             <version>3.2.0</version>
         </dependency>
 
+		<!-- https://www.mkyong.com/spring-mvc/spring-mvc-and-list-example/ -->
+		<dependency>
+			<groupId>jstl</groupId>
+			<artifactId>jstl</artifactId>
+			<version>1.2</version>
+		</dependency>
+
 	</dependencies>
     <build>
         <plugins>
