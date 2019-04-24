@@ -8,6 +8,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 import org.apache.commons.lang.StringUtils;
+import org.springframework.util.CollectionUtils;
 
 import com.mycompany.myapp.service.impl.AndCalc;
 import com.mycompany.myapp.service.impl.Calc;
@@ -89,24 +90,45 @@ public class 親Service {
 	 * @param strs
 	 * @return
 	 */
-	protected List<String> stringToList(String strs){
+	public static List<String> stringToList(String strs){
+		if(StringUtils.isEmpty(strs)) {
+			return null;
+		}
 		String str[] = strs.split("\\t");
 		return Arrays.asList(str);
 	}
-
+	public static List<String> stringToList(String strs, String s分隔符){
+		if(StringUtils.isEmpty(strs)) {
+			return null;
+		}
+		String str[] = strs.split(s分隔符);
+		return Arrays.asList(str);
+	}
 	/**
 	 * 将List转成str
 	 * 背景：因为我们要对应一对多的情况，就是一个ID要对应其他项目的多个ID的情况，所以会有内容为ID群的情况
 	 * @param list
 	 * @return
 	 */
-	protected String listToStr(List<String> list) {
-
+	public static String listToStr(List<String> list) {
+		if(CollectionUtils.isEmpty(list)) {
+			return null;
+		}
 		String listString = "";
 		for (String s : list)
 		{
 		    listString += s + "\t";
 		}
 		return listString;
+	}
+
+	public static String listToStr(Object value) {
+		if (value instanceof String) {
+			return (String)value;
+		}
+		if (value instanceof List) {
+			return listToStr((List)value);
+		}
+		return null;
 	}
 }

@@ -19,10 +19,12 @@ import lombok.Data;
 
 @Data
 public class 文件db {
-
+	//-----------------------
+	// 数据存储的地方在这里！
+	//-----------------------
 	String sPath = "C:\\tmp";  // for windows
 	// String sPath = "/Users/haoyan/Desktop/data";  // for mac
-	// String sPath = "";
+
 	String sSubFolder = null;
 	Map<String, Map> map_data = new HashMap();
 
@@ -80,7 +82,14 @@ public class 文件db {
 
 	public void 文件書込(String path,String 書込内容 ){
 		PrintWriter pw;
+
 		try {
+			// 如果文件和文件夹都不存在就帮忙新建一个
+			if(!checkBeforeReadfile(new File(path))) {
+				// 如果对象文件不存在，就尝试新建一个
+				new File(path).createNewFile();
+			}
+
 			//pw = new PrintWriter(new BufferedWriter(new FileWriter(path,true)));
 			System.out.println(path);
 			pw = new PrintWriter(
@@ -96,9 +105,18 @@ public class 文件db {
 
 	}
 
-	public int 採番(String sPath) throws IOException {
+	public int 取得对象文件的记录数(String sPath) throws IOException {
 		//这里定义一个字符流的输入流的节点流，用于读取文件（一个字符一个字符的读取）
 		System.out.println(sPath);
+
+		// 保证每次都能采到番号
+		if(!checkBeforeReadfile(new File(sPath))) {
+			// 如果对象文件不存在，就尝试新建一个
+			File f = new File(sPath);
+			f.getParentFile().mkdirs();
+			f.createNewFile();
+			return 0;
+		}
 		FileReader fr = new FileReader(sPath);
 		BufferedReader br = new BufferedReader(fr);// 在定义好的流基础上套接一个处理流，用于更加效率的读取文件（一行一行的读取）
 		int x = 0; 								// 用于统计行数，从0开始

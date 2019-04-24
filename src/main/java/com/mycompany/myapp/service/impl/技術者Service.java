@@ -57,7 +57,7 @@ public class 技術者Service extends 親Service{
 
 		String path;
 		// 1、对技术者采番
-		String 技术者ID = ID採番(file_db, "技术者ID");
+		String 技术者ID = ID採番(file_db, "技術者ID");
 
 		if(StringUtils.isEmpty(技术者ID)) {
 			System.out.println("技术者ID:採番失敗！（参照：技術者Service.追加技術者_byFile_db_技術者Bean() line:52）");

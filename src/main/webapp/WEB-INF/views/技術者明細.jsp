@@ -71,12 +71,12 @@
 	$(document).ready(function(){
 		$("#btn_ADD技術情報").click(function(){
 			var tr = "<tr class='CaseRow'>";
-			tr += "<td><input type='text' id='技术方向' name='技術項目_情報[" + i技術項目_情報追加した件数 + "][技术方向]'></input></td>";
-			tr += "<td><input type='text' id='技术项目' name='技術項目_情報[" + i技術項目_情報追加した件数 + "][技术项目]'></input></td>";
+			tr += "<td><input type='text' id='技术方向' name='技術項目_情報[" + i技術項目_情報追加した件数 + "][技術方向]'></input></td>";
+			tr += "<td><input type='text' id='技术项目' name='技術項目_情報[" + i技術項目_情報追加した件数 + "][技術項目]'></input></td>";
 			tr += "<td><input type='text' id='资格_等级' name='技術項目_情報[" + i技術項目_情報追加した件数 + "][资格_等级]'></input></td>";
 			tr += "<td><input type='text' id='年数' name='技術項目_情報[" + i技術項目_情報追加した件数 + "][年数]'></input></td>";
-			tr += "<td><input type='text' id='开始年月' name='技術項目_情報[" + i技術項目_情報追加した件数 + "][开始年月]'></input></td>";
-			tr += "<td><input type='text' id='技术备考说明' name='技術項目_情報[" + i技術項目_情報追加した件数 + "][技术备考说明]'></input></td>";
+			tr += "<td><input type='text' id='开始年月' name='技術項目_情報[" + i技術項目_情報追加した件数 + "][年数_开始年月]'></input></td>";
+			tr += "<td><input type='text' id='技术备考说明' name='技術項目_情報[" + i技術項目_情報追加した件数 + "][備考説明]'></input></td>";
 			tr += "<td><input type='checkbox' /></td></tr>";
 
 			//$("table").append(tr);//向table中追加tr
@@ -209,12 +209,12 @@
 	<table width="1050" height="36" border="1" id="table_技術情報">
 	<thead>
 		<tr>
-			<th width="120" height="30" scope="col">技术方向</th>
-			<th width="120" scope="col">技术项目</th>
-			<th width="120" scope="col">资格-等级</th>
+			<th width="120" height="30" scope="col">技術方向</th>
+			<th width="120" scope="col">技術項目</th>
+			<th width="120" scope="col">资格_等级</th>
 			<th width="60" scope="col">年数</th><!-- 年数与开始年月、任填其一即可，但不允许有矛盾的存在 -->
 			<th width="120" scope="col">开始年月</th><!-- 年数与开始年月、任填其一即可，但不允许有矛盾的存在 -->
-			<th width="220" scope="col">技术备考说明</th>
+			<th width="220" scope="col">備考説明</th>
 			<th width="30" scope="col">削除</th>
 		</tr>
 	</thead>

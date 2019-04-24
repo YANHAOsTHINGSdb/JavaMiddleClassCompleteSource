@@ -5,14 +5,15 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.HashSet;
-import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.math.NumberUtils;
+import org.springframework.util.CollectionUtils;
 import org.springframework.util.ObjectUtils;
 
 import com.mycompany.myapp.bean.案件Bean;
@@ -120,7 +121,7 @@ public class 案件Service extends 親Service{
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	private Map<String,List<String>> get中間結果_by案件検索Bean(案件検索Bean bean) {
 
-		Map<String,List<String>> 中間結果list = new LinkedHashMap();
+		Map<String,List<String>> 中間結果list = new HashMap();
 		if (StringUtils.isNotEmpty(bean.getS_ID())) {
 
 			/*IDList_name = getIDList_byNameandValue("姓名", "Aさん");*/
@@ -609,6 +610,10 @@ public class 案件Service extends 親Service{
 	}
 
 	public List 登陆案件情報List(List<Map<String, String>> 経験_案件情報ListMap) {
+		// 案件情報List为空就中指登陆
+		if(CollectionUtils.isEmpty(経験_案件情報ListMap)) {
+			return null;
+		}
 		List 案件情報IDList = new ArrayList();
 		for(Map<String, String> 案件情报Map : 経験_案件情報ListMap) {
 			案件Bean 案件bean = get案件BeanFrom案件情报Map(案件情报Map);
@@ -620,26 +625,31 @@ public class 案件Service extends 親Service{
 	private 案件Bean get案件BeanFrom案件情报Map(Map<String, String> 案件情报map) {
 		案件Bean 案件bean = new 案件Bean();
 		for(Entry<String, String> entry : 案件情报map.entrySet()) {
+			String sValue = listToStr(entry.getValue());
+			if(StringUtils.isEmpty(sValue)) {
+				continue;
+			}
 			switch(entry.getKey()) {
-			case "案件ID":if(entry.getValue()!=null)案件bean.set案件ID(entry.getValue());break;
-			case "案件名称":if(entry.getValue()!=null)案件bean.set案件名称(entry.getValue());break;
-			case "案件概要":if(entry.getValue()!=null)案件bean.set案件名称(entry.getValue());break;
-			case "案件場所":if(entry.getValue()!=null)案件bean.set案件場所(entry.getValue());break;
-			case "担当職種":if(entry.getValue()!=null)案件bean.set担当職種(entry.getValue());break;
-			case "所在工程":if(entry.getValue()!=null)案件bean.set所在工程(entry.getValue());break;
-			case "作業開始年月日":if(entry.getValue()!=null)案件bean.set作業開始年月日(entry.getValue());break;
-			case "作業预计终了年月":if(entry.getValue()!=null)案件bean.set作業预计终了年月(entry.getValue());break;
-			case "作業实际终了年月":if(entry.getValue()!=null)案件bean.set作業实际终了年月(entry.getValue());break;
-			case "募集人数":if(entry.getValue()!=null)案件bean.set募集人数(entry.getValue());break;
-			case "チーム人数":if(entry.getValue()!=null)案件bean.setチーム人数(entry.getValue());break;
-			case "開発言語":if(entry.getValue()!=null)案件bean.set開発言語(entry.getValue());break;
-			case "FrameWork":if(entry.getValue()!=null)案件bean.setFrameWork(entry.getValue());break;
-			case "ツール":if(entry.getValue()!=null)案件bean.setツール(entry.getValue());break;
-			case "OS":if(entry.getValue()!=null)案件bean.setOS(entry.getValue());break;
-			case "DB":if(entry.getValue()!=null)案件bean.setDB(entry.getValue());break;
+			case "案件ID":if(entry.getValue()!=null)案件bean.set案件ID(sValue);break;
+			case "案件名称":if(entry.getValue()!=null)案件bean.set案件名称(sValue);break;
+			case "案件概要":if(entry.getValue()!=null)案件bean.set案件名称(sValue);break;
+			case "案件場所":if(entry.getValue()!=null)案件bean.set案件場所(sValue);break;
+			case "担当職種":if(entry.getValue()!=null)案件bean.set担当職種(sValue);break;
+			case "所在工程":if(entry.getValue()!=null)案件bean.set所在工程(sValue);break;
+			case "作業開始年月日":if(entry.getValue()!=null)案件bean.set作業開始年月日(sValue);break;
+			case "作業预计终了年月":if(entry.getValue()!=null)案件bean.set作業预计终了年月(sValue);break;
+			case "作業实际终了年月":if(entry.getValue()!=null)案件bean.set作業实际终了年月(sValue);break;
+			case "募集人数":if(entry.getValue()!=null)案件bean.set募集人数(sValue);break;
+			case "チーム人数":if(entry.getValue()!=null)案件bean.setチーム人数(sValue);break;
+			case "開発言語":if(entry.getValue()!=null)案件bean.set開発言語(sValue);break;
+			case "FrameWork":if(entry.getValue()!=null)案件bean.setFrameWork(sValue);break;
+			case "ツール":if(entry.getValue()!=null)案件bean.setツール(sValue);break;
+			case "OS":if(entry.getValue()!=null)案件bean.setOS(sValue);break;
+			case "DB":if(entry.getValue()!=null)案件bean.setDB(sValue);break;
 			}
 		}
 		return 案件bean;
 	}
+
 }
 
