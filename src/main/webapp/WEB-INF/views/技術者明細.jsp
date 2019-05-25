@@ -5,6 +5,12 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<!--
+<link rel="stylesheet" href="css/smoothness/jquery-ui-1.10.4.custom.min.css" type="text/css" />
+<link rel="stylesheet" href="css/common/np.css" type="text/css" />
+<link rel="stylesheet" href="css/common/bussinessSupportWeb.css" type="text/css" />
+ -->
+ <link rel="stylesheet" href="css/my.css" type="text/css" />
 </head>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <!-- 	<script type="text/javascript">
@@ -132,79 +138,145 @@
 </script>
 
 <form id ="fbean" name="fbean" method="post">
-<body>
-		<h1>技術者追加編集照会</h1>
-		<br>
-		<div>
-			<input id="s_ID" name="s_ID" type="hidden" Value="">
-		</div>
-		<div>
-			<label>社員CD</label> <input type="button" id="search_btn" value="検索">
-		</div>
-		<div>
-			<label>姓名</label> <input id="姓名" name="姓名" type="text" value="">
-		</div>
-		<div>
-			<label>性别</label> <input id="性别" name="性别" type="text" value="">
-		</div>
-		<div>
-			<label>出生年月</label> <input id="生年月日" name="生年月日" type="text" value="">
-		</div>
-		<div>
-			<label>毕业院校</label> <input id="最終卒業学校名" name="最終卒業学校名" type="text" value="">
-		</div>
-		<div>
-			<label>会社名</label> <input id="会社名" name="会社名" type="text" value="">
-		</div>
-		<div>
-			<label>TEL</label> <input id="TEL" name="TEL" type="text" value="">
-		</div>
-		<div>
-			<label>FAX</label> <input id="FAX" name="FAX" type="text" value="">
-		</div>
-		<div>
-			<label>最寄駅</label> <input id="最寄駅" name="最寄駅" type="text" value="">
-		</div>
-		<div>
-			<label>最終学位</label> <input id="最終学位" name="最終学位" type="text" value="">
-		</div>
-		<div>
-			<label>就職開始年月</label> <input id="就職開始年月" name="就職開始年月" type="text" value="">
-		</div>
-		<div>
-			<label>日本語読み能力</label> <input id="日本語読み能力" name="日本語読み能力" type="text" value="">
-		</div>
-		<div>
-			<label>日本語書き能力</label> <input id="日本語書き能力" name="日本語書き能力" type="text" value="">
-		</div>
-		<div>
-			<label>日本語会話能力</label> <input id="日本語会話能力" name="日本語会話能力" type="text" value="">
-		</div>
-		<div>
-			<label>日本語レベル</label> <input id="日本語レベル" name="日本語レベル" type="text" value="">
-		</div>
+<body class=" l-np-base">
+<!--
+table{border-collapse:collapse;border-spacing:0;border-left:1px solid #888;border-top:1px solid #888;background:#efefef;}
+th,td{border-right:1px solid #888;border-bottom:1px solid #888;padding:5px 15px;}
+th{font-weight:bold;background:#ccc;}
 
-		<div>
-			<label>英語読み能力</label> <input id="英語読み能力" name="英語読み能力" type="text" value="">
-		</div>
-		<div>
-			<label>英語書き能力</label> <input id="英語書き能力" name="英語書き能力" type="text" value="">
-		</div>
-		<div>
-			<label>英語会話能力</label> <input id="英語会話能力" name="英語会話能力" type="text" value="">
-		</div>
-		<div>
-			<label>英検点数</label> <input id="英検点数" name="英検点数" type="text" value="">
-		</div>
-		<br>
-		<div>
-			<label>仕事(留学)経験有無</label> <input id="仕事_留学_経験有無" name="仕事_留学_経験有無" type="text" value="">
-		</div>
-		<div>
-			<label>仕事(留学)経験開始年月</label> <input id="仕事_留学_経験開始年月" name="仕事_留学_経験開始年月" type="text" value="">
-		</div>
-		<br>
+ -->
+<table width="1050" style="border-collapse:collapse;border-spacing:0;border-left:1px solid #888;border-top:1px solid #888;background:#efefef;" >
+	<thead>
+		<tr>
+			<td colspan="12" align="center" style="border-right:1px solid #888;border-bottom:1px solid #888;padding:0px 0px;"><span><label style="font-size:44px;">技　術　者　経　歴　書</label></span>
+			</td>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td colspan="8"></td>
+			<td align="center">作成日</td>
+			<td colspan="3">
+				<input disabled id="生年月日" name="生年月日" type="text" value="" style="width:120px;font-size:24px;">
+			</td>
+		</tr>
+		<tr>
+			<td align="center">
+				<label>姓名</label>
+			</td>
+			<td colspan="2">
+				<input id="姓名" name="姓名" type="text" value="库大库路马拉可林不拉夫斯基" style="width:400px;font-size:24px;">
+			</td>
+			<td align="center">性别</td>
+			<td>
+				<input id="性别" name="性别" type="text" value="男" style="width:40px;font-size:24px;">
+			</td>
+			<td  colspan="2" align="center">出生年月</td>
+			<td colspan="5">
+				<input id="生年月日" name="生年月日" type="text" value="19900101" style="width:120px;font-size:24px;">
+			</td>
+		</tr>
+		<tr>
+			<td align="center">会社名</td>
+			<td colspan="7">
+				<input id="会社名" name="会社名" type="text" value="宝鸡有一群怀揣着梦想的少年相信在牛大叔的带领下会创造生命的奇迹网络科技有限公司" style="width:600px;font-size:24px;" >
+			</td>
+			<td align="center">TEL</td>
+			<td colspan="3">
+				<input id="TEL" name="TEL" type="text" value="09000000000" style="width:170px;font-size:24px;">
+			</td>
+		</tr>
+		<tr>
+			<td align="center" >最寄駅</td>
+			<td colspan="7" >
+				<input id="最寄駅" name="最寄駅" type="text" value="JR長者ヶ浜潮騒はまなす公園前" style="width:400px;font-size:24px;"></td>
+			<td align="center" >FAX</td>
+			<td colspan="3">
+				<input id="FAX" name="FAX" type="text" value="09000000000" style="width:170px;font-size:24px;">
+			</td>
+		</tr>
+		<tr>
+			<td align="center">毕业院校</td>
+			<td colspan="4">
+				<input id="毕业院校" name="学歴" type="text" value="国立大学法人北陸先端科学技術大学院大学" style="width:500px;font-size:24px;">
+			</td>
+			<td colspan="2" align="center">学位</td>
+			<td>
+				<input id="最終学位" name="最終学位" type="text" value="学士" style="width:80px;font-size:24px;">
+			</td>
+			<td align="center">就職開始年月</td>
+			<td colspan="3">
+				<input id="就職開始年月" name="就職開始年月" type="text" value="201501" style="width:100px;font-size:24px;">
+			</td>
+		</tr>
+		<tr>
+			<td colspan="12">
+				<label style="font-size:24px;">語学力</label>
+			</td>
+		</tr>
+		<tr>
+			<td align="center" colspan="2">日本語（読み）</td>
+			<td >
+				<input id="日本語読み能力" name="日本語読み能力" type="text" value="1" style="width:40px;font-size:24px;">
+				　1,優；　【2,良】；　3,可</td>
+			<td align="center" colspan="3">英語（読み）</td>
+			<td colspan="5">
+				<input id="英語読み能力" name="英語読み能力" type="text" value="1" style="width:40px;font-size:24px;">
+				　1,優；　【2,良】；　3,可
+			</td>
+		</tr>
+		<tr>
+			<td align="center" colspan="2">　　　（書き）</td>
+			<td >
+				<input id="日本語書き能力" name="日本語書き能力" type="text" value="1" style="width:40px;font-size:24px;">
+				　1,優；　【2,良】；　3,可</td>
+			<td align="center" colspan="3">　　　（書き）</td>
+			<td colspan="5">
+				<input id="英語書き能力" name="英語書き能力" type="text" value="1" style="width:40px;font-size:24px;">
+				　1,優；　【2,良】；　3,可</td>
+		</tr>
+		<tr>
+			<td align="center" colspan="2">　 　 （会話）
+			</td>
+			<td >
+				<input id="日本語会話能力" name="日本語会話能力" type="text" value="1" style="width:40px;font-size:24px;">
+				　1,優；　【2,良】；　3,可
+			</td>
+			<td align="center" colspan="3">　 　 （会話）
+			</td>
+			<td colspan="5">
+				<input id="英語会話能力" name="英語会話能力" type="text" value="1" style="width:40px;font-size:24px;">
+				　1,優；　【2,良】；　3,可
+			</td>
+		</tr>
+		<tr>
+			<td align="center" colspan="2">日本語レベル
+			</td>
+			<td  >
+				<input id="日本語レベル" name="日本語レベル" type="text" value="1" style="width:100px;font-size:24px;">
+			</td>
+			<td align="center" >英検
+			</td>
+			<td colspan="6">
+				<input id="英検点数" name="英検点数" type="text" value="1" style="width:100px;font-size:24px;">
+			</td>
+		</tr>
+		<tr>
+			<td align="center" colspan="2">仕事(留学)経験有無
+			</td>
+			<td>
+				<input id="仕事_留学_経験有無" name="仕事_留学_経験有無" type="text" value="" style="width:100px;font-size:24px;">
+			</td>
+			<td align="center" colspan="4">仕事(留学)経験開始年月
+			</td>
+			<td colspan="3">
+				<input id="仕事_留学_経験開始年月" name="仕事_留学_経験開始年月" type="text" value="" style="width:100px;font-size:24px;">
+			</td>
+		</tr>
 
+	</tbody>
+</table>
+		<br>
 	<label>技術情報</label>
 	<table width="1050" height="36" border="1" id="table_技術情報">
 	<thead>

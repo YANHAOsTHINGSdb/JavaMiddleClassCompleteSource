@@ -22,8 +22,8 @@ public class 文件db {
 	//-----------------------
 	// 数据存储的地方在这里！
 	//-----------------------
-	String sPath = "C:\\tmp";  // for windows
-	// String sPath = "/Users/haoyan/Desktop/data";  // for mac
+	// String sPath = "C:\\tmp";  // for windows
+	String sPath = "/Users/ai1/Desktop/data";  // for mac
 
 	String sSubFolder = null;
 	Map<String, Map> map_data = new HashMap();
