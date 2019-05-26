@@ -262,6 +262,9 @@ th{font-weight:bold;background:#ccc;}
 			</td>
 		</tr>
 		<tr>
+
+		</tr>
+		<tr>
 			<td align="center" colspan="2">仕事(留学)経験有無
 			</td>
 			<td>
@@ -273,12 +276,13 @@ th{font-weight:bold;background:#ccc;}
 				<input id="仕事_留学_経験開始年月" name="仕事_留学_経験開始年月" type="text" value="" style="width:100px;font-size:24px;">
 			</td>
 		</tr>
-
-	</tbody>
-</table>
-		<br>
-	<label>技術情報</label>
-	<table width="1050" height="36" border="1" id="table_技術情報">
+		<tr>
+					<td colspan="12">
+				<label style="font-size:24px;">技術情報</label>
+			</td>
+		</tr>
+<tr>
+	<table height="36" border="1" id="table_技術情報" width="1150" style="border-collapse:collapse;border-spacing:0;border-left:1px solid #888;border-top:1px solid #888;background:#efefef;" >
 	<thead>
 		<tr>
 			<th width="120" height="30" scope="col">技術方向</th>
@@ -312,6 +316,11 @@ th{font-weight:bold;background:#ccc;}
 	</table>
 	<input type="button" value="ADD技術情報" id="btn_ADD技術情報"/>
 	<input type="button" value="DEL技術情報" id="btn_DEL技術情報"/>
+
+</tr>
+	</tbody>
+</table>
+		<br>
 
 		<br>
 		<br>
