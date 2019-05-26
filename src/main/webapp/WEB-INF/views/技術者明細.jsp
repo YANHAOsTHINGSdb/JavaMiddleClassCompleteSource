@@ -145,7 +145,7 @@ th,td{border-right:1px solid #888;border-bottom:1px solid #888;padding:5px 15px;
 th{font-weight:bold;background:#ccc;}
 
  -->
-<table width="1050" style="border-collapse:collapse;border-spacing:0;border-left:1px solid #888;border-top:1px solid #888;background:#efefef;" >
+<table width="1150" style="border-collapse:collapse;border-spacing:0;border-left:1px solid #888;border-top:1px solid #888;background:#efefef;" >
 	<thead>
 		<tr>
 			<td colspan="12" align="center" style="border-right:1px solid #888;border-bottom:1px solid #888;padding:0px 0px;"><span><label style="font-size:44px;">技　術　者　経　歴　書</label></span>
@@ -179,7 +179,7 @@ th{font-weight:bold;background:#ccc;}
 		<tr>
 			<td align="center">会社名</td>
 			<td colspan="7">
-				<input id="会社名" name="会社名" type="text" value="宝鸡有一群怀揣着梦想的少年相信在牛大叔的带领下会创造生命的奇迹网络科技有限公司" style="width:600px;font-size:24px;" >
+				<input id="会社名" name="会社名" type="text" value="宝鸡有一群怀揣着梦想的少年相信在牛大叔的带领下会创造生命的奇迹网络科技有限公司" style="width:700px;font-size:24px;" >
 			</td>
 			<td align="center">TEL</td>
 			<td colspan="3">
