@@ -1,11 +1,15 @@
 package com.mycompany.myapp.service.impl;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.commons.lang.StringUtils;
 import org.springframework.util.CollectionUtils;
 
 import com.mycompany.myapp.bean.技術者Bean;
+import com.mycompany.myapp.bean.技術者検索Bean;
 import com.mycompany.myapp.service.文件db;
 import com.mycompany.myapp.service.親Service;
 
@@ -210,5 +214,145 @@ public class 技術者Service extends 親Service{
 		}
 	}
 
+	public List<技術者Bean> 検索技術者_by検索Bean(技術者検索Bean bean) {
+		/**
+		get中間結果_by技術者検索Bean(技術者检索Bean)
+		|
+		|——中间结果IDList=取得中间结果(List)
+		|——中间结果案件List=检索处理_案件List(案件List)
+		|——中间结果技术List=检索处理_技术List(技术List)
+		|——中间结果IDList.addAll(中间结果案件List);
+		|——中间结果IDList.addAll(中间结果技术List);
+		|——最终结果IDList=取得最终结果(中间结果IDList)
+		|——取得技术者信息_根据最终结果IDList(最终结果IDList)
+		*/
+		file_db.情報読み込み(fileName);
 
+		Map<String,List<String>> 中間結果IDList = get中間結果_by技術者検索Bean(bean);
+		List 中间结果案件List=检索处理_案件List(bean.get案件检索信息List());
+		List 中间结果技術List=检索处理_技術List(bean.get技術检索信息List());
+
+		Calc calc = new AndCalc();
+		List<String> 最終結果IDList = new ArrayList();
+		List 中間結果技術者List = get最終結果_by中間結果(中間結果IDList);
+		最終結果IDList = calc.論理計算(中間結果技術者List, 中间结果案件List);
+		最終結果IDList = calc.論理計算(最終結果IDList, 中间结果技術List);
+
+		return 取得検索結果_by最終結果(最終結果IDList);
+	}
+
+	/**
+	 * 情况1:
+	 * 要求你有什么技术，且对这个技术要有特殊要求。
+	 *
+	 * 情况2:
+	 * 要求你有什么技术，或者有其他技术也可。
+	 *
+	 * @param 案件检索信息List
+	 * @return
+	 */
+	private List 检索处理_技術List(List<Map> 技術检索信息List) {
+		List 最終結果list = new ArrayList();
+		for(Map 技術检索信息 : 技術检索信息List) {
+			// Java 6年，他们之间的关系应该用【且】来计算
+			List 满足该技术的技术者IDList = get最終結果_by中間結果 (检索处理(技術检索信息, file_db));
+
+			// 技术与技术之间的关系，也要用【且】来计算。
+			Calc calc = new AndCalc();
+			最終結果list = calc.論理計算(最終結果list, 满足该技术的技术者IDList);
+		}
+		return 最終結果list;
+	}
+
+	/**
+	 * 情况1:
+	 * 要求你干过什么案件，且这个案件要有什么样的背景。
+	 *
+	 * 情况2:
+	 * 要求你干过什么案件，或者干过其他类似案件都可。
+	 *
+	 * @param 案件检索信息List
+	 * @return
+	 */
+	private List 检索处理_案件List(List<Map> 案件检索信息List) {
+		List 最終結果list = new ArrayList();
+		for(Map 案件检索信息 : 案件检索信息List) {
+			// 每次返回的都是对一个案件的检索结果、他们之间的关系应该用【且】来计算
+			List 满足该案件的技术者IDList = get最終結果_by中間結果 (检索处理(案件检索信息, file_db));
+			// Calc calc = new AndCalc();
+			// 最終結果list = calc.論理計算(最終結果list, 满足该案件的技术者IDList);
+
+			// 多条案件的处理结果，他们之间的关系应该用【或】来计算
+			最終結果list.addAll(满足该案件的技术者IDList);
+		}
+		return 最終結果list;
+	}
+
+	private Map<String, List<String>> get中間結果_by技術者検索Bean(技術者検索Bean bean) {
+
+		Map<String,List<String>> 中間結果list = new HashMap();
+
+
+		return 中間結果list;
+	}
+
+	@SuppressWarnings({ "unchecked", "rawtypes" })
+	private List<技術者Bean> 取得検索結果_by最終結果(List<String> 最終結果idList) {
+
+		List<技術者Bean> 技術者BeanList = new ArrayList();
+
+		for (String 案件id : 最終結果idList) {
+
+			技術者BeanList.add(取得技術者情報_by技術者id(案件id));
+		}
+
+		return 技術者BeanList;
+	}
+
+	private 技術者Bean 取得技術者情報_by技術者id(String 案件id) {
+
+		Map<String, Map> 大Map = file_db.getMap_data();
+
+		技術者Bean 技術者bean = new 技術者Bean();
+
+		//案件bean.setS_ID(案件id);
+
+		for (Map.Entry<String, Map> entry : 大Map.entrySet()) {
+
+			if (entry == null) {
+
+				continue;
+
+			}
+
+			Map<String, String> 小Map;
+
+			String 小Map名 = entry.getKey();
+
+			switch (小Map名) {
+
+			case "姓名":
+				小Map = entry.getValue();
+		//		技術者bean.set案件名称(小Map.get(案件id));
+				break;
+			case "性别":
+				小Map = entry.getValue();
+		//		技術者bean.set案件概要(小Map.get(案件id));
+				break;
+			case "生年月日":
+				小Map = entry.getValue();
+		//		技術者bean.set作業開始年月日(小Map.get(案件id));
+				break;
+			case "会社名":
+				小Map = entry.getValue();
+		//		技術者bean.set案件場所(小Map.get(案件id));
+				break;
+			case "就職開始年月":
+				小Map = entry.getValue();
+		//		技術者bean.set募集人数(小Map.get(案件id));
+				break;
+			}
+		}
+		return 技術者bean;
+	}
 }

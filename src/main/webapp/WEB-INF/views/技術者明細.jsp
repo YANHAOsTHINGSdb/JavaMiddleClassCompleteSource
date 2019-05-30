@@ -77,12 +77,12 @@
 	$(document).ready(function(){
 		$("#btn_ADD技術情報").click(function(){
 			var tr = "<tr class='CaseRow'>";
-			tr += "<td><input type='text' id='技术方向' name='技術項目_情報[" + i技術項目_情報追加した件数 + "][技術方向]'></input></td>";
-			tr += "<td><input type='text' id='技术项目' name='技術項目_情報[" + i技術項目_情報追加した件数 + "][技術項目]'></input></td>";
-			tr += "<td><input type='text' id='资格_等级' name='技術項目_情報[" + i技術項目_情報追加した件数 + "][资格_等级]'></input></td>";
-			tr += "<td><input type='text' id='年数' name='技術項目_情報[" + i技術項目_情報追加した件数 + "][年数]'></input></td>";
-			tr += "<td><input type='text' id='开始年月' name='技術項目_情報[" + i技術項目_情報追加した件数 + "][年数_开始年月]'></input></td>";
-			tr += "<td><input type='text' id='技术备考说明' name='技術項目_情報[" + i技術項目_情報追加した件数 + "][備考説明]'></input></td>";
+			tr += "<td><input type='text' style='font-size:24px;' id='技术方向' name='技術項目_情報[" + i技術項目_情報追加した件数 + "][技術方向]'></input></td>";
+			tr += "<td><input type='text' style='font-size:24px;' id='技术项目' name='技術項目_情報[" + i技術項目_情報追加した件数 + "][技術項目]'></input></td>";
+			tr += "<td><input type='text' style='font-size:24px;' id='资格_等级' name='技術項目_情報[" + i技術項目_情報追加した件数 + "][资格_等级]'></input></td>";
+			tr += "<td><input type='text' style='font-size:24px;' id='年数' name='技術項目_情報[" + i技術項目_情報追加した件数 + "][年数]'></input></td>";
+			tr += "<td><input type='text' style='font-size:24px;' id='开始年月' name='技術項目_情報[" + i技術項目_情報追加した件数 + "][年数_开始年月]'></input></td>";
+			tr += "<td><input type='text' style='font-size:24px;' id='技术备考说明' name='技術項目_情報[" + i技術項目_情報追加した件数 + "][備考説明]'></input></td>";
 			tr += "<td><input type='checkbox' /></td></tr>";
 
 			//$("table").append(tr);//向table中追加tr
@@ -103,19 +103,19 @@
 			// 参考的资料 https://viralpatel.net/blogs/spring-mvc-multi-row-submit-java-list/
 			// https://stackoverflow.com/questions/31967899/spring-mvc-hashmap-form-integration
 			var tr = "<tr class='CaseRow'>";
-			tr += "<td><input type='text' id='经验案件名' name='経験_案件情報[" + i経験案件追加した件数 + "][案件名称]'></input></td>";
-			tr += "<td><input type='text' id='经验案件概要' name='経験_案件情報[" + i経験案件追加した件数 + "][案件概要]'></input></td>";
-			tr += "<td><input type='text' id='经验案件場所' name='経験_案件情報[" + i経験案件追加した件数 + "][案件場所]'></input></td>";
-			tr += "<td><input type='text' id='担当職種' name='経験_案件情報[" + i経験案件追加した件数 + "][担当職種]'></input></td>";
-			tr += "<td><input type='text' id='所在工程' name='経験_案件情報[" + i経験案件追加した件数 + "][所在工程]'></input></td>";
-			tr += "<td><input type='text' id='作業開始年月日' name='経験_案件情報[" + i経験案件追加した件数 + "][作業開始年月日]'></input></td>";
-			tr += "<td><input type='text' id='作業实际终了年月' name='経験_案件情報[" + i経験案件追加した件数 + "][作業实际终了年月]'></input></td>";
-			tr += "<td><input type='text' id='募集人数' name='経験_案件情報[" + i経験案件追加した件数 + "][募集人数]'></input></td>";
-			tr += "<td><input type='text' id='チーム人数' name='経験_案件情報[" + i経験案件追加した件数 + "][チーム人数]'></input></td>";
-			tr += "<td><input type='text' id='開発言語' name='経験_案件情報[" + i経験案件追加した件数 + "][開発言語]'></input></td>";
-			tr += "<td><input type='text' id='FrameWork' name='経験_案件情報[" + i経験案件追加した件数 + "][FrameWork]'></input></td>";
-			tr += "<td><input type='text' id='ツール' name='経験_案件情報[" + i経験案件追加した件数 + "][ツール]'></input></td>";
-			tr += "<td><input type='text' id='OS' name='経験_案件情報[" + i経験案件追加した件数 + "][OS]'></input></td>";
+			tr += "<td><input type='text' style='font-size:24px;' id='经验案件名' name='経験_案件情報[" + i経験案件追加した件数 + "][案件名称]'></input></td>";
+			tr += "<td><input type='text' style='font-size:24px;' id='经验案件概要' name='経験_案件情報[" + i経験案件追加した件数 + "][案件概要]'></input></td>";
+			tr += "<td><input type='text' style='font-size:24px;' id='经验案件場所' name='経験_案件情報[" + i経験案件追加した件数 + "][案件場所]'></input></td>";
+			tr += "<td><input type='text' style='font-size:24px;' id='担当職種' name='経験_案件情報[" + i経験案件追加した件数 + "][担当職種]'></input></td>";
+			tr += "<td><input type='text' style='font-size:24px;' id='所在工程' name='経験_案件情報[" + i経験案件追加した件数 + "][所在工程]'></input></td>";
+			tr += "<td><input type='text' style='font-size:24px;' id='作業開始年月日' name='経験_案件情報[" + i経験案件追加した件数 + "][作業開始年月日]'></input></td>";
+			tr += "<td><input type='text' style='font-size:24px;' id='作業实际终了年月' name='経験_案件情報[" + i経験案件追加した件数 + "][作業实际终了年月]'></input></td>";
+			tr += "<td><input type='text' style='font-size:24px;' id='募集人数' name='経験_案件情報[" + i経験案件追加した件数 + "][募集人数]'></input></td>";
+			tr += "<td><input type='text' style='font-size:24px;' id='チーム人数' name='経験_案件情報[" + i経験案件追加した件数 + "][チーム人数]'></input></td>";
+			tr += "<td><input type='text' style='font-size:24px;' id='開発言語' name='経験_案件情報[" + i経験案件追加した件数 + "][開発言語]'></input></td>";
+			tr += "<td><input type='text' style='font-size:24px;' id='FrameWork' name='経験_案件情報[" + i経験案件追加した件数 + "][FrameWork]'></input></td>";
+			tr += "<td><input type='text' style='font-size:24px;' id='ツール' name='経験_案件情報[" + i経験案件追加した件数 + "][ツール]'></input></td>";
+			tr += "<td><input type='text' style='font-size:24px;' id='OS' name='経験_案件情報[" + i経験案件追加した件数 + "][OS]'></input></td>";
 			tr += "<td><input type='text' id='DB' name='経験_案件情報[" + i経験案件追加した件数 + "][DB]'></input></td>";
 			tr += "<td><input type='checkbox' /></td></tr>";
 
@@ -277,101 +277,107 @@ th{font-weight:bold;background:#ccc;}
 			</td>
 		</tr>
 		<tr>
-					<td colspan="12">
+			<td colspan="12">
 				<label style="font-size:24px;">技術情報</label>
 			</td>
 		</tr>
-<tr>
-	<table height="36" border="1" id="table_技術情報" width="1150" style="border-collapse:collapse;border-spacing:0;border-left:1px solid #888;border-top:1px solid #888;background:#efefef;" >
-	<thead>
-		<tr>
-			<th width="120" height="30" scope="col">技術方向</th>
-			<th width="120" scope="col">技術項目</th>
-			<th width="120" scope="col">资格_等级</th>
-			<th width="60" scope="col">年数</th><!-- 年数与开始年月、任填其一即可，但不允许有矛盾的存在 -->
-			<th width="120" scope="col">开始年月</th><!-- 年数与开始年月、任填其一即可，但不允许有矛盾的存在 -->
-			<th width="220" scope="col">備考説明</th>
-			<th width="30" scope="col">削除</th>
+		<tr><td colspan="12">
+			<table height="36" border="1" id="table_技術情報" width="1150" style="border-collapse:collapse;border-spacing:0;border-left:1px solid #888;border-top:1px solid #888;background:#efefef;" >
+				<thead>
+					<tr>
+						<th width="120" height="30" scope="col">技術方向</th>
+						<th width="120" scope="col">技術項目</th>
+						<th width="120" scope="col">资格_等级</th>
+						<th width="60" scope="col">年数</th><!-- 年数与开始年月、任填其一即可，但不允许有矛盾的存在 -->
+						<th width="120" scope="col">开始年月</th><!-- 年数与开始年月、任填其一即可，但不允许有矛盾的存在 -->
+						<th width="220" scope="col">備考説明</th>
+						<th width="30" scope="col">削除</th>
+					</tr>
+				</thead>
+				<tbody>
+			        <c:if test="${not empty 技術項目_情報}">
+				        <c:forEach items="${技術項目_情報}" var="技術情報"  varStatus="itemsRow">
+				         <tr>
+				        	<c:forEach items="${技術情報}" var="技術情報項目">
+					            <td>
+									<!-- name 是用来返回数据的时候，指示该传给servlet哪个值 -->
+									<!-- id 是给Jquery用的 -->
+									<!-- value 是从服务器传过来的值 -->
+					            	<!-- <input id="技術情報項目" type="text" name="${技術情報項目.key}" value="${技術情報項目.value}"> -->
+					            	<input id="技術情報項目" type="text" name="" value="${技術情報項目.value}">
+					            </td>
+				            </c:forEach>
+				         </tr>
+				        </c:forEach>
+					</c:if>
+				</tbody>
+			    <tfoot>
+			    </tfoot>
+			</table>
+			</td>
 		</tr>
-	</thead>
-	<tbody>
-	        <c:if test="${not empty 技術項目_情報}">
-		        <c:forEach items="${技術項目_情報}" var="技術情報"  varStatus="itemsRow">
-		         <tr>
-		        	<c:forEach items="${技術情報}" var="技術情報項目">
-			            <td>
-							<!-- name 是用来返回数据的时候，指示该传给servlet哪个值 -->
-							<!-- id 是给Jquery用的 -->
-							<!-- value 是从服务器传过来的值 -->
-			            	<!-- <input id="技術情報項目" type="text" name="${技術情報項目.key}" value="${技術情報項目.value}"> -->
-			            	<input id="技術情報項目" type="text" name="" value="${技術情報項目.value}">
-			            </td>
-		            </c:forEach>
-		         </tr>
-		        </c:forEach>
-			</c:if>
-	</tbody>
-    <tfoot>
-    </tfoot>
-	</table>
-	<input type="button" value="ADD技術情報" id="btn_ADD技術情報"/>
-	<input type="button" value="DEL技術情報" id="btn_DEL技術情報"/>
-
-</tr>
-	</tbody>
-</table>
-		<br>
-
-		<br>
-		<br>
-
-	<label>経験案件情報</label>
-	<table width="1550" height="36" border="1" id="table_経験案件情報" name="経験_案件情報">
-	<thead>
 		<tr>
-			<th width="320" height="30" scope="col">经验案件名称</th>
-			<th width="320" scope="col">经验案件概要</th>
-			<th width="220" scope="col">经验案件場所</th>
-			<th width="160" scope="col">担当職種</th><!-- 年数与开始年月、任填其一即可，但不允许有矛盾的存在 -->
-			<th width="220" scope="col">所在工程</th><!-- 年数与开始年月、任填其一即可，但不允许有矛盾的存在 -->
-			<th width="120" scope="col">作業開始年月日</th>
-			<th width="120" scope="col">作業实际终了年月</th>
-			<th width="120" scope="col">募集人数</th>
-			<th width="120" scope="col">チーム人数</th>
-			<th width="120" scope="col">開発言語</th>
-			<th width="220" scope="col">FrameWork</th>
-			<th width="220" scope="col">ツール</th>
-			<th width="120" scope="col">OS</th>
-			<th width="120" scope="col">DB</th>
-			<th width="30" scope="col">削除</th>
+			<td colspan="12">
+				<input type="button" value="ADD技術情報" id="btn_ADD技術情報"/>
+				<input type="button" value="DEL技術情報" id="btn_DEL技術情報"/>
+			</td>
 		</tr>
-	</thead>
-	<tbody>
-	        <c:if test="${not empty 経験_案件情報}">
-		        <c:forEach items="${経験_案件情報}" var="案件情報"  varStatus="itemsRow">
-		         <tr>
-		        	<c:forEach items="${案件情報}" var="案件情報項目">
-			            <td>
-							<!-- name 是用来返回数据的时候，指示该传给servlet哪个值 -->
-							<!-- id 是给Jquery用的 -->
-							<!-- value 是从服务器传过来的值 -->
-			            	<!-- <input id="案件情報項目" type="text" name="${案件情報項目.key}" value="${案件情報項目.value}"> -->
-			            	<input id="案件情報項目" type="text" name="" value="${案件情報項目.value}">
-			            </td>
-		            </c:forEach>
-		         </tr>
-		        </c:forEach>
-			</c:if>
-	</tbody>
-    <tfoot>
-    </tfoot>
-	</table>
-	<input type="button" value="ADD経験案件情報" id="btn_ADD経験案件情報"/>
-	<input type="button" value="DEL経験案件情報" id="btn_DEL経験案件情報"/>
-
-		<br>
-		<br>
-		<br>
+		<tr>
+			<td colspan="12">
+				<label style="font-size:24px;">経験案件情報</label>
+			</td>
+		</tr>
+		<tr><td colspan="12">
+			<table width="1550" height="36" border="1" id="table_経験案件情報" name="経験_案件情報" style="border-collapse:collapse;border-spacing:0;border-left:1px solid #888;border-top:1px solid #888;background:#efefef;">
+			<thead>
+				<tr>
+					<th width="320" height="30" scope="col">经验案件名称</th>
+					<th width="320" scope="col">经验案件概要</th>
+					<th width="220" scope="col">经验案件場所</th>
+					<th width="160" scope="col">担当職種</th><!-- 年数与开始年月、任填其一即可，但不允许有矛盾的存在 -->
+					<th width="220" scope="col">所在工程</th><!-- 年数与开始年月、任填其一即可，但不允许有矛盾的存在 -->
+					<th width="120" scope="col">作業開始年月日</th>
+					<th width="120" scope="col">作業实际终了年月</th>
+					<th width="120" scope="col">募集人数</th>
+					<th width="120" scope="col">チーム人数</th>
+					<th width="120" scope="col">開発言語</th>
+					<th width="220" scope="col">FrameWork</th>
+					<th width="220" scope="col">ツール</th>
+					<th width="120" scope="col">OS</th>
+					<th width="120" scope="col">DB</th>
+					<th width="30" scope="col">削除</th>
+				</tr>
+			</thead>
+			<tbody>
+			        <c:if test="${not empty 経験_案件情報}">
+				        <c:forEach items="${経験_案件情報}" var="案件情報"  varStatus="itemsRow">
+				         <tr>
+				        	<c:forEach items="${案件情報}" var="案件情報項目">
+					            <td>
+									<!-- name 是用来返回数据的时候，指示该传给servlet哪个值 -->
+									<!-- id 是给Jquery用的 -->
+									<!-- value 是从服务器传过来的值 -->
+					            	<!-- <input id="案件情報項目" type="text" name="${案件情報項目.key}" value="${案件情報項目.value}"> -->
+					            	<input id="案件情報項目" type="text" name="" value="${案件情報項目.value}">
+					            </td>
+				            </c:forEach>
+				         </tr>
+				        </c:forEach>
+					</c:if>
+			</tbody>
+		    <tfoot>
+		    </tfoot>
+			</table>
+		</td>
+		</tr>
+		<tr>
+			<td colspan="12">
+				<input type="button" value="ADD経験案件情報" id="btn_ADD経験案件情報"/>
+				<input type="button" value="DEL経験案件情報" id="btn_DEL経験案件情報"/>
+			</td>
+		</tr>
+		</tbody>
+		</table>
 
 	<div>
 		<input type="button" id="report_btn" Value="技術者履歴書出力">

@@ -72,7 +72,8 @@ public class PROPERTY {
 	}
 
 	public static List 取得OS技术方向项目名() {
-		return 親Service.stringToList(取得指定信息("OS技术方向项目名"),",");
+		String sOS技术方向项目名 = 取得指定信息("OS技术方向项目名");
+		return 親Service.stringToList(sOS技术方向项目名, ",");
 	}
 
 	public static List 取得tool技术方向项目名() {
@@ -86,4 +87,5 @@ public class PROPERTY {
 	public static List 取得業務技术方向项目名() {
 		return 親Service.stringToList(取得指定信息("業務技术方向项目名"),",");
 	}
+
 }

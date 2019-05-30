@@ -6,13 +6,11 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
 import org.apache.commons.lang.StringUtils;
-import org.apache.commons.lang.math.NumberUtils;
 import org.springframework.util.CollectionUtils;
 import org.springframework.util.ObjectUtils;
 
@@ -131,81 +129,81 @@ public class 案件Service extends 親Service{
 		if (StringUtils.isNotEmpty(bean.get案件名称())) {
 
 			//IDList_name = getIDList_byNameandValue("案件名称", "Aさん");
-			中間結果list.put("案件名称",getIDList_by小Map名andValue("案件名称", bean.get案件名称(), "=="));
+			中間結果list.put("案件名称",getIDList_by小Map名andValue("案件名称", bean.get案件名称(), "==",file_db));
 
 		}
 		Object getIDList_byNameandValue;
 		if (StringUtils.isNotEmpty(bean.get案件概要())) {
 
 			//IDList_name = getIDList_byNameandValue("案件概要", "Aさん");
-			中間結果list.put("案件概要",getIDList_by小Map名andValue("案件概要", bean.get案件概要(), "like"));
+			中間結果list.put("案件概要",getIDList_by小Map名andValue("案件概要", bean.get案件概要(), "like",file_db));
 
 		}
 		if (StringUtils.isNotEmpty(bean.get案件概要())) {
 
 			//IDList_name = getIDList_byNameandValue("案件場所", "Aさん");
-			中間結果list.put("案件場所",getIDList_by小Map名andValue("案件場所", bean.get案件場所(), "like"));
+			中間結果list.put("案件場所",getIDList_by小Map名andValue("案件場所", bean.get案件場所(), "like",file_db));
 
 		}
 		if (StringUtils.isNotEmpty(bean.get職種())) {
 
 			//IDList_name = getIDList_byNameandValue("職種", "Aさん");
-			中間結果list.put("職種",getIDList_by小Map名andValue("職種", bean.get職種(), "like"));
+			中間結果list.put("職種",getIDList_by小Map名andValue("職種", bean.get職種(), "like",file_db));
 
 		}
 		if (StringUtils.isNotEmpty(bean.get工程())) {
 
 			//IDList_name = getIDList_byNameandValue("職種", "Aさん");
-			中間結果list.put("工程",getIDList_by小Map名andValue("工程", bean.get工程(), "like"));
+			中間結果list.put("工程",getIDList_by小Map名andValue("工程", bean.get工程(), "like",file_db));
 
 		}
 
 		if (StringUtils.isNotEmpty(bean.get案件開始日_開始())) {
 
-			中間結果list.put("案件開始日",getIDList_by小Map名andValue("案件開始日", bean.get案件開始日_開始(), ">="));
+			中間結果list.put("案件開始日",getIDList_by小Map名andValue("案件開始日", bean.get案件開始日_開始(), ">=",file_db));
 
 		}
 
 		if (StringUtils.isNotEmpty(bean.get案件開始日_終了())) {
 
-			中間結果list.put("案件開始日",getIDList_by小Map名andValue("案件開始日", bean.get案件開始日_終了(), "<="));
+			中間結果list.put("案件開始日",getIDList_by小Map名andValue("案件開始日", bean.get案件開始日_終了(), "<=",file_db));
 
 		}
 
 		if (StringUtils.isNotEmpty(bean.get案件場所())) {
 
-			中間結果list.put("場所",getIDList_by小Map名andValue("場所", bean.get案件場所(), ""));
+			中間結果list.put("場所",getIDList_by小Map名andValue("場所", bean.get案件場所(), "",file_db));
 		}
 
 
 		if (StringUtils.isNotEmpty(bean.get人数_開始())) {
 
-			中間結果list.put("人数",getIDList_by小Map名andValue("人数", bean.get人数_開始(), ">="));
+			中間結果list.put("人数",getIDList_by小Map名andValue("人数", bean.get人数_開始(), ">=",file_db));
 		}
 
 		if (StringUtils.isNotEmpty(bean.get人数_終了())) {
 
-			中間結果list.put("人数",getIDList_by小Map名andValue("人数", bean.get人数_終了(), "<="));
+			中間結果list.put("人数",getIDList_by小Map名andValue("人数", bean.get人数_終了(), "<=",file_db));
 		}
 
 		if (StringUtils.isNotEmpty(bean.get予定終了日_開始())) {
 
-			中間結果list.put("予定終了日",getIDList_by小Map名andValue("予定終了日", bean.get予定終了日_開始(), ">="));
+			中間結果list.put("予定終了日",getIDList_by小Map名andValue("予定終了日", bean.get予定終了日_開始(), ">=",file_db));
 		}
 
 		if (StringUtils.isNotEmpty(bean.get予定終了日_終了())) {
 
-			中間結果list.put("予定終了日",getIDList_by小Map名andValue("予定終了日", bean.get予定終了日_終了(), "<="));
+			中間結果list.put("予定終了日",getIDList_by小Map名andValue("予定終了日", bean.get予定終了日_終了(), "<=",file_db));
 		}
 
 		if (StringUtils.isNotEmpty(bean.get実際終了日_開始())) {
 
-			中間結果list.put("実際終了日",getIDList_by小Map名andValue("実際終了日", bean.get実際終了日_開始(), ">="));
+			中間結果list.put("実際終了日",getIDList_by小Map名andValue("実際終了日", bean.get実際終了日_開始(), ">=",file_db));
 		}
 
 		if (StringUtils.isNotEmpty(bean.get予定終了日_終了())) {
 
-			中間結果list.put("実際終了日",getIDList_by小Map名andValue("実際終了日", bean.get実際終了日_終了(), "<="));
+			中間結果list.put("実際終了日",getIDList_by小Map名andValue("実際終了日", bean.get実際終了日_終了(), "<=",file_db));
 		}
 		/*
 		if (StringUtils.isNotEmpty(bean.get契約種類())) {
@@ -226,125 +224,12 @@ public class 案件Service extends 親Service{
 		}
 
 		// 削除時の対応
-		中間結果list.put("削除年月日",getIDList_by小Map名andValue("削除年月日", "", "!="));
+		中間結果list.put("削除年月日",getIDList_by小Map名andValue("削除年月日", "", "!=" ,file_db));
 
 		return 中間結果list;
 
 	}
 
-	private List<String> getIDList_by小Map名andValue(String 小Map名, String value, String s計算方法) {
-
-		List<String> IDList = new ArrayList();
-
-		Map<String, Map> 大Map = file_db.getMap_data();
-
-		Map<String, String> 小map = 大Map.get(小Map名);
-
-		if (小map != null && !小map.isEmpty()) {
-		} else {
-			return null;
-		}
-
-		for (Map.Entry<String, String> entry : 小map.entrySet()) {
-
-			String str1= entry.getValue().replace("\\", "");
-			String str2= value.replace("\\", "");
-
-			switch(s計算方法) {
-
-			case ">=":
-				if (str1.equals(str2)) {
-
-					String id = entry.getKey();
-
-					IDList.add(id);
-				}
-
-			case ">":
-
-				if (NumberUtils.toInt(str1) > NumberUtils.toInt(str2)) {
-
-					String id = entry.getKey();
-
-					IDList.add(id);
-				}
-
-				break;
-
-			case "<=":
-				if (str1.equals(str2)) {
-
-					String id = entry.getKey();
-
-					IDList.add(id);
-				}
-
-			case "<":
-
-				if (NumberUtils.toInt(str1) < NumberUtils.toInt(str2)) {
-
-					String id = entry.getKey();
-
-					IDList.add(id);
-				}
-				break;
-
-			case "==":
-
-				if (str1.equals(str2)) {
-
-					String id = entry.getKey();
-
-					IDList.add(id);
-				}
-
-				break;
-
-			case "!=":
-
-				if ( !str1.equals(str2)) {
-
-					String id = entry.getKey();
-
-					IDList.add(id);
-				}
-
-				break;
-
-			case "like":
-
-				if (value_like(entry.getValue(), value)) {
-
-					String id = entry.getKey();
-
-					IDList.add(id);
-				}
-			}
-
-
-		}
-
-		return IDList;
-	}
-
-	private boolean value_like(String str1, String str2) {
-		// java 两个字符串取交集
-        HashSet<String> result = new HashSet<String>();
-        int length1 = str1.length();
-        int length2 = str2.length();
-        for (int i = 0; i < length1; i++) {
-            for (int j = 0; j < length2; j++) {
-                String char1 = str1.charAt(i) + "";
-                String char2 = str2.charAt(j) + "";
-                if (char1.equals(char2))
-                {
-                    result.add(char1);
-                }
-            }
-        }
-
-        return result.isEmpty()? false:true;
-    }
 
 	public String 追加案件_by案件Bean(案件Bean bean) {
 

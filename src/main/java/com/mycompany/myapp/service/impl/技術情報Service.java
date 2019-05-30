@@ -31,14 +31,14 @@ public class 技術情報Service extends 親Service{
 	 * @param 技术项目_情報ListMap
 	 * @return
 	 */
-	public List 登陆技術情报List(List<Map<String, String>> 技术项目_情報ListMap) {
+	public List 登陆技術情报List(List<Map<String, Object>> 技术项目_情報ListMap) {
 
 		// 技術情报List为空就中指登陆
 		if(CollectionUtils.isEmpty(技术项目_情報ListMap)) {
 			return null;
 		}
 		List 技术情报IDList = new ArrayList();
-		for(Map<String, String> 技术项目_情報Map : 技术项目_情報ListMap) {
+		for(Map<String, Object> 技术项目_情報Map : 技术项目_情報ListMap) {
 			技術情報Bean 技術情報bean = get技術情報BeanFrom技术项目_情報Map(技术项目_情報Map);
 			技术情报IDList.add(追加技術情報_byFile_db_技術情報bean(技術情報bean));
 		}
@@ -110,9 +110,9 @@ public class 技術情報Service extends 親Service{
 
 	}
 
-	private 技術情報Bean get技術情報BeanFrom技术项目_情報Map(Map<String, String> 技术项目_情報Map) {
+	private 技術情報Bean get技術情報BeanFrom技术项目_情報Map(Map<String, Object> 技术项目_情報Map) {
 		技術情報Bean 技術情報bean = new 技術情報Bean();
-		for(Entry<String, String> entry : 技术项目_情報Map.entrySet()) {
+		for(Entry<String, Object> entry : 技术项目_情報Map.entrySet()) {
 			String sValue = listToStr(entry.getValue());
 			if(StringUtils.isEmpty(sValue)) {
 				continue;

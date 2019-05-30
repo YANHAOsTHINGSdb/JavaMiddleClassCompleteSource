@@ -3,11 +3,14 @@ package com.mycompany.myapp.service;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
 import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang.math.NumberUtils;
 import org.springframework.util.CollectionUtils;
 
 import com.mycompany.myapp.service.impl.AndCalc;
@@ -131,4 +134,211 @@ public class 親Service {
 		}
 		return null;
 	}
+
+	protected static List<String> getIDList_by小Map名andValue(String 小Map名, String value, String s計算方法, 文件db file_db) {
+
+		List<String> IDList = new ArrayList();
+
+		Map<String, Map> 大Map = file_db.getMap_data();
+
+		Map<String, String> 小map = 大Map.get(小Map名);
+
+		if (小map != null && !小map.isEmpty()) {
+		} else {
+			return null;
+		}
+
+		for (Map.Entry<String, String> entry : 小map.entrySet()) {
+
+			String str1= entry.getValue().replace("\\", "");
+			String str2= value.replace("\\", "");
+
+			switch(s計算方法) {
+
+			case ">=":
+				if (str1.equals(str2)) {
+
+					String id = entry.getKey();
+
+					IDList.add(id);
+				}
+
+			case ">":
+
+				if (NumberUtils.toInt(str1) > NumberUtils.toInt(str2)) {
+
+					String id = entry.getKey();
+
+					IDList.add(id);
+				}
+
+				break;
+
+			case "<=":
+				if (str1.equals(str2)) {
+
+					String id = entry.getKey();
+
+					IDList.add(id);
+				}
+
+			case "<":
+
+				if (NumberUtils.toInt(str1) < NumberUtils.toInt(str2)) {
+
+					String id = entry.getKey();
+
+					IDList.add(id);
+				}
+				break;
+
+			case "==":
+
+				if (str1.equals(str2)) {
+
+					String id = entry.getKey();
+
+					IDList.add(id);
+				}
+
+				break;
+
+			case "!=":
+
+				if ( !str1.equals(str2)) {
+
+					String id = entry.getKey();
+
+					IDList.add(id);
+				}
+
+				break;
+
+			case "like":
+
+				if (value_like(entry.getValue(), value)) {
+
+					String id = entry.getKey();
+
+					IDList.add(id);
+				}
+			}
+
+
+		}
+
+		return IDList;
+	}
+
+	 static boolean value_like(String str1, String str2) {
+		// java 两个字符串取交集
+        HashSet<String> result = new HashSet<String>();
+        int length1 = str1.length();
+        int length2 = str2.length();
+        for (int i = 0; i < length1; i++) {
+            for (int j = 0; j < length2; j++) {
+                String char1 = str1.charAt(i) + "";
+                String char2 = str2.charAt(j) + "";
+                if (char1.equals(char2))
+                {
+                    result.add(char1);
+                }
+            }
+        }
+
+        return result.isEmpty()? false:true;
+    }
+
+	 /**
+	  *
+		检索处理_案件(案件Map)
+		|
+		|——遍历案件Map的每一项
+		          if  key中没有「_开始」「_终了」字样，就用"like"
+		          if  key中有「_开始」字样，就用">="
+		          if  key中有「_终了」字样，就用"<="
+	  *
+	  * @param 检索对象Map
+	  * @param file_db
+	  * @return
+	  */
+	public static Map<String,List<String>> 检索处理(Map<String, String> 检索对象Map, 文件db file_db){
+		Map<String,List<String>> 检索结果 = new HashMap();
+		for (Map.Entry<String, String> entry : 检索对象Map.entrySet()) {
+			String s存储项目=null;
+
+			// 如果检索条件中没有入力项、就叫下一个。
+			if ( !StringUtils.isNotEmpty(entry.getValue())) {
+				continue;
+			}
+			boolean b包含开始 = is检索项目后面包含开始(entry.getKey());
+			boolean b包含终了 = is检索项目后面包含终了(entry.getKey());
+			if(b包含开始|| b包含终了) {
+				s存储项目 = 去掉检索项目后面的开始或终了(entry.getKey());
+
+			}else {
+				s存储项目 = entry.getKey();
+				// 就用"like"
+				检索结果.put(s存储项目, getIDList_by小Map名andValue("案件概要", entry.getValue(), "like", file_db));
+			}
+			if(b包含开始){
+				// 就用">="
+				检索结果.put(s存储项目, getIDList_by小Map名andValue("案件概要", entry.getValue(), ">=", file_db));
+			}
+			if(b包含终了){
+				// 就用"<="
+				检索结果.put(s存储项目, getIDList_by小Map名andValue("案件概要", entry.getValue(), "<=", file_db));
+			}
+
+		}
+		return 检索结果;
+
+	}
+
+	private static String 去掉检索项目后面的开始或终了(String key) {
+		String s处理后的结果 = null;
+		if(is检索项目后面包含开始(key)|| is检索项目后面包含终了(key)) {
+			s处理后的结果 = key.substring(0, key.length()-3-1);
+		}
+		return null;
+	}
+	/**
+	 *
+	 * @param s检索项目
+	 * @return
+	 */
+	private static boolean is检索项目后面包含终了(String s检索项目) {
+		int i位置 = s检索项目.indexOf("_");
+		if(i位置 == -1) {
+			return false;
+		}
+		if(s检索项目.length()<2) {
+			return false;
+		}
+
+		if(s检索项目.substring(s检索项目.length()-2, s检索项目.length()-1).equals("终了")) {
+			return true;
+		}
+		return false;
+	}
+	/**
+	 *
+	 * @param s检索项目
+	 * @return
+	 */
+	private static boolean is检索项目后面包含开始(String s检索项目) {
+		int i位置 = s检索项目.indexOf("_");
+		if(i位置 == -1) {
+			return false;
+		}
+		if(s检索项目.length()<2) {
+			return false;
+		}
+
+		if(s检索项目.substring(s检索项目.length()-2, s检索项目.length()-1).equals("开始")) {
+			return true;
+		}
+		return false;
+	}
+
 }

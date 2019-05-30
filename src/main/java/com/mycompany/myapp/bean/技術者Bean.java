@@ -18,7 +18,7 @@ public class 技術者Bean {
 
 	List<String> 技術項目_ID;					// 可以有很多技术方向，例如OS，DB等等
 	//Map<String,List<String>> 技术项目_情報;
-	List<Map<String,String>> 技術項目_情報; 	// 每个技术方向，可以有很多项目，例如OS，可以会windows，也可以会Linux
+	List<Map<String,Object>> 技術項目_情報; 	// 每个技术方向，可以有很多项目，例如OS，可以会windows，也可以会Linux
 											// 每个技术项目, 都有自己的所属方向，和实绩时间
 											// List<List<String>>的String是技术方向名，例如OS，DB
 											//                           是技术项目名、实绩时间、等级、等等

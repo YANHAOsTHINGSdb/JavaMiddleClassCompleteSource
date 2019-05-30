@@ -6,6 +6,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.util.CollectionUtils;
+
 import com.mycompany.common.PROPERTY;
 import com.mycompany.myapp.bean.技術者Bean;
 
@@ -25,7 +27,7 @@ public class 帳票Service {
 
 		// 取这个人的所有【技术项目信息】
 		// 循环读入每个【技术项目信息】
-		for(Map 技術項目map:技術者bean.get技術項目_情報()) {
+		for(Map<String, Object> 技術項目map:技術者bean.get技術項目_情報()) {
 
 			// 对每个【技术项目信息】做分类判断
 			int iType = 对每个技术项目信息做分类判断(技術項目map);
@@ -96,7 +98,7 @@ public class 帳票Service {
 		case tool技術項目:
 		case 業種技術項目:
 		case 業務技術項目:
-			出力信息Map.put("OS技術項目".concat(出力項目计数器[OS技術項目]+1+""), 经验程度判断(iType, 出力信息Map));
+//			出力信息Map.put("OS技術項目".concat(出力項目计数器[OS技術項目]+1+""), 经验程度判断(iType, 出力信息Map));
 //			if(取得经验年数(出力信息Map.get("开始年月"))) {
 //				return "◎";
 //			}
@@ -157,7 +159,7 @@ public class 帳票Service {
 	 * @param 技術項目map 每个技术项目有5个值，参照【技術情報Bean】
 	 * @return
 	 */
-	private int 对每个技术项目信息做分类判断(Map 技術項目map) {
+	private int 对每个技术项目信息做分类判断(Map<String,Object> 技術項目map) {
 		/*
 		No	技术方向			出力项目	每个项目最多
 		1	OS	的话，就是		OS技術項目	8
@@ -166,25 +168,29 @@ public class 帳票Service {
 		4	建設業 	等存在的话，就是		業種技術項目	8
 		5	財務会計 	等存在的话，就是		業務技術項目	16
 		*/
-		List os技術方向 = PROPERTY.取得OS技术方向项目名();
-		List db技術方向 = PROPERTY.取得DB技术方向项目名();
-		List tool技術方向 = PROPERTY.取得tool技术方向项目名();
-		List 業種技術方向 = PROPERTY.取得業種技术方向项目名();
-		List 業務技術方向 = PROPERTY.取得業務技术方向项目名();
-
-		if (os技術方向.contains(技術項目map.get("技術方向"))){
+		List<String> os技術方向 = PROPERTY.取得OS技术方向项目名();
+		List<String> db技術方向 = PROPERTY.取得DB技术方向项目名();
+		List<String> tool技術方向 = PROPERTY.取得tool技术方向项目名();
+		List<String> 業種技術方向 = PROPERTY.取得業種技术方向项目名();
+		List<String> 業務技術方向 = PROPERTY.取得業務技术方向项目名();
+		List 技術方向List= (List)技術項目map.get("技術方向");
+		String s技術方向 = null;
+		if( !CollectionUtils.isEmpty(技術方向List)) {
+			s技術方向 = (String) 技術方向List.get(0);
+		}
+		if (os技術方向.contains(s技術方向)){
 			return OS技術項目;
 		}
-		if (db技術方向.contains(技術項目map.get("技術方向"))){
+		if (db技術方向.contains(s技術方向)){
 			return DB技術項目;
 		}
-		if (tool技術方向.contains(技術項目map.get("技術方向"))){
+		if (tool技術方向.contains(s技術方向)){
 			return tool技術項目;
 		}
-		if (業種技術方向.contains(技術項目map.get("技術方向"))){
+		if (業種技術方向.contains(s技術方向)){
 			return 業種技術項目;
 		}
-		if (業務技術方向.contains(技術項目map.get("技術方向"))){
+		if (業務技術方向.contains(s技術方向)){
 			return 業務技術項目;
 		}
 
