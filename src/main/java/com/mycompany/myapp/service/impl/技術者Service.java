@@ -219,33 +219,77 @@ public class 技術者Service extends 親Service{
 		}
 	}
 
-	public List<技術者Bean> 検索技術者_by検索Bean(技術者検索Bean bean) {
-		/**
-		get中間結果_by技術者検索Bean(技術者检索Bean)
-		|
-		|——中间结果IDList=取得中间结果(List)
-		|——中间结果案件List=检索处理_案件List(案件List)
-		|——中间结果技术List=检索处理_技术List(技术List)
-		|——中间结果IDList.addAll(中间结果案件List);
-		|——中间结果IDList.addAll(中间结果技术List);
-		|——最终结果IDList=取得最终结果(中间结果IDList)
-		|——取得技术者信息_根据最终结果IDList(最终结果IDList)
-		*/
-		file_db.情報読み込み(fileName);
+//	public List<技術者Bean> 検索技術者_by検索Bean(技術者検索Bean bean) {
+//		/**
+//		get中間結果_by技術者検索Bean(技術者检索Bean)
+//		|
+//		|——中间结果IDList=取得中间结果(List)
+//		|——中间结果案件List=检索处理_案件List(案件List)
+//		|——中间结果技术List=检索处理_技术List(技术List)
+//		|——中间结果IDList.addAll(中间结果案件List);
+//		|——中间结果IDList.addAll(中间结果技术List);
+//		|——最终结果IDList=取得最终结果(中间结果IDList)
+//		|——取得技术者信息_根据最终结果IDList(最终结果IDList)
+//		*/
+//		file_db.情報読み込み(fileName);
+//
+//		Map<String,List<String>> 中間結果IDList = get中間結果_by技術者検索Bean(bean);
+//		List 中间结果案件List=检索处理_案件List(bean.get案件检索信息List());
+//		List 中间结果技術List=检索处理_技術List(bean.get技術检索信息List());
+//
+//		Calc calc = new AndCalc();
+//		List<String> 最終結果IDList = new ArrayList();
+//		List 中間結果技術者List = get最終結果_by中間結果(中間結果IDList);
+//		最終結果IDList = calc.論理計算(中間結果技術者List, 中间结果案件List);
+//		最終結果IDList = calc.論理計算(最終結果IDList, 中间结果技術List);
+//
+//		return 取得検索結果_by最終結果(最終結果IDList);
+//	}
 
+	List<技術者Bean> 検索技術者_by検索Bean(技術者検索Bean bean){
+//		1、调用以下函数、取得满足技术者基本信息的中间结果
+//
+//		   函数名：get中間結果_by技術者検索Bean
+//		   参数：技術者検索Bean
+//		   返回值类型：Map<String,List<String>>
 		Map<String,List<String>> 中間結果IDList = get中間結果_by技術者検索Bean(bean);
+
+//		2、调用以下函数、取得满足经验案件检索信息的中间结果
+//
+//		   函数名：检索处理_案件List
+//		   参数：List<Map>
+//		   返回值类型：List<String>
 		List 中间结果案件List=检索处理_案件List(bean.get案件检索信息List());
+
+//		3、调用以下函数、取得满足技术检索信息的中间结果
+//
+//		   函数名：检索处理_技術List
+//		   参数：List<Map>
+//		   返回值类型：List<String>
 		List 中间结果技術List=检索处理_技術List(bean.get技術检索信息List());
 
-		Calc calc = new AndCalc();
+//		4、调用以下函数、取得满足所有技术者基本信息的结果
+//
+//		   函数名：get最終結果_by中間結果
+//		   参数：List<Map>
+//		   返回值类型：List<String>
 		List<String> 最終結果IDList = new ArrayList();
 		List 中間結果技術者List = get最終結果_by中間結果(中間結果IDList);
+
+//		5、取得满足所有三种条件的最终结果
+		Calc calc = new AndCalc();
 		最終結果IDList = calc.論理計算(中間結果技術者List, 中间结果案件List);
 		最終結果IDList = calc.論理計算(最終結果IDList, 中间结果技術List);
 
+//		6、调用以下函数、取得最终检索出技术者的关联信息
+//
+//		   函数名：取得検索結果_by最終結果
+//		   参数：List<Map>
+//		   返回值类型：List<String>
+//		7、返回处理6的结果
 		return 取得検索結果_by最終結果(最終結果IDList);
-	}
 
+	}
 	/**
 	 * 情况1:
 	 * 要求你有什么技术，且对这个技术要有特殊要求。
@@ -296,7 +340,38 @@ public class 技術者Service extends 親Service{
 	private Map<String, List<String>> get中間結果_by技術者検索Bean(技術者検索Bean bean) {
 
 		Map<String,List<String>> 中間結果list = new HashMap();
-
+		/**
+			2、姓名;
+			3、性别;
+			4、生年月日_开始;       //大于等于
+			5、生年月日_终了;       //小于等于
+			6、最終卒業学校名;
+			7、最終学位;
+			8、卒業技能;
+			9、会社名;
+			10、TEL;
+			11、FAX;
+			12、最寄駅;
+			13、就職開始年月_开始;       //大于等于
+			14、就職開始年月_终了;       //小于等于
+			15、日本語読み能力;
+			16、日本語書き能力;
+			17、日本語会話能力;
+			18、日本語レベル_开始;       //大于等于
+			19、日本語レベル_终了;       //小于等于
+			20、英語読み能力;
+			21、英語書き能力;
+			22、英語会話能力;
+			23、英検点数_开始;       //大于等于
+			24、英検点数_终了;       //小于等于
+			25、仕事_留学_経験有無;
+			25、仕事_留学_経験開始年月_开始;       //大于等于
+			26、仕事_留学_経験開始年月_终了;	       //小于等于
+		 *
+		 */
+		if (StringUtils.isNotEmpty(bean.get姓名())) {
+			中間結果list.put("姓名",getIDList_by小Map名andValue("姓名", bean.get姓名(), "like",file_db));
+		}
 
 		return 中間結果list;
 	}
