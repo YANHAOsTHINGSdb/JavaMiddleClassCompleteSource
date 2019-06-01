@@ -112,6 +112,11 @@ public class 技術者Service extends 親Service{
 					file_db.文件書込(path, 技术者ID + "," + bean.get技術者_社員CD());
 				}
 				break;
+			case "姓名":
+				if(!StringUtils.isEmpty(bean.get姓名())) {
+					file_db.文件書込(path, 技术者ID + "," + bean.get姓名());
+				}
+				break;
 			case "生年月日":
 				if(!StringUtils.isEmpty(bean.get生年月日())) {
 					file_db.文件書込(path, 技术者ID + "," + bean.get生年月日());
