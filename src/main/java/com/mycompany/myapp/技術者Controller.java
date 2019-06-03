@@ -22,11 +22,13 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.mycompany.myapp.bean.技術者Bean;
+import com.mycompany.myapp.bean.技術者検索Bean;
 import com.mycompany.myapp.bean.案件Bean;
 import com.mycompany.myapp.service.帳票Service;
 import com.mycompany.myapp.service.impl.技術者Service;
@@ -117,7 +119,6 @@ public class 技術者Controller {
 		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
 
 		String formattedDate = dateFormat.format(date);
-
 		model.addAttribute("serverTime", formattedDate);
 		model.addAttribute("モード", "0");
 
@@ -140,7 +141,7 @@ public class 技術者Controller {
 //		model.addAttribute("作業预计终了年月", bean.get作業预计终了年月());
 //		model.addAttribute("作業实际终了年月", bean.get作業实际终了年月());
 //		model.addAttribute("募集人数", bean.get募集人数());
-
+System.out.println("");
 		return "技術者明細";
 	}
 
@@ -393,4 +394,14 @@ public class 技術者Controller {
         return ExcelExportUtil.exportExcel(params, map);
     }
 
+	@RequestMapping(value = "技術者search", method = RequestMethod.POST)
+	@ResponseBody //将返回结果转成Json
+	public List<技術者Bean> 技術者search(@RequestBody 技術者検索Bean 検索bean) {//@RequestBody 将Json转成Java对象
+
+		logger.info("call 技術者search");
+
+		技術者Service 技術者service = new 技術者Service();
+
+		return 技術者service.検索技術者_by検索Bean(検索bean);
+	}
 }

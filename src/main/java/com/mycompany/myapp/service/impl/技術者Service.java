@@ -246,7 +246,7 @@ public class 技術者Service extends 親Service{
 //		return 取得検索結果_by最終結果(最終結果IDList);
 //	}
 
-	List<技術者Bean> 検索技術者_by検索Bean(技術者検索Bean bean){
+	public List<技術者Bean> 検索技術者_by検索Bean(技術者検索Bean bean){
 //		1、调用以下函数、取得满足技术者基本信息的中间结果
 //
 //		   函数名：get中間結果_by技術者検索Bean
