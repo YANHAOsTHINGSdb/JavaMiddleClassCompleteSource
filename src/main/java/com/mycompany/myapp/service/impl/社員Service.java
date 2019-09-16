@@ -190,7 +190,9 @@ public class 社員Service extends 親Service{
 		Map<String, Map> 大Map = file_db.getMap_data();
 
 		Map<String, String> 小map = 大Map.get(小Map名);
-
+		if(null == 小map) {
+			return null;
+		}
 		for (Map.Entry<String, String> entry : 小map.entrySet()) {
 
 			String str1= entry.getValue().replace("\\", "");
