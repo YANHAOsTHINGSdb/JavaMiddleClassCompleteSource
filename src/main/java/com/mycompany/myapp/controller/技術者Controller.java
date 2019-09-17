@@ -1,4 +1,4 @@
-package com.mycompany.myapp;
+package com.mycompany.myapp.controller;
 
 import java.io.BufferedOutputStream;
 import java.io.IOException;

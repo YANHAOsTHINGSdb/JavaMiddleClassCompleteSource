@@ -31,9 +31,20 @@ public class 社員Service extends 親Service{
 
 		file_db.情報読み込み(fileName);
 
-		Map<String,List<String>> 中間結果IDList = get中間結果_by社員検索Bean(bean);
+		/* 例，要查找：姓王、女性、30岁
+		 * 中間結果IDList
+		 * 					姓名=王			1，2，4，54，65
+		 * 					性别=女			3，4，5，54，201
+		 * 					生年月日= 1989	1，5，6，8，23，54，245
+		 */
+		Map<String,List<String>> 中間結果listMap = get中間結果_by社員検索Bean(bean);
 
-		List<String> 最終結果IDList = get最終結果_by中間結果(中間結果IDList);
+		/*
+		 * 在{1，2，4，54，65}
+		 *   {3，4，5，54，201}
+		 *   {1，5，6，8，23，54，2455}中找到都满足的ID
+		 */
+		List<String> 最終結果IDList = get最終結果_by中間結果(中間結果listMap);
 
 		return 取得検索結果_by最終結果(最終結果IDList);
 	}
@@ -110,62 +121,62 @@ public class 社員Service extends 親Service{
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	private Map<String,List<String>> get中間結果_by社員検索Bean(社員検索Bean bean) {
 
-		Map<String,List<String>> 中間結果list = new LinkedHashMap();
+		Map<String,List<String>> 中間結果listMap = new LinkedHashMap();
 		if (StringUtils.isNotEmpty(bean.getS_ID())) {
 
 			/*IDList_name = getIDList_byNameandValue("姓名", "Aさん");*/
-			中間結果list.put("ID",Arrays.asList(bean.getS_ID()));
+			中間結果listMap.put("ID",Arrays.asList(bean.getS_ID()));
 		}
 
 		if (StringUtils.isNotEmpty(bean.get番号())) {
 
 			/*IDList_name = getIDList_byNameandValue("姓名", "Aさん");*/
-			中間結果list.put("番号",getIDList_by小Map名andValue("番号", bean.get番号(), "=="));
+			中間結果listMap.put("番号",getIDList_by小Map名andValue("番号", bean.get番号(), "=="));
 
 		}
 		/*Object getIDList_byNameandValue;*/
 		if (StringUtils.isNotEmpty(bean.get姓名())) {
 
 			/*IDList_name = getIDList_byNameandValue("姓名", "Aさん");*/
-			中間結果list.put("姓名",getIDList_by小Map名andValue("姓名", bean.get姓名(), "like"));
+			中間結果listMap.put("姓名",getIDList_by小Map名andValue("姓名", bean.get姓名(), "like"));
 
 		}
 
 		if (StringUtils.isNotEmpty(bean.get性別())) {
 
-			中間結果list.put("性別",getIDList_by小Map名andValue("性別", bean.get性別(), "=="));
+			中間結果listMap.put("性別",getIDList_by小Map名andValue("性別", bean.get性別(), "=="));
 
 		}
 
 		if (StringUtils.isNotEmpty(bean.get生年月日開始())) {
 
-			中間結果list.put("開始生年月日",getIDList_by小Map名andValue("生年月日", bean.get生年月日開始(), ""));
+			中間結果listMap.put("開始生年月日",getIDList_by小Map名andValue("生年月日", bean.get生年月日開始(), ""));
 		}
 
 
 		if (StringUtils.isNotEmpty(bean.get生年月日終了())) {
 
-			中間結果list.put("終了生年月日",getIDList_by小Map名andValue("生年月日", bean.get生年月日終了(), ""));
+			中間結果listMap.put("終了生年月日",getIDList_by小Map名andValue("生年月日", bean.get生年月日終了(), ""));
 		}
 
 
 		if (StringUtils.isNotEmpty(bean.get入社年月日開始())) {
 
-			中間結果list.put("開始入社月日",getIDList_by小Map名andValue("入社年月日", bean.get入社年月日開始(), ""));
+			中間結果listMap.put("開始入社月日",getIDList_by小Map名andValue("入社年月日", bean.get入社年月日開始(), ""));
 		}
 
 		if (StringUtils.isNotEmpty(bean.get入社年月日終了())) {
 
-			中間結果list.put("終了入社月日",getIDList_by小Map名andValue("入社年月日", bean.get入社年月日終了(), ""));
+			中間結果listMap.put("終了入社月日",getIDList_by小Map名andValue("入社年月日", bean.get入社年月日終了(), ""));
 		}
 
 		if (StringUtils.isNotEmpty(bean.get契約種類())) {
 
-			中間結果list.put("契約種類",getIDList_by小Map名andValue("契約種類", bean.get契約種類(), "=="));
+			中間結果listMap.put("契約種類",getIDList_by小Map名andValue("契約種類", bean.get契約種類(), "=="));
 		}
 		if (StringUtils.isNotEmpty(bean.get電話番号())) {
 
-			中間結果list.put("電話番号",getIDList_by小Map名andValue("電話番号", bean.get電話番号(), "=="));
+			中間結果listMap.put("電話番号",getIDList_by小Map名andValue("電話番号", bean.get電話番号(), "=="));
 		}
 
 
@@ -173,16 +184,29 @@ public class 社員Service extends 親Service{
 		if(allfieldIsNUll(bean)) {
 
 			//中間結果list.put("ID",file_db.取得全部ID("番号"));
-			中間結果list.put("ID",file_db.取得全部ID(fileName[0]));
+			中間結果listMap.put("ID",file_db.取得全部ID(fileName[0]));
 		}
 
 		// 削除時の対応
-		中間結果list.put("削除年月日",getIDList_by小Map名andValue("削除年月日", "", "!="));
+		中間結果listMap.put("削除年月日",getIDList_by小Map名andValue("削除年月日", "", "!="));
 
-		return 中間結果list;
+		return 中間結果listMap;
 
 	}
-
+	/**
+	 * ">="
+	 * ">"
+	 * "<="
+	 * "<"
+	 * "=="
+	 * "!="
+	 * "like"
+	 * @param 小Map名
+	 * @param value
+	 * @param s計算方法
+	 * @return
+	 *
+	 */
 	private List<String> getIDList_by小Map名andValue(String 小Map名, String value, String s計算方法) {
 
 		List<String> IDList = new ArrayList();
